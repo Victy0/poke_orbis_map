@@ -1,5 +1,5 @@
 <template>
-	<div class="icon-trainer">
+	<div ref="icon" class="icon-trainer">
 		<img 
 			draggable="false"
 			class="principal"
@@ -53,7 +53,9 @@
 		methods:{
 			show(opts = {}) {
 				this.trainerImage = opts.trainerImage;
-                this.pokemonImage = opts.pokemonImage;	
+                this.pokemonImage = opts.pokemonImage;
+				this.$refs["icon"].style.marginLeft = opts.top + "vw";
+				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
 			getTrainerImage(){
 				return require('@/assets/img/trainer/icon/' + this.trainerImage)
@@ -96,8 +98,6 @@
 		text-align: center;
 		position: absolute;
 		width: 3.5vw;
-		margin-left: 10vw;
-		margin-top: 10vw;
 		border-radius: 50%; 
 	}
 	.icon-trainer:hover

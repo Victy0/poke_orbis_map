@@ -1,5 +1,5 @@
 <template>
-	<div class="icon-tree" title="árvore">
+	<div ref="icon" class="icon-tree" title="árvore">
 		<div
 			class="principal"
 		/>
@@ -13,7 +13,7 @@
 			<img
                 v-show="!shakeHappened"
 				draggable="false"
-				src="@/assets/img/common/door.png"
+				src="@/assets/img/common/leafs.png"
 				@click="shakeTree()"
 				title="Chacoalhar árvore"
 			>
@@ -48,8 +48,9 @@
 			}
 		},
 		methods:{
-			show() {
-				
+			show(opts = {}) {
+				this.$refs["icon"].style.marginLeft = opts.top + "vw";
+				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
             haverstberry() {
 
@@ -83,13 +84,11 @@
 	{
 		text-align: center;
 		position: absolute;
-        left: 25vw;
-        top: 29vw;
 	}
 	.icon-tree .principal
 	{
-        width: 6vw;
-		height: 6vw;
+        width: 3vw;
+		height: 3vw;
 	}
 	.icon-tree .options
 	{

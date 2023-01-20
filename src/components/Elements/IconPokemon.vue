@@ -1,5 +1,5 @@
 <template>
-	<div class="icon-pokemon">
+	<div ref="icon" class="icon-pokemon">
 		<img 
 			draggable="false"
 			class="principal"
@@ -42,6 +42,8 @@
 		methods:{
 			show(opts = {}) {
 				this.image = opts.image;
+				this.$refs["icon"].style.marginLeft = opts.top + "vw";
+				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
 			getImage(){
 				return require('@/assets/img/pokemon/icon/' + this.image)

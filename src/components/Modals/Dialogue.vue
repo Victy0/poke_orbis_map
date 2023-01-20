@@ -1,6 +1,6 @@
 <template>
 	<transition name="modal-fade">
-		<div class="modal">
+		<div class="modal-dialogue">
 			<div class="modal-container-dialogue" role="dialog">
 				<div>
 					<div class="close-header-dialogue">
@@ -30,7 +30,7 @@
 
 <script>
 	export default {
-		name: 'modalConfirmation',
+		name: 'modalDialogue',
 		data () {
 			return {
 				name: "",
@@ -66,7 +66,7 @@
 
 <style>
 	/******************* Estrutura do modal **********************/
-	.modal
+	.modal-dialogue
 	{
 		font-family: Pixel;
 		position: absolute;
@@ -78,6 +78,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		z-index: 9999999999999;
 	}
 	.modal-container-dialogue
 	{
@@ -109,7 +110,7 @@
 	}
 
 	/******************* texto do modal **********************/
-	.modal .body-dialogue
+	.modal-dialogue .body-dialogue
 	{
         display: inline-flex;
 	}
