@@ -56,8 +56,8 @@
 			this.$refs.iconPokemon1.show(
 				{
 					image: 'TAUROS.gif',
-					left: 10,
-					top: 10
+					top: 30,
+					left: 5
 				}
 			);
 			this.showPokemon = true;
@@ -65,7 +65,9 @@
 			this.$refs.iconTrainer1.show(
 				{
 					trainerImage: 'bug_catcher.png',
-					pokemonImage: 'TAUROS.gif'
+					pokemonImage: 'TAUROS.gif',
+					top: 10,
+					left: 10
 				}
 			);
 			this.showTrainer = true;
@@ -73,12 +75,20 @@
 			this.$refs.iconLocation1.show(
 				{
 					name: '',
-					description: ''
+					description: '',
+					top: 50,
+					left: 30,
+					size: 6
 				}
 			);
 			this.showLocation = true;
 
-			this.$refs.iconTree.show();
+			this.$refs.iconTree.show(
+				{
+					top: 50,
+					left: 20
+				}
+			);
 			this.showTree = true;
 		},
 		methods:{

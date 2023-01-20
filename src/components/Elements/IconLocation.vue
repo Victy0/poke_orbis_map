@@ -1,6 +1,6 @@
 <template>
-	<div class="icon-location" title="local">
-        <div
+	<div ref="icon" class="icon-location" title="local">
+        <div ref="principal"
 			class="principal"
 		/>
 		<div class="options">
@@ -38,8 +38,12 @@
 			}
 		},
 		methods:{
-			show() {
-				
+			show(opts = {}) {
+				this.$refs["icon"].style.marginLeft = opts.top + "vw";
+				this.$refs["icon"].style.marginTop = opts.left + "vw";
+
+				this.$refs["principal"].style.width = opts.size + "vw";
+				this.$refs["principal"].style.height = opts.size + "vw";
 			},
 			openInformation(){
 				this.$refs.pokedex.show(
@@ -62,13 +66,6 @@
 	{
 		text-align: center;
 		position: absolute;
-        left: 39.7vw;
-        top: 29vw;
-	}
-	.icon-location .principal
-	{
-        width: 6vw;
-		height: 6vw;
 	}
 	.icon-location .options
 	{
