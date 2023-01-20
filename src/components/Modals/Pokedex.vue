@@ -1,6 +1,6 @@
 <template>
 	<transition name="modal-fade">
-		<div class="modal">
+		<div class="modal-pokedex">
 			<div class="modal-container-pokedex" role="dialog">
 				<div>
 					<div class="option-header-pokedex">
@@ -12,7 +12,7 @@
 					</div>
 				</div>
 				
-				<div v-if="view == 'pokemon'" class="body">
+				<div v-if="view == 'pokemon'" class="body-pokedex">
 					<div class="intro">
 						<div class="img-container">
 							<img src="@/assets/img/pokemon/icon/TAUROS.gif">
@@ -75,7 +75,7 @@
 
 <script>
 	export default {
-		name: 'Pokedex',
+		name: 'modalPokedex',
 		data () {
 			return {
 				view: "",
@@ -109,7 +109,7 @@
 
 <style>
 	/******************* Estrutura do modal **********************/
-	.modal
+	.modal-pokedex
 	{
 		font-family: Pixel;
 		position: absolute;
@@ -121,6 +121,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		z-index: 9999999999999;
 	}
 	.modal-container-pokedex
 	{
@@ -160,11 +161,11 @@
 	
 
 	/******************* texto do modal **********************/
-	.modal .body
+	.modal-pokedex .body-pokedex
 	{
 		height: 30vw;
 	}
-	.body .intro
+	.body-pokedex .intro
 	{
 		position: absolute;
 		width: 30%;
@@ -179,18 +180,18 @@
 	{
 		height: 60%;
 	}
-	.body .intro img
+	.body-pokedex .intro img
 	{
 		margin: auto;
 		display: block;
 		width: 20vw;
 		margin-top: -2vw !important;
 	}
-	.body .intro .name
+	.body-pokedex .intro .name
 	{
 		margin-top: 3vw !important;
 	}
-	.body .information 
+	.body-pokedex .information 
 	{
 		display: inline-block;
 		position: absolute;
@@ -202,7 +203,7 @@
 		bottom: 0;
 		right: 0;
 	}
-	.body .information span
+	.body-pokedex .information span
 	{
 		font-size: 0.9em;
 		font-weight: bold;
@@ -211,7 +212,7 @@
 		overflow: auto;
 		max-height: 14vw;
 	}
-	.body .intro span
+	.body-pokedex .intro span
 	{
 		font-size: 1.1em;
 		filter: drop-shadow(5px 5px 5px rgb(168, 167, 167));
