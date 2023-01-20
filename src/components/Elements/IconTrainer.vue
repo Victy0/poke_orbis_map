@@ -1,0 +1,133 @@
+<template>
+	<div class="icon-trainer">
+		<img 
+			draggable="false"
+			class="principal"
+			:src="getTrainerImage()"
+		>
+		<div class="options">
+			<img
+				draggable="false"
+				:src="getPokemonImage()"
+				@click="openPokedex()"
+				title="Pokédex"
+			>
+			<img
+				draggable="false"
+				src="@/assets/img/common/message.png"
+                @click="openDialogueModal()"
+				title="Falar"
+			>
+		</div>
+	</div>
+
+	<ModalPokedex 
+		ref="pokedex"
+		v-show="showPokedex"
+	/>
+
+	<ModalDialogue
+		ref="dialogue"
+		v-show="showDialogue"
+	/>
+</template>
+
+<script>
+	import ModalPokedex from '../Modals/Pokedex.vue';
+	import ModalDialogue from '../Modals/Dialogue.vue';
+
+	export default {
+		name:"IconTrainer",
+		components:{
+			ModalPokedex,
+			ModalDialogue
+		},
+		data () {
+			return{
+                pokemonImage: "none.gif",
+				trainerImage: "none.png",
+				showPokedex: false,
+				showDialogue: false
+			}
+		},
+		methods:{
+			show(opts = {}) {
+				this.trainerImage = opts.trainerImage;
+                this.pokemonImage = opts.pokemonImage;	
+			},
+			getTrainerImage(){
+				return require('@/assets/img/trainer/icon/' + this.trainerImage)
+			},
+            getPokemonImage(){
+				return require('@/assets/img/pokemon/icon/' + this.pokemonImage)
+			},
+			openPokedex(){
+				this.$refs.pokedex.show(
+					{
+						view: "pokemon",
+						idPoke: 0
+					}
+				).then(async (close) => {
+					if(close){
+						this.showPokedex = false;
+					}
+				});
+				this.showPokedex = true;
+			},
+            openDialogueModal(){
+				this.$refs.dialogue.show(
+					{
+						trainerImage: this.trainerImage
+					}
+				).then(async (close) => {
+					if(close){
+						this.showDialogue = false;
+					}
+				});
+				this.showDialogue = true;
+            }
+		}
+	}
+</script>
+
+<style>
+	.icon-trainer
+	{
+		text-align: center;
+		position: absolute;
+		width: 3.5vw;
+		margin-left: 10vw;
+		margin-top: 10vw;
+		border-radius: 50%; 
+	}
+	.icon-trainer:hover
+	{
+		width: 4vw; 
+	}
+	.icon-trainer:hover .principal
+	{
+		background-color: white;
+		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
+		border-radius: 50%;
+	}
+	.icon-trainer .options
+	{
+		display: inline-flex;
+		margin-left: -0.4vw;
+		margin-top: -0.3vw;
+		cursor: pointer;
+		visibility: hidden;
+	}
+	.icon-trainer .options img
+	{
+		width: 3vw;
+		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
+		margin: 0 1vw 0 -1vw !important;
+        background-color: white;
+		border-radius: 50% !important;
+	}
+	.icon-trainer:hover .options
+	{
+		visibility: visible;
+	}
+</style>
