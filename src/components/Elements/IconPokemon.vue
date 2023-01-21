@@ -35,7 +35,7 @@
 		},
 		data () {
 			return{
-				image: "none.png",
+				image: "none.gif",
 				showPokedex: false
 			}
 		},
