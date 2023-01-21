@@ -8,13 +8,13 @@
 		<div class="options">
 			<img
 				draggable="false"
-				src="@/assets/img/common/dex-icon.png"
+				src="@/assets/img/icon/dex-icon.png"
 				@click="openPokedex()"
 				title="Pokédex"
 			>
 			<img
 				draggable="false"
-				src="@/assets/img/common/berry-icon.png"
+				src="@/assets/img/icon/berry-icon.png"
 				title="Dar berry"
 			>
 		</div>
@@ -46,7 +46,7 @@
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
 			getImage(){
-				return require('@/assets/img/pokemon/icon/' + this.image)
+				return require('@/assets/img/pokemon/' + this.image)
 			},
 			openPokedex(){
 				this.$refs.pokedex.show(

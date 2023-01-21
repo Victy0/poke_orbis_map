@@ -2,7 +2,7 @@
 	<img 
 		id="view"
 		draggable="false" 
-		src="@/assets/img/places_kanto/pallet.png"
+		src="@/assets/img/place_kanto/pallet.png"
 	>
 	<a class="arrow-left"/>
 	<a class="arrow-right"/>
@@ -55,7 +55,7 @@
 		mounted(){
 			this.$refs.iconPokemon1.show(
 				{
-					image: 'TAUROS.gif',
+					image: '128.gif',
 					top: 30,
 					left: 5
 				}
@@ -65,7 +65,7 @@
 			this.$refs.iconTrainer1.show(
 				{
 					trainerImage: 'bug_catcher.png',
-					pokemonImage: 'TAUROS.gif',
+					pokemonImage: '128.gif',
 					top: 10,
 					left: 10
 				}

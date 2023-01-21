@@ -6,14 +6,14 @@
 		<div class="options">
 			<img
 				draggable="false"
-				src="@/assets/img/common/berry-icon.png"
+				src="@/assets/img/icon/berry-icon.png"
 				@click="harvestBerry()"
 				title="Colher berry"
 			>
 			<img
                 v-show="!shakeHappened"
 				draggable="false"
-				src="@/assets/img/common/leafs.png"
+				src="@/assets/img/icon/leafs-icon.png"
 				@click="shakeTree()"
 				title="Chacoalhar árvore"
 			>
@@ -56,11 +56,11 @@
 
             },
             shakeTree() {
-                this.image = 'TAUROS.gif';
+                this.image = '128.gif';
                 this.shakeHappened = true;
             },
             getImage(){
-				return require('@/assets/img/pokemon/icon/' + this.image)
+				return require('@/assets/img/pokemon/' + this.image)
 			},
 			openPokedex(){
 				this.$refs.pokedex.show(
