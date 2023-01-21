@@ -1,4 +1,6 @@
-import {kantoList} from './assets/data/kantoList';
+import {pokemonKantoList} from './assets/data/pokemon/kantoList';
+
+import {placeKantoList} from './assets/data/place/kantoList';
 
 export function getPokemon(number)
 {
@@ -6,6 +8,16 @@ export function getPokemon(number)
     switch(numberArray[0])
     {
         case '1':
-            return kantoList[(numberArray[1] - 1)];
+            return pokemonKantoList[(numberArray[1] - 1)];
+    }
+}
+
+export function getPlace(number)
+{
+    var numberArray = number.split('.');
+    switch(numberArray[0])
+    {
+        case '1':
+            return placeKantoList[(numberArray[1] - 1)];
     }
 }
