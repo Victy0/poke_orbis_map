@@ -35,7 +35,7 @@
 					</div>
 				</div>
 
-				<div v-if="view == 'location'" class="body">
+				<div v-if="view == 'location'" class="body-pokedex">
 					<div class="intro">
 						<div class="img-container">
 							<img src="@/assets/img/pokemon/128.gif">
