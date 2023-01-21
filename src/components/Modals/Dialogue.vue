@@ -5,7 +5,7 @@
 				<div>
 					<div class="close-header-dialogue">
 						<img 
-							src="@/assets/img/common/close.png"
+							src="@/assets/img/icon/close-icon.png"
 							@click="cancelar" 
 							title="Fechar"
 						>
@@ -54,7 +54,7 @@
 				});
 			},
 			getTrainerImage(){
-				return require('@/assets/img/trainer/icon/' + this.trainerImage)
+				return require('@/assets/img/trainer/' + this.trainerImage)
 			},
 			// função para indicar fechamento de modal
 			cancelar() {

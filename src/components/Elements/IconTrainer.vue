@@ -14,7 +14,7 @@
 			>
 			<img
 				draggable="false"
-				src="@/assets/img/common/message.png"
+				src="@/assets/img/icon/message-icon.png"
                 @click="openDialogueModal()"
 				title="Falar"
 			>
@@ -58,10 +58,10 @@
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
 			getTrainerImage(){
-				return require('@/assets/img/trainer/icon/' + this.trainerImage)
+				return require('@/assets/img/trainer/' + this.trainerImage)
 			},
             getPokemonImage(){
-				return require('@/assets/img/pokemon/icon/' + this.pokemonImage)
+				return require('@/assets/img/pokemon/' + this.pokemonImage)
 			},
 			openPokedex(){
 				this.$refs.pokedex.show(

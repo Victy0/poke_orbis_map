@@ -5,7 +5,7 @@
 				<div>
 					<div class="option-header-pokedex">
 						<img 
-							src="@/assets/img/common/info-icon.png"
+							src="@/assets/img/icon/info-icon.png"
 							@click="cancelar" 
 							title="Informação"
 						>
@@ -15,7 +15,7 @@
 				<div v-if="view == 'pokemon'" class="body-pokedex">
 					<div class="intro">
 						<div class="img-container">
-							<img src="@/assets/img/pokemon/icon/TAUROS.gif">
+							<img src="@/assets/img/pokemon/128.gif">
 						</div>
 						<div class="name">
 							<span>NOME</span>
@@ -38,7 +38,7 @@
 				<div v-if="view == 'location'" class="body">
 					<div class="intro">
 						<div class="img-container">
-							<img src="@/assets/img/pokemon/icon/TAUROS.gif">
+							<img src="@/assets/img/pokemon/128.gif">
 						</div>
 						<div class="name">
 							<span>CENTRO POKÉMON</span>
@@ -62,7 +62,7 @@
 				<div>
 					<div class="close-header-pokedex">
 						<img 
-							src="@/assets/img/common/close.png"
+							src="@/assets/img/icon/close-icon.png"
 							@click="cancelar" 
 							title="Fechar Pokédex"
 						>

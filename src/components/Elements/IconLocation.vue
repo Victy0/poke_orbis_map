@@ -6,13 +6,13 @@
 		<div class="options">
 			<img
 				draggable="false"
-				src="@/assets/img/common/dex-icon.png"
+				src="@/assets/img/icon/dex-icon.png"
 				@click="openInformation()"
 				title="Informação"
 			>
 			<img
 				draggable="false"
-				src="@/assets/img/common/door.png"
+				src="@/assets/img/icon/door-icon.png"
 				title="Entrar"
 			>
 		</div>
@@ -33,7 +33,7 @@
 		},
 		data () {
 			return{
-				image: "none.png",
+				image: "none.gif",
 				showPokedex: false
 			}
 		},
