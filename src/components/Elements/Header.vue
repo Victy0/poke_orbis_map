@@ -14,10 +14,7 @@
 	export default {
 		name:"Header",
 		components:{},
-		data () {},
-		methods:{
-
-		}
+		methods:{}
 	}
 </script>
 
