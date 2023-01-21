@@ -68,7 +68,6 @@
 	/******************* Estrutura do modal **********************/
 	.modal-dialogue
 	{
-		font-family: Pixel;
 		position: absolute;
 		top: 0;
 		left: 0;

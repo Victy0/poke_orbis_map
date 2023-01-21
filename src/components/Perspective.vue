@@ -77,10 +77,6 @@
 
 <style>
 	/******************** ESTRUTURA PADRÃO *********************/
-	@font-face{
-		font-family: Pixel;
-		src: url("../assets/font/pixeled.ttf") format("truetype");
-	}
 	.layout
 	{ 
 		background-color: rgb(92, 90, 90);

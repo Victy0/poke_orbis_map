@@ -111,7 +111,6 @@
 	/******************* Estrutura do modal **********************/
 	.modal-pokedex
 	{
-		font-family: Pixel;
 		position: absolute;
 		top: 0;
 		left: 0;

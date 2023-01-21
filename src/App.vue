@@ -14,8 +14,12 @@
 </script>
 
 <style>
+	@font-face{
+		font-family: Pixel;
+		src: url("./assets/font/pixeled.ttf") format("truetype");
+	}
 	#app {
-		font-family: Avenir, Helvetica, Arial, sans-serif;
+		font-family: Pixel;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 		text-align: center;
