@@ -1,10 +1,9 @@
 <template>
 	<div class="header">
-		<div class="ceter">
+		<div class="header-image">
 			<img 
-				id="view"
-				draggable="false" 
 				src="@/assets/img/common/logo.png"
+				draggable="false"
 			>
 		</div>
 	</div>
@@ -23,14 +22,14 @@
 	{ 
 		text-align: center;
 	}
-	.ceter
+	.header-image
 	{
 		position: absolute;
 		top: 50%;
 		-ms-transform: translateY(-50%);
 		transform: translateY(-50%);
 	}
-	.ceter img
+	.header-image img
 	{
 		margin: 1.5vw;
 		width: 15vw;
