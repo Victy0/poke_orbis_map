@@ -35,6 +35,7 @@
 <script>
 	import ModalPokedex from '../Modals/Pokedex.vue';
 	import ModalDialogue from '../Modals/Dialogue.vue';
+	import {getPokemon} from '../../dataRecovery';
 
 	export default {
 		name:"IconTrainer",
@@ -67,7 +68,7 @@
 				this.$refs.pokedex.show(
 					{
 						view: "pokemon",
-						idPoke: 0
+						object: getPokemon("1.1")
 					}
 				).then(async (close) => {
 					if(close){

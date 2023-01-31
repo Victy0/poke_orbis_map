@@ -12,7 +12,7 @@ export function getPokemon(number)
     }
 }
 
-export function getPlace(number)
+export function getLocation(number)
 {
     var numberArray = number.split('.');
     switch(numberArray[0])

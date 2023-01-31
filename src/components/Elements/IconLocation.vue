@@ -25,6 +25,7 @@
 
 <script>
 	import ModalPokedex from '../Modals/Pokedex.vue';
+	import {getLocation} from '../../dataRecovery';
 
 	export default {
 		name:"IconLocation",
@@ -48,7 +49,8 @@
 			openInformation(){
 				this.$refs.pokedex.show(
 					{
-						view: "location"
+						view: "location",
+						object: getLocation("1.1")
 					}
 				).then(async (close) => {
 					if(close){
