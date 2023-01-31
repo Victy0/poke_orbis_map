@@ -99,7 +99,12 @@
 		text-align: center;
 		position: absolute;
 		width: 3.5vw;
-		border-radius: 50%; 
+	}
+	.icon-trainer .principal
+	{
+		max-width: 100%;
+		padding: 2px;
+		margin: auto;
 	}
 	.icon-trainer:hover
 	{
@@ -107,15 +112,15 @@
 	}
 	.icon-trainer:hover .principal
 	{
-		background-color: white;
+		background-color: rgb(255, 255, 255);
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
 		border-radius: 50%;
 	}
 	.icon-trainer .options
 	{
 		display: inline-flex;
-		margin-left: -0.4vw;
-		margin-top: -0.3vw;
+		margin-left: 0.2vw;
+		margin-top: -1vw;
 		cursor: pointer;
 		visibility: hidden;
 	}
@@ -123,9 +128,9 @@
 	{
 		width: 3vw;
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
-		margin: 0 1vw 0 -1vw !important;
-        background-color: white;
-		border-radius: 50% !important;
+		margin: 0 1vw 0 -1vw;
+        background-color: rgb(255, 255, 255);
+		border-radius: 50%;
 	}
 	.icon-trainer:hover .options
 	{

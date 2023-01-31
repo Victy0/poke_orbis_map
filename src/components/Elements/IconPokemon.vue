@@ -92,7 +92,7 @@
 	.icon-pokemon .options
 	{
 		display: inline-flex;
-		margin-left: -0.4vw;
+		margin-left: 0.2vw;
 		margin-top: -1vw;
 		cursor: pointer;
 		visibility: hidden;
@@ -101,11 +101,9 @@
 	{
 		width: 3vw;
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
-		margin: 0 1vw 0 -0.8vw;
+		margin: 0 1vw 0 -1vw;
 		background-color: rgb(255, 255, 255);
 		border-radius: 50%;
-		max-width: 100%;
-		padding: 2px;
 	}
 	.icon-pokemon:hover .options
 	{
