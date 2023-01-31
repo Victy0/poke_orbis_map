@@ -1,8 +1,8 @@
 <template>
 	<img 
-		id="view"
-		draggable="false" 
+		class="img-principal"
 		src="@/assets/img/place_kanto/pallet.png"
+		draggable="false" 
 	>
 	<a class="arrow-left"/>
 	<a class="arrow-right"/>
