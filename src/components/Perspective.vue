@@ -111,7 +111,7 @@
 		display: flex;
 		text-align: center;
 	}
-	.vision .interface img
+	.vision .interface .img-principal
 	{
 		max-width: 100%;
 		border-radius: 20px;
@@ -180,52 +180,6 @@
 		border-color: red;
 		box-shadow: 0.5vmin -0.5vmin 0 white;
 		opacity: 1;
-	}
-
-	/******************* ESTRUTURA DE CLIQUE ********************/
-	.click-building
-	{
-		position: absolute;
-		width: 5vw;
-		height: 5vw;
-		border-radius: 50%; 
-		background-color: white;
-		opacity: 0.2;
-	}
-	.click-building:hover
-	{
-		opacity: 0.5;
-	}
-
-	/******************** ESTRUTURA DO MAPA *********************/
-	.vision-structure
-	{
-		position:absolute;
-		height: 100%; 
-	}
-	.city 
-	{
-		position:absolute;
-		border-style: groove;
-		border-width: thick;
-		border-color: red;
-		border-radius: 3px;
-	}
-	.place 
-	{
-		position:absolute;
-		border-style: groove;
-		border-width: thick;
-		border-color: green;
-		border-radius: 3px;
-	}
-	.route
-	{
-		position:absolute;
-		border-style: groove;
-		border-width: thick;
-		border-color: white;
-		border-radius: 3px;
 	}
 	
 </style>

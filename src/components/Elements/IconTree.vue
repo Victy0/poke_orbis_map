@@ -103,9 +103,9 @@
 	{
 		width: 3vw;
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
-		margin: 0 1vw 0 -1vw !important;
+		margin: 0 1vw 0 -1vw;
 		background-color: rgb(255, 255, 255);
-		border-radius: 50% !important;
+		border-radius: 50%;
 	}
 	.icon-tree:hover .options
 	{

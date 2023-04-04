@@ -172,8 +172,8 @@
 	}
 	div.close-header-pokedex
 	{
-		top: 13vw !important;
-		left: 46.5vw !important;
+		top: 13vw;
+		left: 46.5vw;
 	}
 	div.option-header-pokedex img,
 	div.close-header-pokedex img
@@ -199,7 +199,7 @@
 		margin: auto;
 		display: block;
 		width: 20vw;
-		margin-top: -2vw !important;
+		margin-top: -2vw;
 	}
 	.body-location .intro img
 	{
@@ -228,11 +228,11 @@
 	}
 	.body-pokemon .intro .name
 	{
-		margin-top: 3vw !important;
+		margin-top: 3vw;
 	}
 	.body-location .intro .name
 	{
-		margin-top: -2vw !important;
+		margin-top: -2vw;
 	}
 	.body-pokemon .information,
 	.body-location .information

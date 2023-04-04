@@ -1,14 +1,13 @@
 <template>
 	<img 
-		id="view"
-		draggable="false" 
+		class="img-principal" 
 		src="@/assets/img/common/intro.png"
+		draggable="false"
 	>
 	<div class="button-area">
 		<img 
-				id="view"
-				draggable="false" 
-				src="@/assets/img/common/logo.png"
+			src="@/assets/img/common/logo.png"
+			draggable="false"
 		>
 		<button class="button" @click="createJorney()">INICIAR</button>
 		<button class="button">CONTINUAR</button>
@@ -43,8 +42,10 @@
 	.button-area img
 	{
 		width: 35vw;
-		left: 0 !important;
-		margin-bottom: 3vw !important;
+		left: 0;
+		padding: 5px;
+		margin: auto;
+		display: block;
 	}
 	.button
 	{

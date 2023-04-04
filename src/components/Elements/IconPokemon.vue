@@ -1,9 +1,9 @@
 <template>
 	<div ref="icon" class="icon-pokemon">
 		<img 
-			draggable="false"
 			class="principal"
 			:src="getImage()"
+			draggable="false"
 		>
 		<div class="options">
 			<img
@@ -73,6 +73,12 @@
 		position: absolute;
 		width: 3.5vw;
 	}
+	.icon-pokemon .principal
+	{
+		max-width: 100%;
+		padding: 2px;
+		margin: auto;
+	}
 	.icon-pokemon:hover
 	{
 		width: 4vw; 
@@ -86,8 +92,8 @@
 	.icon-pokemon .options
 	{
 		display: inline-flex;
-		margin-left: -0.4vw;
-		margin-top: -0.3vw;
+		margin-left: 0.2vw;
+		margin-top: -1vw;
 		cursor: pointer;
 		visibility: hidden;
 	}
@@ -95,9 +101,9 @@
 	{
 		width: 3vw;
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
-		margin: 0 1vw 0 -1vw !important;
+		margin: 0 1vw 0 -1vw;
 		background-color: rgb(255, 255, 255);
-		border-radius: 50% !important;
+		border-radius: 50%;
 	}
 	.icon-pokemon:hover .options
 	{
