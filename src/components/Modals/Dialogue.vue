@@ -18,8 +18,12 @@
 							>
 						</div>
 						<div class="texts">
-							<div class="name">NOME</div>
-							<div class="info">Textodfjahdjkfhadjfhjkadhfka hdfkhadkhfa khadkfhakdhfkad hadkfhakhdfka hadkfhakhdfkahd hdkfhakdhfkahdf khfdkhakdfhkaf </div>
+							<div class="name">
+								NOME
+							</div>
+							<div class="info">
+								Textodfjahdjkfhadjfhjkadhfka hdfkhadkhfa khadkfhakdhfkad hadkfhakhdfka hadkfhakhdfkahd hdkfhakdhfkahdf khfdkhakdfhkaf
+							</div>
 						</div>
 					</div>
 				</div>
@@ -94,12 +98,12 @@
 	div.close-header-dialogue
 	{
 		position: absolute;
-        z-index: 99999999999999;
+		z-index: 99999999999999;
 	}
 	div.close-header-dialogue
 	{
-		top: 10vw !important;
-		left: 54vw !important;
+		top: 10vw;
+		left: 54vw;
 	}
 	div.close-header-dialogue img
 	{
@@ -108,35 +112,39 @@
 		cursor: pointer;
 	}
 
-	/******************* texto do modal **********************/
+	/******************* corpo do modal **********************/
 	.modal-dialogue .body-dialogue
 	{
-        display: inline-flex;
+		display: inline-flex;
 	}
+
+		/******************* imagem **********************/
 	.body-dialogue .character
 	{
-        width: 20vw;
+		top: 9vw;
+		width: 20vw;
 		position: relative;
-		display: flex;
 		text-align: center;
+		z-index: 99999999999999;
 	}
 	.body-dialogue .character img
-	{
-		width: 7vw;
-        background-color: rgb(245, 245, 245);
-        filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
-        padding: 1vw !important;
-        z-index: 99999999999999;
+	{	
+		width: 7.5vw;
+		background-color: rgb(245, 245, 245);
+		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
+		border-radius: 15px;
+		padding: 1vw;
 	}
+		/******************* texto **********************/
 	.body-dialogue .texts
 	{
 		width: 45vw;
-        height: 26vw;
-        left: -8vw;
-        top: 8vw;
-        background-image: linear-gradient(to right, rgb(138, 136, 136) , rgb(255, 255, 255));
-        filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
-        border-radius: 15px;
+		height: 26vw;
+		left: -8vw;
+		top: 8vw;
+		background-image: linear-gradient(to right, rgb(138, 136, 136) , rgb(255, 255, 255));
+		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
+		border-radius: 15px;
 		position: relative;
 	}
 	.texts .name
@@ -146,8 +154,11 @@
 	.texts .info
 	{
 		margin-left: 5%;
+		max-height: 20vw;
+		overflow: auto;
 	}
-	/******************* scroll **********************/
+
+		/******************* scroll **********************/
 	::-webkit-scrollbar {
 		width: 5px;
 	}

@@ -25,6 +25,7 @@
 
 <script>
 	import ModalPokedex from '../Modals/Pokedex.vue';
+	import {getLocation} from '../../dataRecovery';
 
 	export default {
 		name:"IconLocation",
@@ -48,7 +49,8 @@
 			openInformation(){
 				this.$refs.pokedex.show(
 					{
-						view: "location"
+						view: "location",
+						object: getLocation("1.1")
 					}
 				).then(async (close) => {
 					if(close){
@@ -73,15 +75,15 @@
 		cursor: pointer;
 		visibility: hidden;
         margin-left: 0.6vw;
-        margin-top:-2vw
+        margin-top: -2vw
 	}
 	.icon-location .options img
 	{
 		width: 3vw;
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
-		margin: 0 1vw 0 -1vw !important;
+		margin: 0 1vw 0 -1vw;
 		background-color: rgb(255, 255, 255);
-		border-radius: 50% !important;
+		border-radius: 50%;
 	}
 	.icon-location:hover .options
 	{

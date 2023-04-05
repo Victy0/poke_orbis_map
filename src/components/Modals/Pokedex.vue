@@ -8,63 +8,81 @@
 							src="@/assets/img/icon/info-icon.png"
 							@click="cancelar" 
 							title="Informação"
+							draggable="false"
 						>
 					</div>
 				</div>
-				
-				<div v-if="view == 'pokemon'" class="body-pokedex">
-					<div class="intro">
-						<div class="img-container">
-							<img src="@/assets/img/pokemon/128.gif">
+				<!-- início visualização de pokemon -->
+					<div v-if="view == 'pokemon'" class="body-pokemon">
+						<div class="intro">
+							<div class="img-container">
+								<img 
+									v-show="object"
+									:src="require('@/assets/img/pokemon/' + this.object.image)"
+									draggable="false"
+								>
+							</div>
+							<div class="name">
+								<span>{{object.name}}</span>
+							</div>
 						</div>
-						<div class="name">
-							<span>NOME</span>
-						</div>
-					</div>
-					<div class="information">
-						<div>
-							<span>NUMBER</span>
-						</div>
-						<div>
-							<button class="confirm" @click="confirmar">SIM</button> 
-							<button class="cancel" @click="cancelar">NÃO</button>
-						</div>
-						<div>
-							<span>info info info info info info info info info info info info  info info info info info info info info info info info </span>
-						</div>
-					</div>
-				</div>
-
-				<div v-if="view == 'location'" class="body-pokedex">
-					<div class="intro">
-						<div class="img-container">
-							<img src="@/assets/img/pokemon/128.gif">
-						</div>
-						<div class="name">
-							<span>CENTRO POKÉMON</span>
-						</div>
-					</div>
-					<div class="information">
-						<div>
-							<span>LOCAL</span>
-						</div>
-						<div>
-							<button class="confirm" @click="confirmar">SIM</button> 
-							<button class="cancel" @click="cancelar">NÃO</button>
-						</div>
-						<div>
-							<span>info info info info info info info info info info info info  info info info info info info info info info info info
-								info info info info info info info info info info info info  info info info info info info info info info info info </span>
+						<div class="information">
+							<div>
+								<span>#{{getNumberFormatted()}}</span>
+							</div>
+							<div class="type-container">
+								<img 
+									v-if="object.type[0]"
+									class="type-image"
+									:src="require('@/assets/img/type/' + object.type[0] + '.png')"
+									:title="object.type[0]"
+									draggable="false"
+								>
+								<img 
+									v-if="object.type[1]"
+									class="type-image"
+									:src="require('@/assets/img/type/' + object.type[1] + '.png')"
+									:title="object.type[1]"
+									draggable="false"
+								>
+							</div>
+							<div class="text-info-pokemon">
+								<span>{{object.description.toUpperCase()}}</span>
+							</div>
 						</div>
 					</div>
-				</div>
-
+				<!-- fim visualização de pokemon -->
+				<!-- início visualização de local -->
+					<div v-if="view == 'location'" class="body-location">
+						<div class="intro">
+							<div class="img-container">
+								<img 
+									v-show="object"
+									:src="require('@/assets/img/place-icon/' + this.object.image)"
+									draggable="false"
+								>
+							</div>
+							<div class="name">
+								<span>{{object.name}}</span>
+							</div>
+						</div>
+						<div class="information">
+							<div>
+								<span>LOCAL</span>
+							</div>
+							<div class="text-info-location">
+								<span>{{object.description.toUpperCase()}}</span>
+							</div>
+						</div>
+					</div>
+				<!-- fim visualização de local -->
 				<div>
 					<div class="close-header-pokedex">
 						<img 
 							src="@/assets/img/icon/close-icon.png"
 							@click="cancelar" 
 							title="Fechar Pokédex"
+							draggable="false"
 						>
 					</div>
 				</div>
@@ -79,8 +97,7 @@
 		data () {
 			return {
 				view: "",
-				title: "",
-				message: "",
+				object: {},
 				resolvePromise: undefined,
 				rejectPromise: undefined
 			}
@@ -89,11 +106,19 @@
 			// função de criação do modal
 			show(opts = {}) {
 				this.view = opts.view;
-				this.idPoke = opts.idPoke;
+				this.object = opts.object;
 				return new Promise((resolve, reject) => {
 					this.resolvePromise = resolve;
 					this.rejectPromise = reject;
 				});
+			},
+			// função para formatar npumero do Pokémon mostrado
+			getNumberFormatted() {
+				let num = this.object.number.toString();
+				while (num.length < 4) {
+					num = "0" + num;
+				}
+				return num;
 			},
 			// função para evento de confirmação
 			confirmar() {
@@ -147,8 +172,8 @@
 	}
 	div.close-header-pokedex
 	{
-		top: 12.5vw !important;
-		left: 25vw !important;
+		top: 13vw;
+		left: 46.5vw;
 	}
 	div.option-header-pokedex img,
 	div.close-header-pokedex img
@@ -157,14 +182,40 @@
 		filter: drop-shadow(5px 5px 5px rgb(126, 126, 126));
 		cursor: pointer;
 	}
-	
 
+	/******************* imagens do modal **********************/
+	.type-container .type-image
+	{
+		width: 3vw;
+		display: inline;
+		padding: 2px 5px 2px 5px;
+	}
+	.img-container
+	{
+		height: 60%;
+	}
+	.body-pokemon .intro img
+	{
+		margin: auto;
+		display: block;
+		width: 20vw;
+		margin-top: -2vw;
+	}
+	.body-location .intro img
+	{
+		margin: auto;
+		display: block;
+		width: 10vw;
+	}
+	
 	/******************* texto do modal **********************/
-	.modal-pokedex .body-pokedex
+	.modal-pokedex .body-pokemon,
+	.modal-pokedex .body-location
 	{
 		height: 30vw;
 	}
-	.body-pokedex .intro
+	.body-pokemon .intro,
+	.body-location .intro
 	{
 		position: absolute;
 		width: 30%;
@@ -175,55 +226,60 @@
 		bottom: 0;
 		right: 45%;
 	}
-	.img-container
+	.body-pokemon .intro .name
 	{
-		height: 60%;
+		margin-top: 3vw;
 	}
-	.body-pokedex .intro img
+	.body-location .intro .name
 	{
-		margin: auto;
-		display: block;
-		width: 20vw;
-		margin-top: -2vw !important;
+		margin-top: -2vw;
 	}
-	.body-pokedex .intro .name
-	{
-		margin-top: 3vw !important;
-	}
-	.body-pokedex .information 
+	.body-pokemon .information,
+	.body-location .information
 	{
 		display: inline-block;
 		position: absolute;
 		width: 40%;
-		height: 48%;
+		height: 45%;
 		left: 20vw;
 		margin: auto;
 		top: 2vw;
 		bottom: 0;
 		right: 0;
 	}
-	.body-pokedex .information span
+	.text-info-pokemon,
+	.text-info-location
 	{
 		font-size: 0.9em;
 		font-weight: bold;
-		filter: drop-shadow(5px 5px 5px rgb(168, 167, 167));
 		display: block;
-		overflow: auto;
-		max-height: 14vw;
+		overflow: auto;	
 	}
-	.body-pokedex .intro span
+	.text-info-pokemon
+	{
+		max-height: 12vw;
+	}
+	.text-info-location
+	{
+		max-height: 16vw;
+	}
+	.body-pokemon .intro span,
+	.body-location .intro span
 	{
 		font-size: 1.1em;
-		filter: drop-shadow(5px 5px 5px rgb(168, 167, 167));
 	}
+
 	/******************* scrool **********************/
-	::-webkit-scrollbar {
+	::-webkit-scrollbar
+	{
 		width: 5px;
 	}
-	::-webkit-scrollbar-track {
+	::-webkit-scrollbar-track
+	{
 		background: #daedf3f3; 
 	}
-	::-webkit-scrollbar-thumb {
+	::-webkit-scrollbar-thumb
+	{
 		background: rgb(67, 146, 250); 
 	}
 </style>

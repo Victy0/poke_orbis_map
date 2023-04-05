@@ -15,7 +15,7 @@
 			<img
 				draggable="false"
 				src="@/assets/img/icon/message-icon.png"
-                @click="openDialogueModal()"
+				@click="openDialogueModal()"
 				title="Falar"
 			>
 		</div>
@@ -35,6 +35,7 @@
 <script>
 	import ModalPokedex from '../Modals/Pokedex.vue';
 	import ModalDialogue from '../Modals/Dialogue.vue';
+	import {getPokemon} from '../../dataRecovery';
 
 	export default {
 		name:"IconTrainer",
@@ -43,51 +44,63 @@
 			ModalDialogue
 		},
 		data () {
-			return{
-                pokemonImage: "none.gif",
+			return {
+				pokemonImage: "none.gif",
 				trainerImage: "none.png",
 				showPokedex: false,
 				showDialogue: false
 			}
 		},
 		methods:{
-			show(opts = {}) {
+			// função de iniciação do ícone
+			show(opts = {})
+			{
 				this.trainerImage = opts.trainerImage;
-                this.pokemonImage = opts.pokemonImage;
+				this.pokemonImage = opts.pokemonImage;
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
-			getTrainerImage(){
+			// função para recuperar o caminho da imagem do Treinador
+			getTrainerImage()
+			{
 				return require('@/assets/img/trainer/' + this.trainerImage)
 			},
-            getPokemonImage(){
+			// função para recuperar o caminho da imagem do Pokémon
+			getPokemonImage()
+			{
 				return require('@/assets/img/pokemon/' + this.pokemonImage)
 			},
-			openPokedex(){
+			// função para abrir pokédex
+			openPokedex()
+			{
 				this.$refs.pokedex.show(
 					{
 						view: "pokemon",
-						idPoke: 0
+						object: getPokemon("1.1")
 					}
-				).then(async (close) => {
+				).then(async (close) => 
+				{
 					if(close){
 						this.showPokedex = false;
 					}
 				});
 				this.showPokedex = true;
 			},
-            openDialogueModal(){
+			// função para abrir modal de diálogo
+			openDialogueModal()
+			{
 				this.$refs.dialogue.show(
 					{
 						trainerImage: this.trainerImage
 					}
-				).then(async (close) => {
+				).then(async (close) => 
+				{
 					if(close){
 						this.showDialogue = false;
 					}
 				});
 				this.showDialogue = true;
-            }
+			}
 		}
 	}
 </script>
@@ -98,7 +111,12 @@
 		text-align: center;
 		position: absolute;
 		width: 3.5vw;
-		border-radius: 50%; 
+	}
+	.icon-trainer .principal
+	{
+		max-width: 100%;
+		padding: 2px;
+		margin: auto;
 	}
 	.icon-trainer:hover
 	{
@@ -106,15 +124,15 @@
 	}
 	.icon-trainer:hover .principal
 	{
-		background-color: white;
+		background-color: rgb(255, 255, 255);
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
 		border-radius: 50%;
 	}
 	.icon-trainer .options
 	{
 		display: inline-flex;
-		margin-left: -0.4vw;
-		margin-top: -0.3vw;
+		margin-left: 0.2vw;
+		margin-top: -1vw;
 		cursor: pointer;
 		visibility: hidden;
 	}
@@ -122,9 +140,9 @@
 	{
 		width: 3vw;
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
-		margin: 0 1vw 0 -1vw !important;
-        background-color: white;
-		border-radius: 50% !important;
+		margin: 0 1vw 0 -1vw;
+		background-color: rgb(255, 255, 255);
+		border-radius: 50%;
 	}
 	.icon-trainer:hover .options
 	{

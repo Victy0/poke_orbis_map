@@ -1,4 +1,4 @@
-export const kantoList = [
+export const pokemonKantoList = [
     { //001
         name: "BULBASAUR",
         number: 1,
