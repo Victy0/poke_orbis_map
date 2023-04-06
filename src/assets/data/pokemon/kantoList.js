@@ -167,6 +167,10 @@ export const pokemonKantoList = [
     },
     { //066
     },
+    { //067
+    },
+    { //068
+    },
     { //069
     },
     { //070
@@ -289,7 +293,7 @@ export const pokemonKantoList = [
         name: "TAUROS",
         number: 128,
         image: "128.gif",
-        description: "A concha de Squirtle não é usada apenas para proteção. A forma arredondada da concha e os sulcos em sua superfície ajudam a minimizar a resistência na água, permitindo que este Pokémon nade em alta velocidade.",
+        description: "Depois de aumentar sua vontade de lutar chicoteando-se com suas três caudas, esse Pokémon avança a toda velocidade.",
         type: ["Normal"],
         rateCatch: 5
     },
