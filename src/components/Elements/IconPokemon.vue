@@ -20,6 +20,8 @@
 			<img
 				draggable="false"
 				src="@/assets/img/icon/berry-icon.png"
+				:class="this.pokemon ? (this.pokemon.rateCatch <= 0 ? 'disabled' : '' ) : ''"
+				@click="giveBerry()"
 				title="Dar berry"
 			>
 		</div>
@@ -93,6 +95,17 @@
 				this.showPokedex = true;
 
 				this.pokemon.rateCatch = 0;
+			},
+			giveBerry(){
+				if(this.pokemon.rateCatch > 1)
+				{
+					if(Math.random() < 0.2)
+					{
+						this.pokemon.rateCatch = this.pokemon.rateCatch - 2;
+						return;
+					}
+				}
+				this.pokemon.rateCatch = this.pokemon.rateCatch - 1;
 			}
 		}
 	}
@@ -141,7 +154,7 @@
 		display: inline-flex;
 		margin-left: 0.2vw;
 		margin-top: -1vw;
-		cursor: pointer;
+		
 		visibility: hidden;
 	}
 	.icon-pokemon .options img
@@ -151,6 +164,7 @@
 		margin: 0 1vw 0 -1vw;
 		background-color: rgb(255, 255, 255);
 		border-radius: 50%;
+		cursor: pointer;
 	}
 	.icon-pokemon:hover .options
 	{
@@ -160,5 +174,6 @@
 	{
 		opacity: 0.6;
 		pointer-events: none;
+		cursor: none;
 	}
 </style>
