@@ -53,6 +53,7 @@
 		},
 		methods:{
 			updatePerspective(newPerspective){
+				localStorage.setItem('perspective', newPerspective);
 				this.perspective = newPerspective;
 			},
 			buildOptions(){

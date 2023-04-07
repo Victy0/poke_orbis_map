@@ -20,7 +20,7 @@
 			<img
 				draggable="false"
 				src="@/assets/img/icon/berry-icon.png"
-				:class="this.pokemon ? (this.pokemon.rateCatch <= 0 ? 'disabled' : '' ) : ''"
+				:class="this.pokemon ? ((this.pokemon.rateCatch <= 0 || this.berriesPlayer == 0) ? 'disabled' : '' ) : ''"
 				@click="giveBerry()"
 				title="Dar berry"
 			>
@@ -45,6 +45,7 @@
 			return{
 				pokemon: {},
 				pokemonRef: "none",
+				berriesPlayer: 0,
 				showPokedex: false
 			}
 		},
@@ -54,6 +55,7 @@
 			{
 				this.pokemon = getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
 				this.pokemonRef = opts.pokemonRef;
+				this.berriesPlayer = localStorage.getItem('berries');
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
@@ -104,9 +106,14 @@
 
 				this.pokemon.rateCatch = 0;
 			},
-			// função para dar berry, o que diminui a dificuldade de captura
+			// função para dar berry e atualizar a quantidade carregada, o que diminui a dificuldade de captura
 			giveBerry()
 			{
+				let berries = localStorage.getItem('berries');
+				berries = berries - 1;
+				localStorage.setItem('berries', berries);
+				this.berriesPlayer = berries; //trocar para emit quando for criar as funções do icone de arvore
+
 				if(this.pokemon.rateCatch > 1)
 				{
 					if(Math.random() < 0.2)
