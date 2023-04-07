@@ -49,16 +49,22 @@
 			}
 		},
 		methods:{
-			show(opts = {}) {
+			// função de iniciação do ícone
+			show(opts = {})
+			{
 				this.pokemon = getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
 				this.pokemonRef = opts.pokemonRef;
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
-			getImage(){
+			// função para recuperar o caminho da imagem do Pokémon
+			getImage()
+			{
 				return require('@/assets/img/pokemon/' + this.pokemonRef + '.gif')
 			},
-			getClass(){
+			// função para recuperar a classe consideradno a dificuldade de captura
+			getClass()
+			{
 				if(this.pokemon.rateCatch > 5)
 				{
 					return 'hard-entry';
@@ -72,7 +78,9 @@
 					return 'normal-entry';
 				}
 			},
-			openPokedex(){
+			// função para abrir pokédex, considerando chance de fugir se dificuldade de captura for alta
+			openPokedex()
+			{
 				if(this.pokemon.rateCatch > 2)
 				{
 					if(Math.random() < 0.4)
@@ -96,7 +104,9 @@
 
 				this.pokemon.rateCatch = 0;
 			},
-			giveBerry(){
+			// função para dar berry, o que diminui a dificuldade de captura
+			giveBerry()
+			{
 				if(this.pokemon.rateCatch > 1)
 				{
 					if(Math.random() < 0.2)
