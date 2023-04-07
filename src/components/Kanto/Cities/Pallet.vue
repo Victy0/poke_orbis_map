@@ -55,7 +55,8 @@
 		mounted(){
 			this.$refs.iconPokemon1.show(
 				{
-					image: '128.gif',
+					pokemonGen: "1",
+					pokemonRef: "128",
 					top: 30,
 					left: 5
 				}
