@@ -1,20 +1,27 @@
 <template>
-	<div ref="icon" class="icon-pokemon">
+	<div 
+		ref="icon" 
+		class="icon-pokemon"
+	>
 		<img 
-			class="principal"
-			:src="getImage()"
 			draggable="false"
+			class="principal"
+			:class="this.pokemon ? getClass() : ''"
+			:src="getImage()"
 		>
 		<div class="options">
 			<img
 				draggable="false"
 				src="@/assets/img/icon/dex-icon.png"
+				:class="this.pokemon ? (getClass() == 'hard-entry' ? 'disabled' : '' ) : ''"
 				@click="openPokedex()"
 				title="Pokédex"
 			>
 			<img
 				draggable="false"
 				src="@/assets/img/icon/berry-icon.png"
+				:class="this.pokemon ? (this.pokemon.rateCatch <= 0 ? 'disabled' : '' ) : ''"
+				@click="giveBerry()"
 				title="Dar berry"
 			>
 		</div>
@@ -36,24 +43,57 @@
 		},
 		data () {
 			return{
-				image: "none.gif",
+				pokemon: {},
+				pokemonRef: "none",
 				showPokedex: false
 			}
 		},
 		methods:{
-			show(opts = {}) {
-				this.image = opts.image;
+			// função de iniciação do ícone
+			show(opts = {})
+			{
+				this.pokemon = getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
+				this.pokemonRef = opts.pokemonRef;
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
-			getImage(){
-				return require('@/assets/img/pokemon/' + this.image)
+			// função para recuperar o caminho da imagem do Pokémon
+			getImage()
+			{
+				return require('@/assets/img/pokemon/' + this.pokemonRef + '.gif')
 			},
-			openPokedex(){
+			// função para recuperar a classe consideradno a dificuldade de captura
+			getClass()
+			{
+				if(this.pokemon.rateCatch > 5)
+				{
+					return 'hard-entry';
+				}
+				else if(this.pokemon.rateCatch > 2)
+				{
+					return 'medium-entry';
+				}
+				else
+				{
+					return 'normal-entry';
+				}
+			},
+			// função para abrir pokédex, considerando chance de fugir se dificuldade de captura for alta
+			openPokedex()
+			{
+				if(this.pokemon.rateCatch > 2)
+				{
+					if(Math.random() < 0.4)
+					{
+						this.$refs["icon"].style.display = "none";
+						this.pokemon = null;
+					}
+				}
+
 				this.$refs.pokedex.show(
 					{
 						view: "pokemon",
-						object: getPokemon("1.1")
+						object: this.pokemon
 					}
 				).then(async (close) => {
 					if(close){
@@ -61,12 +101,28 @@
 					}
 				});
 				this.showPokedex = true;
+
+				this.pokemon.rateCatch = 0;
+			},
+			// função para dar berry, o que diminui a dificuldade de captura
+			giveBerry()
+			{
+				if(this.pokemon.rateCatch > 1)
+				{
+					if(Math.random() < 0.2)
+					{
+						this.pokemon.rateCatch = this.pokemon.rateCatch - 2;
+						return;
+					}
+				}
+				this.pokemon.rateCatch = this.pokemon.rateCatch - 1;
 			}
 		}
 	}
 </script>
 
 <style>
+	/******************* principal **********************/
 	.icon-pokemon
 	{
 		text-align: center;
@@ -81,20 +137,34 @@
 	}
 	.icon-pokemon:hover
 	{
-		width: 4vw; 
+		width: 4vw;
 	}
-	.icon-pokemon:hover .principal
+	.icon-pokemon:hover .normal-entry
 	{
 		background-color: rgb(255, 255, 255);
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
 		border-radius: 50%;
 	}
+	.icon-pokemon:hover .hard-entry
+	{
+		background-color: rgb(248, 91, 91);
+		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
+		border-radius: 50%;
+	}
+	.icon-pokemon:hover .medium-entry
+	{
+		background-color: rgb(247, 148, 148);
+		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
+		border-radius: 50%;
+	}
+
+	/******************* opções **********************/
 	.icon-pokemon .options
 	{
 		display: inline-flex;
 		margin-left: 0.2vw;
 		margin-top: -1vw;
-		cursor: pointer;
+		
 		visibility: hidden;
 	}
 	.icon-pokemon .options img
@@ -104,9 +174,16 @@
 		margin: 0 1vw 0 -1vw;
 		background-color: rgb(255, 255, 255);
 		border-radius: 50%;
+		cursor: pointer;
 	}
 	.icon-pokemon:hover .options
 	{
 		visibility: visible;
+	}
+	.disabled
+	{
+		opacity: 0.6;
+		pointer-events: none;
+		cursor: none;
 	}
 </style>
