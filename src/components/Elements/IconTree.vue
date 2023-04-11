@@ -7,20 +7,23 @@
 			<img
 				draggable="false"
 				src="@/assets/img/icon/berry-icon.png"
+				:class="this.quantityBerries <= 0 ? 'disabled' : ''"
 				@click="harvestBerry()"
 				title="Colher berry"
 			>
 			<img
-                v-show="!shakeHappened"
 				draggable="false"
+				v-show="!shakeHappened"
 				src="@/assets/img/icon/leafs-icon.png"
+				:class="this.pokedexEntryIndex < 0 ? 'disabled' : ''"
 				@click="shakeTree()"
 				title="Chacoalhar árvore"
 			>
 			<img
-                v-show="shakeHappened"
+				v-show="shakeHappened"
 				draggable="false"
 				:src="getImage()"
+				:class="this.pokedexEntryIndex < 0 ? 'disabled' : ''"
 				@click="openPokedex()"
 				title="Pokédex"
 			>
@@ -37,40 +40,67 @@
 	import {getPokemon} from '../../dataRecovery';
 
 	export default {
-		name:"IconLocation",
+		name:"IconTree",
 		components:{
 			ModalPokedex
 		},
 		data () {
 			return{
+				quantityBerries: 0,
+				possiblePokedex: [],
+				pokedexEntryIndex: 0,
+				pokedexEntry: '',
 				image: "none.gif",
 				showPokedex: false,
-                shakeHappened: false
+				shakeHappened: false
 			}
 		},
 		methods:{
-			show(opts = {}) {
+			// função de iniciação do ícone
+			show(opts = {})
+			{
+				this.quantityBerries = Math.floor(Math.random() * 5);
+				this.possiblePokedex = opts.possiblePokedex;
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
-            haverstberry() {
+			// função para colher fruta da árvore
+			harvestBerry()
+			{
+				this.quantityBerries--;
+			},
+			// função para choacaolhar árvore para aparecer um Pokémon (tem chance de não aprecer, quando for gerado randomicamente o valor 0)
+			shakeTree()
+			{
+				this.pokedexEntryIndex = Math.floor(Math.random() * (this.possiblePokedex.length + 1)) - 1;
+				if(this.pokedexEntryIndex < 0)
+				{
+					return;
+				}
 
-            },
-            shakeTree() {
-                this.image = '128.gif';
-                this.shakeHappened = true;
-            },
-            getImage(){
+				this.pokedexEntry = this.possiblePokedex[this.pokedexEntryIndex];
+				var numberArray = this.pokedexEntry.split('.');
+				this.image = numberArray[1] + '.gif';
+				
+				this.shakeHappened = true;
+			},
+			// função para recuperar o caminho da imagem do Pokémon
+			getImage()
+			{
 				return require('@/assets/img/pokemon/' + this.image)
 			},
-			openPokedex(){
+			// função para abrir pokédex (ao fechar não permite olhar novamente pokémon)
+			openPokedex()
+			{
 				this.$refs.pokedex.show(
 					{
 						view: "pokemon",
-						object: getPokemon("1.1")
+						object: getPokemon(this.pokedexEntry)
 					}
 				).then(async (close) => {
-					if(close){
+					if(close)
+					{
+						this.pokedexEntryIndex = -1;
 						this.showPokedex = false;
 					}
 				});
@@ -88,7 +118,7 @@
 	}
 	.icon-tree .principal
 	{
-        width: 3vw;
+		width: 3vw;
 		height: 3vw;
 	}
 	.icon-tree .options
@@ -96,8 +126,8 @@
 		display: inline-flex;
 		cursor: pointer;
 		visibility: hidden;
-        margin-left: 0.6vw;
-        margin-top:-2vw
+		margin-left: 0.6vw;
+		margin-top:-2vw
 	}
 	.icon-tree .options img
 	{
@@ -110,5 +140,11 @@
 	.icon-tree:hover .options
 	{
 		visibility: visible;
+	}
+	.disabled
+	{
+		opacity: 0.6;
+		pointer-events: none;
+		cursor: none;
 	}
 </style>
