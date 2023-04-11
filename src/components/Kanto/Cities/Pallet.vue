@@ -86,6 +86,7 @@
 
 			this.$refs.iconTree.show(
 				{
+					possiblePokedex: ["1.1","1.128","1.3"],
 					top: 50,
 					left: 20
 				}
