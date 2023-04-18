@@ -2,7 +2,7 @@
 	<img 
 		class="img-principal"
 		src="@/assets/img/place_kanto/pallet.png"
-		draggable="false" 
+		draggable="false"
 	>
 	<a class="arrow-left"/>
 	<a class="arrow-right"/>
@@ -27,6 +27,7 @@
 	<IconTree
 		ref="iconTree"
 		v-show="showTree"
+		@changeBerriesValue = "updateBerryValue"
 	/>
 </template>
 
@@ -94,6 +95,10 @@
 			this.showTree = true;
 		},
 		methods:{
+			updateBerryValue(valueToAcress)
+			{
+				this.$refs.iconPokemon1.updateBerryValue(valueToAcress);
+			}
 		}
 	}
 </script>
