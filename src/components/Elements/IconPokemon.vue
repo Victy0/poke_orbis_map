@@ -41,6 +41,7 @@
 		components:{
 			ModalPokedex
 		},
+		emits: ["changeBerriesValuePokemon"],
 		data () {
 			return{
 				pokemon: {},
@@ -55,7 +56,7 @@
 			{
 				this.pokemon = getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
 				this.pokemonRef = opts.pokemonRef;
-				this.berriesPlayer = localStorage.getItem('berries');
+				this.berriesPlayer = Number(localStorage.getItem('berries'));
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
@@ -109,10 +110,11 @@
 			// função para dar berry e atualizar a quantidade carregada, o que diminui a dificuldade de captura
 			giveBerry()
 			{
-				let berries = localStorage.getItem('berries');
+				let berries = Number(localStorage.getItem('berries'));
 				berries = berries - 1;
 				localStorage.setItem('berries', berries);
-				this.berriesPlayer = berries; //trocar para emit quando for criar as funções do icone de arvore
+				this.berriesPlayer = berries;
+				this.$emit('changeBerriesValuePokemon', 1);
 
 				if(this.pokemon.rateCatch > 1)
 				{
@@ -123,6 +125,19 @@
 					}
 				}
 				this.pokemon.rateCatch = this.pokemon.rateCatch - 1;
+			},
+			// função para evento de colheita de berry
+			updateBerryValue(valueToAcress, add)
+			{
+				if(add)
+				{
+					this.berriesPlayer = this.berriesPlayer + valueToAcress;
+				}
+				else
+				{
+					this.berriesPlayer = this.berriesPlayer - valueToAcress;
+				}
+				
 			}
 		}
 	}

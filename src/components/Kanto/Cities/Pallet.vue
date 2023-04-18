@@ -12,6 +12,7 @@
 	<IconPokemon 
 		ref="iconPokemon1"
 		v-show="showPokemon"
+		@changeBerriesValuePokemon = "decreaseBerryValue"
 	/>
 
 	<IconTrainer 
@@ -27,7 +28,7 @@
 	<IconTree
 		ref="iconTree"
 		v-show="showTree"
-		@changeBerriesValue = "updateBerryValue"
+		@changeBerriesValueTree = "addBerryValue"
 	/>
 </template>
 
@@ -95,9 +96,13 @@
 			this.showTree = true;
 		},
 		methods:{
-			updateBerryValue(valueToAcress)
+			addBerryValue(valueToAcress)
 			{
-				this.$refs.iconPokemon1.updateBerryValue(valueToAcress);
+				this.$refs.iconPokemon1.updateBerryValue(valueToAcress, true);
+			},
+			decreaseBerryValue(valueToAcress)
+			{
+				this.$refs.iconPokemon1.updateBerryValue(valueToAcress, false);
 			}
 		}
 	}
