@@ -44,7 +44,8 @@
 		components:{
 			ModalPokedex
 		},
-		data () {
+		emits: ["cchangeBerriesValueTree"],
+		data() {
 			return{
 				quantityBerries: 0,
 				possiblePokedex: [],
@@ -55,7 +56,7 @@
 				shakeHappened: false
 			}
 		},
-		methods:{
+		methods: {
 			// função de iniciação do ícone
 			show(opts = {})
 			{
@@ -67,6 +68,10 @@
 			// função para colher fruta da árvore
 			harvestBerry()
 			{
+				let berries = Number(localStorage.getItem('berries'));
+				berries++;
+				localStorage.setItem('berries', berries); 
+				this.$emit('changeBerriesValueTree', 1);
 				this.quantityBerries--;
 			},
 			// função para choacaolhar árvore para aparecer um Pokémon (tem chance de não aprecer, quando for gerado randomicamente o valor 0)

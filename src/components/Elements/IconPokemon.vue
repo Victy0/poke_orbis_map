@@ -20,7 +20,7 @@
 			<img
 				draggable="false"
 				src="@/assets/img/icon/berry-icon.png"
-				:class="this.pokemon ? (this.pokemon.rateCatch <= 0 ? 'disabled' : '' ) : ''"
+				:class="this.pokemon ? ((this.pokemon.rateCatch <= 0 || this.berriesPlayer == 0) ? 'disabled' : '' ) : ''"
 				@click="giveBerry()"
 				title="Dar berry"
 			>
@@ -41,10 +41,12 @@
 		components:{
 			ModalPokedex
 		},
+		emits: ["changeBerriesValuePokemon"],
 		data () {
 			return{
 				pokemon: {},
 				pokemonRef: "none",
+				berriesPlayer: 0,
 				showPokedex: false
 			}
 		},
@@ -54,6 +56,7 @@
 			{
 				this.pokemon = getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
 				this.pokemonRef = opts.pokemonRef;
+				this.berriesPlayer = Number(localStorage.getItem('berries'));
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
@@ -104,9 +107,15 @@
 
 				this.pokemon.rateCatch = 0;
 			},
-			// função para dar berry, o que diminui a dificuldade de captura
+			// função para dar berry e atualizar a quantidade carregada, o que diminui a dificuldade de captura
 			giveBerry()
 			{
+				let berries = Number(localStorage.getItem('berries'));
+				berries = berries - 1;
+				localStorage.setItem('berries', berries);
+				this.berriesPlayer = berries;
+				this.$emit('changeBerriesValuePokemon', 1);
+
 				if(this.pokemon.rateCatch > 1)
 				{
 					if(Math.random() < 0.2)
@@ -116,6 +125,19 @@
 					}
 				}
 				this.pokemon.rateCatch = this.pokemon.rateCatch - 1;
+			},
+			// função para evento de colheita de berry
+			updateBerryValue(valueToAcress, add)
+			{
+				if(add)
+				{
+					this.berriesPlayer = this.berriesPlayer + valueToAcress;
+				}
+				else
+				{
+					this.berriesPlayer = this.berriesPlayer - valueToAcress;
+				}
+				
 			}
 		}
 	}
