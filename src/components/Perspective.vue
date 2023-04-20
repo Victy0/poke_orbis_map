@@ -5,12 +5,11 @@
 			<div class="interface">
 				<Intro
 					v-if="perspective == 'intro'"
-					@changePerspective="updatePerspective"
+					@changePerspective = "updatePerspective"
 				/>
 				
 				<Pallet
 					v-else-if="perspective == 'pallet'"
-					@changePerspective="updatePerspective"
 				/>
 			</div>
 					
@@ -39,7 +38,7 @@
 				perspective: 'intro'
 			}
 		},
-		mounted(){
+		mounted() {
 
 			/*document.onreadystatechange = () => {
 				if (document.readyState == "complete") {
@@ -53,6 +52,7 @@
 		},
 		methods:{
 			updatePerspective(newPerspective){
+				localStorage.setItem('perspective', newPerspective);
 				this.perspective = newPerspective;
 			},
 			buildOptions(){

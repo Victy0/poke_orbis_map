@@ -17,13 +17,19 @@
 <script>
 	export default {
 		name:"Intro",
-		mounted(){
+		emits: ["changePerspective"],
+		mounted() {
+			// ao trocar o dimensão da tela visualizada, alterar os tamanhos dos componentes das perspectivas
 			this.$nextTick(function() {
 				window.addEventListener('resize', this.buildOptions);
 			});
 		},
-		methods:{
-			createJorney(){
+		methods: {
+			// função para inciar jornada criando o objeto de 'save' e direcionando para a primeira perspectiva
+			createJorney()
+			{
+				localStorage.setItem('perspective', 'pallet');
+				localStorage.setItem('berries', 0);
 				this.$emit('changePerspective', 'pallet');
 			}
 		}
