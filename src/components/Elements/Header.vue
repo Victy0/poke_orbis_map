@@ -2,20 +2,33 @@
 	<div class="header">
 		<div 
 			class="header-image"
-			:class="this.isPerspective ? 'header-image' : 'header-image center-line'"
+			:class="isPerspective ? 'header-image' : 'header-image center-line'"
 		>
 			<img 
 				src="@/assets/img/common/logo.png"
 				draggable="false"
 			>
 		</div>
-		<div>
-			<img
-				draggable="false"
-				src="@/assets/img/icon/berry-icon.png"
-				title="Quantidade de Berry"
-			>
-			<span>{{this.berries}}</span>
+		<div 
+			v-show="isPerspective"
+			class="list-element"
+		>
+			<div class="element-info">
+				<img
+					draggable="false"
+					src="@/assets/img/icon/berry-icon.png"
+					title="Quantidade de Berry"
+				>
+				<span>{{this.berries}}</span>
+			</div>
+			<div class="element-info">
+				<img
+					draggable="false"
+					src="@/assets/img/icon//dex-icon.png"
+					title="Pokémons na Pokédex"
+				>
+				<span>{{this.berries}}</span>
+			</div>
 		</div>
 	</div>
 </template>
@@ -48,6 +61,8 @@
 	{ 
 		text-align: center;
 	}
+
+	/*********************** imagem principal ************************/
 	.header-image
 	{
 		top: 10%;
@@ -64,5 +79,29 @@
 		margin: 1.5vw;
 		width: 15vw;
 		filter: drop-shadow(5px 5px 5px rgb(126, 126, 126));
+	}
+
+	/*********************** corpo  ************************/
+	.list-element div
+	{
+		display: block;
+		margin-bottom: 1vw;
+	}
+
+	/*********************** elementos do corpo  ************************/
+	.element-info
+	{
+		display: inline-flex;
+		margin-bottom: 1vw;
+	}
+	.element-info img
+	{
+		width: 3vw;
+		margin: 0 1vw -1vw -1vw;
+	}
+	.element-info span
+	{
+		color: white;
+		font-size: 1.1vw;
 	}
 </style>
