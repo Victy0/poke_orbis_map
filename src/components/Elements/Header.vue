@@ -1,10 +1,21 @@
 <template>
 	<div class="header">
-		<div class="header-image">
+		<div 
+			class="header-image"
+			:class="this.isPerspective ? 'header-image' : 'header-image center-line'"
+		>
 			<img 
 				src="@/assets/img/common/logo.png"
 				draggable="false"
 			>
+		</div>
+		<div>
+			<img
+				draggable="false"
+				src="@/assets/img/icon/berry-icon.png"
+				title="Quantidade de Berry"
+			>
+			<span>{{this.berries}}</span>
 		</div>
 	</div>
 </template>
@@ -13,7 +24,22 @@
 	export default {
 		name:"Header",
 		components:{},
-		methods:{}
+		data() {
+			return{
+				berries: 0,
+				isPerspective: false
+			}
+		},
+		methods:{
+			setIsPerspective(newValue)
+			{
+				this.isPerspective = newValue;
+			},
+			updateValues()
+			{
+				this.berries = Number(localStorage.getItem('berries'));
+			}
+		}
 	}
 </script>
 
@@ -24,10 +50,14 @@
 	}
 	.header-image
 	{
-		position: absolute;
-		top: 50%;
+		top: 10%;
+		position: relative;
 		-ms-transform: translateY(-50%);
 		transform: translateY(-50%);
+	}
+	.center-line
+	{
+		top: 50%;
 	}
 	.header-image img
 	{

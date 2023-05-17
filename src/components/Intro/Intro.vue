@@ -25,7 +25,7 @@
 			});
 		},
 		methods: {
-			// função para inciar jornada criando o objeto de 'save' e direcionando para a primeira perspectiva
+			// função para iniciar jornada criando o objeto de 'save' e direcionando para a primeira perspectiva
 			createJorney()
 			{
 				localStorage.setItem('perspective', 'pallet');

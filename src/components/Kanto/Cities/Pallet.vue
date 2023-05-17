@@ -46,6 +46,7 @@
 			IconLocation,
 			IconTree
 		},
+		emits: ["changeBerriesValue"],
 		data () {
 			return{
 				showPokemon: false,
@@ -99,10 +100,12 @@
 			addBerryValue(valueToAcress)
 			{
 				this.$refs.iconPokemon1.updateBerryValue(valueToAcress, true);
+				this.$emit('changeBerriesValue');
 			},
 			decreaseBerryValue(valueToAcress)
 			{
 				this.$refs.iconPokemon1.updateBerryValue(valueToAcress, false);
+				this.$emit('changeBerriesValue');
 			}
 		}
 	}

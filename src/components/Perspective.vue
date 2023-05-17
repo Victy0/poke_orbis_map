@@ -10,10 +10,12 @@
 				
 				<Pallet
 					v-else-if="perspective == 'pallet'"
+					@changeBerriesValue = "changeHeaderValue"
 				/>
 			</div>
 					
-			<Header 
+			<Header
+				ref="header"
 				class="observation"
 			/>
 		</div>
@@ -38,38 +40,15 @@
 				perspective: 'intro'
 			}
 		},
-		mounted() {
-
-			/*document.onreadystatechange = () => {
-				if (document.readyState == "complete") {
-					this.buildOptions();
-				}
-			}*/
-
-			this.$nextTick(function(){
-				window.addEventListener('resize', this.buildOptions);
-			});
-		},
 		methods:{
 			updatePerspective(newPerspective){
 				localStorage.setItem('perspective', newPerspective);
+				this.$refs.header.setIsPerspective(true);
 				this.perspective = newPerspective;
 			},
-			buildOptions(){
-				/*var width = document.getElementById('intro').clientWidth;
-				var heigth = document.getElementById('view').clientHeight;*/
-
-				//ajustar ao alterar dimensão do monitor
-
-				/*document.getElementById("join").style.marginTop = ((heigth * 250) / 1289) + "px";
-				document.getElementById("join").style.marginLeft = ((width * 175) / 722) + "px";
-				document.getElementById("join").style.width = ((width * 250) / 1289) + "px";
-				document.getElementById("join").style.height = ((heigth * 80) / 722) + "px";
-
-				document.getElementById("new").style.marginTop = ((heigth * 250) / 1289) + "px";
-				document.getElementById("new").style.marginLeft = ((width * 90) / 722) + "px";
-				document.getElementById("new").style.width = ((width * 250) / 1289) + "px";
-				document.getElementById("new").style.height = ((heigth * 80) / 722) + "px";*/
+			changeHeaderValue()
+			{
+				this.$refs.header.updateValues();
 			}
 		}
 	}
