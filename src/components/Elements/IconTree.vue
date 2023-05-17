@@ -44,7 +44,7 @@
 		components:{
 			ModalPokedex
 		},
-		emits: ["cchangeBerriesValueTree"],
+		emits: ["changeBerriesValueTree"],
 		data() {
 			return{
 				quantityBerries: 0,

@@ -27,7 +27,7 @@
 					src="@/assets/img/icon//dex-icon.png"
 					title="Pokémons na Pokédex"
 				>
-				<span>{{this.berries}}</span>
+				<span>{{this.entryPokedex}}</span>
 			</div>
 		</div>
 	</div>
@@ -40,7 +40,8 @@
 		data() {
 			return{
 				berries: 0,
-				isPerspective: false
+				isPerspective: false,
+				entryPokedex: 0
 			}
 		},
 		methods:{
@@ -48,9 +49,13 @@
 			{
 				this.isPerspective = newValue;
 			},
-			updateValues()
+			updateBerry()
 			{
 				this.berries = Number(localStorage.getItem('berries'));
+			},
+			updatePokedex()
+			{
+				this.entryPokedex = this.entryPokedex + 1;
 			}
 		}
 	}
@@ -85,14 +90,13 @@
 	.list-element div
 	{
 		display: block;
-		margin-bottom: 1vw;
+		margin-bottom: 0.5vw;
 	}
 
 	/*********************** elementos do corpo  ************************/
 	.element-info
 	{
 		display: inline-flex;
-		margin-bottom: 1vw;
 	}
 	.element-info img
 	{

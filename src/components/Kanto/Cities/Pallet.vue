@@ -13,6 +13,7 @@
 		ref="iconPokemon1"
 		v-show="showPokemon"
 		@changeBerriesValuePokemon = "decreaseBerryValue"
+		@pokedexEntryWild = "emitPokedexEntry"
 	/>
 
 	<IconTrainer 
@@ -46,7 +47,10 @@
 			IconLocation,
 			IconTree
 		},
-		emits: ["changeBerriesValue"],
+		emits: [
+			"changeBerriesValue",
+			"pokedexEntryPokemon"
+		],
 		data () {
 			return{
 				showPokemon: false,
@@ -106,6 +110,10 @@
 			{
 				this.$refs.iconPokemon1.updateBerryValue(valueToAcress, false);
 				this.$emit('changeBerriesValue');
+			},
+			emitPokedexEntry()
+			{
+				this.$emit('pokedexEntryPokemon');
 			}
 		}
 	}

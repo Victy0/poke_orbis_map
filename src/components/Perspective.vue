@@ -10,7 +10,8 @@
 				
 				<Pallet
 					v-else-if="perspective == 'pallet'"
-					@changeBerriesValue = "changeHeaderValue"
+					@changeBerriesValue = "updateBerryValueHeader"
+					@pokedexEntryPokemon = "increaseByOnePokedexEntry"
 				/>
 			</div>
 					
@@ -46,9 +47,13 @@
 				this.$refs.header.setIsPerspective(true);
 				this.perspective = newPerspective;
 			},
-			changeHeaderValue()
+			updateBerryValueHeader()
 			{
-				this.$refs.header.updateValues();
+				this.$refs.header.updateBerry();
+			},
+			increaseByOnePokedexEntry()
+			{
+				this.$refs.header.updatePokedex();
 			}
 		}
 	}

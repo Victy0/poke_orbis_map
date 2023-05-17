@@ -41,7 +41,10 @@
 		components:{
 			ModalPokedex
 		},
-		emits: ["changeBerriesValuePokemon"],
+		emits: [
+			"changeBerriesValuePokemon",
+			"pokedexEntryWild"
+		],
 		data () {
 			return{
 				pokemon: {},
@@ -91,6 +94,15 @@
 						this.$refs["icon"].style.display = "none";
 						this.pokemon = null;
 					}
+				}
+
+				let pokedexList = localStorage.getItem('pokedexList');
+				pokedexList = JSON.parse(pokedexList);
+				if(!pokedexList.includes(Number(this.pokemonRef)))
+				{
+					pokedexList.push(this.pokemonRef);
+					localStorage.setItem('pokedexList', "[" + pokedexList.toString() + "]");
+					this.$emit('pokedexEntryWild');
 				}
 
 				this.$refs.pokedex.show(
