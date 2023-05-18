@@ -43,6 +43,9 @@
 			ModalPokedex,
 			ModalDialogue
 		},
+		emits: [
+			"pokedexEntryTrainer"
+		],
 		data () {
 			return {
 				pokemonImage: "none.gif",
@@ -73,6 +76,15 @@
 			// função para abrir pokédex
 			openPokedex()
 			{
+				let pokedexList = localStorage.getItem('pokedexList');
+				pokedexList = JSON.parse(pokedexList);
+				if(!pokedexList.includes(Number(this.pokemonRef)))
+				{
+					pokedexList.push(this.pokemonRef);
+					localStorage.setItem('pokedexList', "[" + pokedexList.toString() + "]");
+					this.$emit('pokedexEntryTrainer');
+				}
+
 				this.$refs.pokedex.show(
 					{
 						view: "pokemon",

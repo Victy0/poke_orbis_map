@@ -19,6 +19,7 @@
 	<IconTrainer 
 		ref="iconTrainer1"
 		v-show="showTrainer"
+		@pokedexEntryTrainer = "emitPokedexEntry"
 	/>
 
 	<IconLocation 
@@ -30,6 +31,7 @@
 		ref="iconTree"
 		v-show="showTree"
 		@changeBerriesValueTree = "addBerryValue"
+		@pokedexEntryTree = "emitPokedexEntry"
 	/>
 </template>
 

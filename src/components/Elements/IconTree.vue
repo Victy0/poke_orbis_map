@@ -44,7 +44,10 @@
 		components:{
 			ModalPokedex
 		},
-		emits: ["changeBerriesValueTree"],
+		emits: [
+			"changeBerriesValueTree",
+			"pokedexEntryTree"
+		],
 		data() {
 			return{
 				quantityBerries: 0,
@@ -97,6 +100,15 @@
 			// função para abrir pokédex (ao fechar não permite olhar novamente pokémon)
 			openPokedex()
 			{
+				let pokedexList = localStorage.getItem('pokedexList');
+				pokedexList = JSON.parse(pokedexList);
+				if(!pokedexList.includes(Number(this.pokemonRef)))
+				{
+					pokedexList.push(this.pokemonRef);
+					localStorage.setItem('pokedexList', "[" + pokedexList.toString() + "]");
+					this.$emit('pokedexEntryTree');
+				}
+
 				this.$refs.pokedex.show(
 					{
 						view: "pokemon",
