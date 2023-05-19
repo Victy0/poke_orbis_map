@@ -66,6 +66,7 @@
 				{
 					pokemonGen: "1",
 					pokemonRef: "128",
+					refPerspective: "pok1",
 					top: 30,
 					left: 5
 				}
@@ -103,14 +104,14 @@
 			this.showTree = true;
 		},
 		methods:{
-			addBerryValue(valueToAcress)
+			addBerryValue()
 			{
-				this.$refs.iconPokemon1.updateBerryValue(valueToAcress, true);
+				this.$refs.iconPokemon1.updateBerryValue(true);
 				this.$emit('changeBerriesValue');
 			},
-			decreaseBerryValue(valueToAcress)
+			decreaseBerryValue(refPerspective)
 			{
-				this.$refs.iconPokemon1.updateBerryValue(valueToAcress, false);
+				this.$refs.iconPokemon1.updateBerryValue(false, refPerspective);
 				this.$emit('changeBerriesValue');
 			},
 			emitPokedexEntry()

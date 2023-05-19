@@ -50,15 +50,17 @@
 				pokemon: {},
 				pokemonRef: "none",
 				berriesPlayer: 0,
-				showPokedex: false
+				showPokedex: false,
+				refPerspective: ""
 			}
 		},
 		methods:{
 			// função de iniciação do ícone
-			show(opts = {})
+			async show(opts = {})
 			{
-				this.pokemon = getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
+				this.pokemon = await getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
 				this.pokemonRef = opts.pokemonRef;
+				this.refPerspective = opts.refPerspective;
 				this.berriesPlayer = Number(localStorage.getItem('berries'));
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
@@ -126,7 +128,7 @@
 				berries = berries - 1;
 				localStorage.setItem('berries', berries);
 				this.berriesPlayer = berries;
-				this.$emit('changeBerriesValuePokemon', 1);
+				this.$emit('changeBerriesValuePokemon', this.refPerspective);
 
 				if(this.pokemon.rateCatch > 1)
 				{
@@ -139,17 +141,18 @@
 				this.pokemon.rateCatch = this.pokemon.rateCatch - 1;
 			},
 			// função para evento de colheita de berry
-			updateBerryValue(valueToAcress, add)
+			updateBerryValue(isToAdd, refPerspective = '')
 			{
-				if(add)
+				console.log("t")
+				if(isToAdd)
 				{
-					this.berriesPlayer = this.berriesPlayer + valueToAcress;
+					this.berriesPlayer++;
 				}
-				else
+				else if(refPerspective != this.refPerspective)
 				{
-					this.berriesPlayer = this.berriesPlayer - valueToAcress;
+					this.berriesPlayer--;
 				}
-				
+				console.log(this.berriesPlayer)
 			}
 		}
 	}
