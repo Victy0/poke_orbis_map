@@ -98,7 +98,7 @@
 				return require('@/assets/img/pokemon/' + this.image)
 			},
 			// função para abrir pokédex (ao fechar não permite olhar novamente pokémon)
-			openPokedex()
+			async openPokedex()
 			{
 				let pokedexList = localStorage.getItem('pokedexList');
 				pokedexList = JSON.parse(pokedexList);
@@ -109,10 +109,11 @@
 					this.$emit('pokedexEntryTree');
 				}
 
+				let pokemon = await getPokemon(this.pokedexEntry);
 				this.$refs.pokedex.show(
 					{
 						view: "pokemon",
-						object: getPokemon(this.pokedexEntry)
+						object: pokemon
 					}
 				).then(async (close) => {
 					if(close)
