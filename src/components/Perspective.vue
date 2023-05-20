@@ -94,6 +94,7 @@
 		position: relative;
 		display: flex;
 		text-align: center;
+		z-index: 9;
 	}
 	.vision .interface .img-principal
 	{
@@ -165,5 +166,4 @@
 		box-shadow: 0.5vmin -0.5vmin 0 white;
 		opacity: 1;
 	}
-	
 </style>
