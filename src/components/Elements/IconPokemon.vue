@@ -59,8 +59,8 @@
 			// função de iniciação do ícone
 			async show(opts = {})
 			{
+				this.pokemon = await getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
 				if(opts.isWild){
-					this.pokemon = await getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
 					this.rateCatch = this.pokemon.rateCatch;
 				}
 				else
