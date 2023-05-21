@@ -64,6 +64,7 @@
 		mounted(){
 			this.$refs.iconPokemon1.show(
 				{
+					isWild: false,
 					pokemonGen: "1",
 					pokemonRef: "128",
 					refPerspective: "pok1",
@@ -75,8 +76,11 @@
 
 			this.$refs.iconTrainer1.show(
 				{
-					trainerImage: 'bug_catcher.png',
-					pokemonImage: '128.gif',
+					trainerName: "Aldebaran",
+					trainerImage: "bug_catcher",
+					dialogue: "Em busca de insetos para fortalecer meu time",
+					pokemonGen: "1",
+					pokemonRef: "1",
 					top: 10,
 					left: 10
 				}

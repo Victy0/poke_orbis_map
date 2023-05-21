@@ -19,10 +19,10 @@
 						</div>
 						<div class="texts">
 							<div class="name">
-								NOME
+								{{name.toUpperCase()}}
 							</div>
 							<div class="info">
-								Textodfjahdjkfhadjfhjkadhfka hdfkhadkhfa khadkfhakdhfkad hadkfhakhdfka hadkfhakhdfkahd hdkfhakdhfkahdf khfdkhakdfhkaf
+								{{dialogue.toUpperCase()}}
 							</div>
 						</div>
 					</div>
@@ -38,7 +38,8 @@
 		data () {
 			return {
 				name: "",
-				trainerImage: "none.png",
+				trainerImage: "none",
+				dialogue: "",
 				special: false,
 				description: "",
 				resolvePromise: undefined,
@@ -47,9 +48,11 @@
 		},
 		methods: {
 			// função de criação do modal
-			show(opts = {}) {
+			show(opts = {})
+			{
 				this.name = opts.name;
 				this.trainerImage = opts.trainerImage;
+				this.dialogue = opts.dialogue;
 				this.special = opts.special;
 				this.description = opts.description;
 				return new Promise((resolve, reject) => {
@@ -57,11 +60,14 @@
 					this.rejectPromise = reject;
 				});
 			},
-			getTrainerImage(){
-				return require('@/assets/img/trainer/' + this.trainerImage)
+			// função para recuperar o caminho da imagem do Treinador
+			getTrainerImage()
+			{
+				return require('@/assets/img/trainer/' + this.trainerImage + '.png');
 			},
 			// função para indicar fechamento de modal
-			cancelar() {
+			cancelar()
+			{
 				this.resolvePromise("fechar");
 			}
 		}
@@ -153,7 +159,8 @@
 	}
 	.texts .info
 	{
-		margin-left: 5%;
+		margin-left: 3.5vw;
+		margin-right: 1vw;
 		max-height: 20vw;
 		overflow: auto;
 	}

@@ -48,8 +48,11 @@
 		],
 		data () {
 			return {
-				pokemonImage: "none.gif",
-				trainerImage: "none.png",
+				trainerName: "",
+				trainerImage: "none",
+				dialogue: "",
+				pokemonGen: "",
+				pokemonRef: "none",
 				showPokedex: false,
 				showDialogue: false
 			}
@@ -58,20 +61,23 @@
 			// função de iniciação do ícone
 			show(opts = {})
 			{
+				this.trainerName = opts.trainerName;
 				this.trainerImage = opts.trainerImage;
-				this.pokemonImage = opts.pokemonImage;
+				this.dialogue = opts.dialogue;
+				this.pokemonGen = opts.pokemonGen;
+				this.pokemonRef = opts.pokemonRef;
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
 			// função para recuperar o caminho da imagem do Treinador
 			getTrainerImage()
 			{
-				return require('@/assets/img/trainer/' + this.trainerImage)
+				return require('@/assets/img/trainer/' + this.trainerImage + '.png');
 			},
 			// função para recuperar o caminho da imagem do Pokémon
 			getPokemonImage()
 			{
-				return require('@/assets/img/pokemon/' + this.pokemonImage)
+				return require('@/assets/img/pokemon/' + this.pokemonRef + '.gif');
 			},
 			// função para abrir pokédex
 			async openPokedex()
@@ -85,7 +91,7 @@
 					this.$emit('pokedexEntryTrainer');
 				}
 
-				let pokemon = await getPokemon(this.pokedexEntry);
+				let pokemon = await getPokemon(this.pokemonGen + '.' + this.pokemonRef);
 				this.$refs.pokedex.show(
 					{
 						view: "pokemon",
@@ -104,7 +110,9 @@
 			{
 				this.$refs.dialogue.show(
 					{
-						trainerImage: this.trainerImage
+						name: this.trainerName,
+						trainerImage: this.trainerImage,
+						dialogue: this.dialogue
 					}
 				).then(async (close) => 
 				{
