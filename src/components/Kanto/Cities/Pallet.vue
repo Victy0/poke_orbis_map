@@ -64,6 +64,7 @@
 		mounted(){
 			this.$refs.iconPokemon1.show(
 				{
+					isWild: false,
 					pokemonGen: "1",
 					pokemonRef: "128",
 					refPerspective: "pok1",

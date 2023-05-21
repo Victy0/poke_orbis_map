@@ -59,8 +59,15 @@
 			// função de iniciação do ícone
 			async show(opts = {})
 			{
-				this.pokemon = await getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
-				this.rateCatch = this.pokemon.rateCatch;
+				if(opts.isWild){
+					this.pokemon = await getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
+					this.rateCatch = this.pokemon.rateCatch;
+				}
+				else
+				{
+					this.rateCatch = 0;
+				}
+				
 				this.pokemonRef = opts.pokemonRef;
 				this.refPerspective = opts.refPerspective;
 				this.berriesPlayer = Number(localStorage.getItem('berries'));
