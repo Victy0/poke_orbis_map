@@ -48,7 +48,9 @@
 		],
 		data () {
 			return {
-				trainerImage: "none.png",
+				trainerName: "",
+				trainerImage: "none",
+				dialogue: "",
 				pokemonGen: "",
 				pokemonRef: "none",
 				showPokedex: false,
@@ -59,7 +61,9 @@
 			// função de iniciação do ícone
 			show(opts = {})
 			{
+				this.trainerName = opts.trainerName;
 				this.trainerImage = opts.trainerImage;
+				this.dialogue = opts.dialogue;
 				this.pokemonGen = opts.pokemonGen;
 				this.pokemonRef = opts.pokemonRef;
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
@@ -68,7 +72,7 @@
 			// função para recuperar o caminho da imagem do Treinador
 			getTrainerImage()
 			{
-				return require('@/assets/img/trainer/' + this.trainerImage)
+				return require('@/assets/img/trainer/' + this.trainerImage + '.png');
 			},
 			// função para recuperar o caminho da imagem do Pokémon
 			getPokemonImage()
@@ -106,7 +110,9 @@
 			{
 				this.$refs.dialogue.show(
 					{
-						trainerImage: this.trainerImage
+						name: this.trainerName,
+						trainerImage: this.trainerImage,
+						dialogue: this.dialogue
 					}
 				).then(async (close) => 
 				{

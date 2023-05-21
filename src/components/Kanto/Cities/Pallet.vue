@@ -75,7 +75,9 @@
 
 			this.$refs.iconTrainer1.show(
 				{
-					trainerImage: "bug_catcher.png",
+					trainerName: "Aldebaran",
+					trainerImage: "bug_catcher",
+					dialogue: "Em busca de insetos para fortalecer meu time",
 					pokemonGen: "1",
 					pokemonRef: "1",
 					top: 10,
