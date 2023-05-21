@@ -77,7 +77,7 @@
 				this.$emit('changeBerriesValueTree');
 				this.quantityBerries--;
 			},
-			// função para choacaolhar árvore para aparecer um Pokémon (tem chance de não aprecer, quando for gerado randomicamente o valor 0)
+			// função para chacaolhar árvore para aparecer um Pokémon (tem chance de não aprecer, quando for gerado randomicamente o valor 0)
 			shakeTree()
 			{
 				this.pokedexEntryIndex = Math.floor(Math.random() * (this.possiblePokedex.length + 1)) - 1;

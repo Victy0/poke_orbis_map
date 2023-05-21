@@ -38,11 +38,45 @@
 				</div>
 			</div>
 
+			<div class="player-info">
+				<div>
+					<img
+						draggable="false"
+						src="@/assets/img/icon/dex-icon.png"
+						title="no title"
+					>
+				</div>
+				<div >
+					<img
+						draggable="false"
+						src="@/assets/img/icon/dex-icon.png"
+						title="no title"
+					>
+				</div>
+				<div>
+					<img
+						draggable="false"
+						src="@/assets/img/icon/dex-icon.png"
+						title="no title"
+					>
+				</div>
+				<div class="save-icon">
+					<img
+						draggable="false"
+						src="@/assets/img/icon/save.png"
+						@click="importSave"
+						title="Importar Save"
+					>
+				</div>
+			</div>
+
 		</div>
 	</div>
 </template>
 
 <script>
+	import {compressSave} from '../../dataRecovery';
+	
 	export default {
 		name:"Header",
 		components:{},
@@ -68,6 +102,25 @@
 				this.entryPokedex = this.entryPokedex + 1;
 				let pokedexListStoraged = localStorage.getItem('pokedexList');
 				this.pokedexList = JSON.parse(pokedexListStoraged);
+			},
+			async importSave()
+			{
+				let perspective = await localStorage.getItem('perspective');
+				let compressText = compressSave(perspective, this.berries, this.pokedexList);
+
+				var filename = "PokeOrbisMap_save";
+				var blob = new Blob([JSON.stringify(compressText)], {type: 'text/plain'});
+				if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+					window.navigator.msSaveOrOpenBlob(blob, filename);
+				} else{
+					var e = document.createEvent('MouseEvents'),
+					a = document.createElement('a');
+					a.download = filename;
+					a.href = window.URL.createObjectURL(blob);
+					a.dataset.downloadurl = ['text/plain', a.download, a.href].join(':');
+					e.initEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+					a.dispatchEvent(e);
+				}
 			}
 		}
 	}
@@ -78,7 +131,7 @@
 	{ 
 		text-align: center;
 		top: 50%;
-  transform: translateY(-50%);
+		transform: translateY(-50%);
 	}
 
 	/*********************** imagem principal ************************/
@@ -144,8 +197,8 @@
 	}
 	.poke-list-row
 	{
-		display:table-row;
-		clear:both;
+		display: table-row;
+		clear: both;
 		color: rgba(0, 0, 0, 0.3);
 	}
 	.poke-list:hover .poke-list-row
@@ -154,8 +207,24 @@
 	}
 	.poke-list-cell
 	{
-		display:table-cell;
+		display: table-cell;
 		width: 7vw;
 		margin-left: -1.5vw;
+	}
+
+	/*********************** linha info jogador ***********************/
+	.player-info div
+	{
+		display: inline;
+		margin: 0.5vw;
+	}
+	.player-info div img
+	{
+		width: 3vw;
+	}
+	.player-info .save-icon img
+	{
+		width: 2.5vw;
+		cursor: pointer;
 	}
 </style>
