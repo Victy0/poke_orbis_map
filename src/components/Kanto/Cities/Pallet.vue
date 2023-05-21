@@ -75,8 +75,9 @@
 
 			this.$refs.iconTrainer1.show(
 				{
-					trainerImage: 'bug_catcher.png',
-					pokemonImage: '128.gif',
+					trainerImage: "bug_catcher.png",
+					pokemonGen: "1",
+					pokemonRef: "1",
 					top: 10,
 					left: 10
 				}

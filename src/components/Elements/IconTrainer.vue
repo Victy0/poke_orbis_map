@@ -48,8 +48,9 @@
 		],
 		data () {
 			return {
-				pokemonImage: "none.gif",
 				trainerImage: "none.png",
+				pokemonGen: "",
+				pokemonRef: "none",
 				showPokedex: false,
 				showDialogue: false
 			}
@@ -59,7 +60,8 @@
 			show(opts = {})
 			{
 				this.trainerImage = opts.trainerImage;
-				this.pokemonImage = opts.pokemonImage;
+				this.pokemonGen = opts.pokemonGen;
+				this.pokemonRef = opts.pokemonRef;
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
@@ -71,7 +73,7 @@
 			// função para recuperar o caminho da imagem do Pokémon
 			getPokemonImage()
 			{
-				return require('@/assets/img/pokemon/' + this.pokemonImage)
+				return require('@/assets/img/pokemon/' + this.pokemonRef + '.gif');
 			},
 			// função para abrir pokédex
 			async openPokedex()
@@ -85,7 +87,7 @@
 					this.$emit('pokedexEntryTrainer');
 				}
 
-				let pokemon = await getPokemon(this.pokedexEntry);
+				let pokemon = await getPokemon(this.pokemonGen + '.' + this.pokemonRef);
 				this.$refs.pokedex.show(
 					{
 						view: "pokemon",
