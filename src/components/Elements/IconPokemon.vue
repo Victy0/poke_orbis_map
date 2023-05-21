@@ -20,7 +20,7 @@
 			<img
 				draggable="false"
 				src="@/assets/img/icon/berry-icon.png"
-				:class="this.pokemon ? ((this.pokemon.rateCatch <= 0 || this.berriesPlayer == 0) ? 'disabled' : '' ) : ''"
+				:class="this.pokemon ? ((this.rateCatch <= 0 || this.rateCatch == 0) ? 'disabled' : '' ) : ''"
 				@click="giveBerry()"
 				title="Dar berry"
 			>
@@ -48,6 +48,7 @@
 		data () {
 			return{
 				pokemon: {},
+				rateCatch: 100,
 				pokemonRef: "none",
 				berriesPlayer: 0,
 				showPokedex: false,
@@ -59,6 +60,7 @@
 			async show(opts = {})
 			{
 				this.pokemon = await getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
+				this.rateCatch = this.pokemon.rateCatch;
 				this.pokemonRef = opts.pokemonRef;
 				this.refPerspective = opts.refPerspective;
 				this.berriesPlayer = Number(localStorage.getItem('berries'));
@@ -73,11 +75,11 @@
 			// função para recuperar a classe consideradno a dificuldade de captura
 			getClass()
 			{
-				if(this.pokemon.rateCatch > 5)
+				if(this.rateCatch > 5)
 				{
 					return 'hard-entry';
 				}
-				else if(this.pokemon.rateCatch > 2)
+				else if(this.rateCatch > 2)
 				{
 					return 'medium-entry';
 				}
@@ -89,7 +91,7 @@
 			// função para abrir pokédex, considerando chance de fugir se dificuldade de captura for alta
 			openPokedex()
 			{
-				if(this.pokemon.rateCatch > 2)
+				if(this.rateCatch > 2)
 				{
 					if(Math.random() < 0.4)
 					{
@@ -119,7 +121,7 @@
 				});
 				this.showPokedex = true;
 
-				this.pokemon.rateCatch = 0;
+				this.rateCatch = 0;
 			},
 			// função para dar berry e atualizar a quantidade carregada, o que diminui a dificuldade de captura
 			giveBerry()
@@ -130,20 +132,19 @@
 				this.berriesPlayer = berries;
 				this.$emit('changeBerriesValuePokemon', this.refPerspective);
 
-				if(this.pokemon.rateCatch > 1)
+				if(this.rateCatch > 1)
 				{
 					if(Math.random() < 0.2)
 					{
-						this.pokemon.rateCatch = this.pokemon.rateCatch - 2;
+						this.rateCatch = this.rateCatch - 2;
 						return;
 					}
 				}
-				this.pokemon.rateCatch = this.pokemon.rateCatch - 1;
+				this.rateCatch = this.rateCatch - 1;
 			},
 			// função para evento de colheita de berry
 			updateBerryValue(isToAdd, refPerspective = '')
 			{
-				console.log("t")
 				if(isToAdd)
 				{
 					this.berriesPlayer++;
@@ -152,7 +153,6 @@
 				{
 					this.berriesPlayer--;
 				}
-				console.log(this.berriesPlayer)
 			}
 		}
 	}

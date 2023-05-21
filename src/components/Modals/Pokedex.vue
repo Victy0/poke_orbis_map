@@ -17,13 +17,13 @@
 						<div class="intro">
 							<div class="img-container">
 								<img 
-									v-show="object"
-									:src="require('@/assets/img/pokemon/' + this.object.image)"
+									v-show="name != ''"
+									:src="require('@/assets/img/pokemon/' + image)"
 									draggable="false"
 								>
 							</div>
 							<div class="name">
-								<span>{{object.name}}</span>
+								<span>{{name}}</span>
 							</div>
 						</div>
 						<div class="information">
@@ -32,22 +32,22 @@
 							</div>
 							<div class="type-container">
 								<img 
-									v-if="object.type[0]"
+									v-if="type[0]"
 									class="type-image"
-									:src="require('@/assets/img/type/' + object.type[0] + '.png')"
-									:title="object.type[0]"
+									:src="require('@/assets/img/type/' + type[0] + '.png')"
+									:title="type[0]"
 									draggable="false"
 								>
 								<img 
-									v-if="object.type[1]"
+									v-if="type[1]"
 									class="type-image"
-									:src="require('@/assets/img/type/' + object.type[1] + '.png')"
-									:title="object.type[1]"
+									:src="require('@/assets/img/type/' + type[1] + '.png')"
+									:title="type[1]"
 									draggable="false"
 								>
 							</div>
 							<div class="text-info-pokemon">
-								<span>{{object.description.toUpperCase()}}</span>
+								<span>{{description.toUpperCase()}}</span>
 							</div>
 						</div>
 					</div>
@@ -57,13 +57,13 @@
 						<div class="intro">
 							<div class="img-container">
 								<img 
-									v-show="object"
-									:src="require('@/assets/img/place-icon/' + this.object.image)"
+									v-show="name != ''"
+									:src="require('@/assets/img/place-icon/' + image)"
 									draggable="false"
 								>
 							</div>
 							<div class="name">
-								<span>{{object.name}}</span>
+								<span>{{name.toUpperCase()}}</span>
 							</div>
 						</div>
 						<div class="information">
@@ -71,7 +71,7 @@
 								<span>LOCAL</span>
 							</div>
 							<div class="text-info-location">
-								<span>{{object.description.toUpperCase()}}</span>
+								<span>{{description.toUpperCase()}}</span>
 							</div>
 						</div>
 					</div>
@@ -97,35 +97,48 @@
 		data () {
 			return {
 				view: "",
-				object: {},
+				image: "",
+				name: "",
+				description: "",
+				number: "",
+				type: [],
 				resolvePromise: undefined,
 				rejectPromise: undefined
 			}
 		},
 		methods: {
 			// função de criação do modal
-			show(opts = {}) {
+			show(opts = {})
+			{
 				this.view = opts.view;
-				this.object = opts.object;
+				this.image = opts.object.image;
+				this.name = opts.object.name;
+				this.description = opts.object.description;
+				this.type = opts.object.type ? opts.object.type : [];
+				this.number = opts.object.number ? opts.object.number : "";
+
 				return new Promise((resolve, reject) => {
 					this.resolvePromise = resolve;
 					this.rejectPromise = reject;
 				});
 			},
-			// função para formatar npumero do Pokémon mostrado
-			getNumberFormatted() {
-				let num = this.object.number.toString();
+			// função para formatar número do Pokémon mostrado
+			getNumberFormatted()
+			{
+				let num = this.number.toString();
 				while (num.length < 4) {
 					num = "0" + num;
 				}
 				return num;
 			},
 			// função para evento de confirmação
-			confirmar() {
+			confirmar()
+			{
 				this.resolvePromise(true);
 			},
 			// função para indicar fechamento de modal
-			cancelar() {
+			cancelar()
+			{
 				this.resolvePromise("fechar");
 			}
 		}
