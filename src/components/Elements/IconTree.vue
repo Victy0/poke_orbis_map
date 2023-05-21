@@ -44,7 +44,10 @@
 		components:{
 			ModalPokedex
 		},
-		emits: ["cchangeBerriesValueTree"],
+		emits: [
+			"changeBerriesValueTree",
+			"pokedexEntryTree"
+		],
 		data() {
 			return{
 				quantityBerries: 0,
@@ -71,10 +74,10 @@
 				let berries = Number(localStorage.getItem('berries'));
 				berries++;
 				localStorage.setItem('berries', berries); 
-				this.$emit('changeBerriesValueTree', 1);
+				this.$emit('changeBerriesValueTree');
 				this.quantityBerries--;
 			},
-			// função para choacaolhar árvore para aparecer um Pokémon (tem chance de não aprecer, quando for gerado randomicamente o valor 0)
+			// função para chacaolhar árvore para aparecer um Pokémon (tem chance de não aprecer, quando for gerado randomicamente o valor 0)
 			shakeTree()
 			{
 				this.pokedexEntryIndex = Math.floor(Math.random() * (this.possiblePokedex.length + 1)) - 1;
@@ -95,12 +98,22 @@
 				return require('@/assets/img/pokemon/' + this.image)
 			},
 			// função para abrir pokédex (ao fechar não permite olhar novamente pokémon)
-			openPokedex()
+			async openPokedex()
 			{
+				let pokedexList = localStorage.getItem('pokedexList');
+				pokedexList = JSON.parse(pokedexList);
+				if(!pokedexList.includes(Number(this.pokemonRef)))
+				{
+					pokedexList.push(this.pokemonRef);
+					localStorage.setItem('pokedexList', "[" + pokedexList.toString() + "]");
+					this.$emit('pokedexEntryTree');
+				}
+
+				let pokemon = await getPokemon(this.pokedexEntry);
 				this.$refs.pokedex.show(
 					{
 						view: "pokemon",
-						object: getPokemon(this.pokedexEntry)
+						object: pokemon
 					}
 				).then(async (close) => {
 					if(close)

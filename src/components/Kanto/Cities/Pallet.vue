@@ -13,11 +13,13 @@
 		ref="iconPokemon1"
 		v-show="showPokemon"
 		@changeBerriesValuePokemon = "decreaseBerryValue"
+		@pokedexEntryWild = "emitPokedexEntry"
 	/>
 
 	<IconTrainer 
 		ref="iconTrainer1"
 		v-show="showTrainer"
+		@pokedexEntryTrainer = "emitPokedexEntry"
 	/>
 
 	<IconLocation 
@@ -29,6 +31,7 @@
 		ref="iconTree"
 		v-show="showTree"
 		@changeBerriesValueTree = "addBerryValue"
+		@pokedexEntryTree = "emitPokedexEntry"
 	/>
 </template>
 
@@ -46,6 +49,10 @@
 			IconLocation,
 			IconTree
 		},
+		emits: [
+			"changeBerriesValue",
+			"pokedexEntryPokemon"
+		],
 		data () {
 			return{
 				showPokemon: false,
@@ -59,6 +66,7 @@
 				{
 					pokemonGen: "1",
 					pokemonRef: "128",
+					refPerspective: "pok1",
 					top: 30,
 					left: 5
 				}
@@ -96,13 +104,19 @@
 			this.showTree = true;
 		},
 		methods:{
-			addBerryValue(valueToAcress)
+			addBerryValue()
 			{
-				this.$refs.iconPokemon1.updateBerryValue(valueToAcress, true);
+				this.$refs.iconPokemon1.updateBerryValue(true);
+				this.$emit('changeBerriesValue');
 			},
-			decreaseBerryValue(valueToAcress)
+			decreaseBerryValue(refPerspective)
 			{
-				this.$refs.iconPokemon1.updateBerryValue(valueToAcress, false);
+				this.$refs.iconPokemon1.updateBerryValue(false, refPerspective);
+				this.$emit('changeBerriesValue');
+			},
+			emitPokedexEntry()
+			{
+				this.$emit('pokedexEntryPokemon');
 			}
 		}
 	}
