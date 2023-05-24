@@ -9,6 +9,7 @@
 			<img
 				draggable="false"
 				:src="getPokemonImage()"
+				:class="blockPokemon ? 'disabled' : ''"
 				@click="openPokedex()"
 				title="Pokédex"
 			>
@@ -48,8 +49,13 @@
 		],
 		data () {
 			return {
-				pokemonImage: "none.gif",
-				trainerImage: "none.png",
+				trainerName: "",
+				trainerImage: "none",
+				dialogue: "",
+				hasPokemon: true,
+				blockPokemon: false,
+				pokemonGen: "",
+				pokemonRef: "none",
 				showPokedex: false,
 				showDialogue: false
 			}
@@ -58,20 +64,33 @@
 			// função de iniciação do ícone
 			show(opts = {})
 			{
+				this.trainerName = opts.trainerName;
 				this.trainerImage = opts.trainerImage;
-				this.pokemonImage = opts.pokemonImage;
+				this.dialogue = opts.dialogue;
+				this.hasPokemon = opts.hasPokemon;
+				if(this.hasPokemon)
+				{
+					this.blockPokemon = opts.blockPokemon;
+					this.pokemonGen = opts.pokemonGen;
+					this.pokemonRef = opts.pokemonRef;
+				}
+				else
+				{
+					this.blockPokemon = true;
+					this.pokemonRef = "none";
+				}
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
 			// função para recuperar o caminho da imagem do Treinador
 			getTrainerImage()
 			{
-				return require('@/assets/img/trainer/' + this.trainerImage)
+				return require('@/assets/img/trainer/' + this.trainerImage + '.png');
 			},
 			// função para recuperar o caminho da imagem do Pokémon
 			getPokemonImage()
 			{
-				return require('@/assets/img/pokemon/' + this.pokemonImage)
+				return require('@/assets/img/pokemon/' + this.pokemonRef + '.gif');
 			},
 			// função para abrir pokédex
 			async openPokedex()
@@ -85,7 +104,7 @@
 					this.$emit('pokedexEntryTrainer');
 				}
 
-				let pokemon = await getPokemon(this.pokedexEntry);
+				let pokemon = await getPokemon(this.pokemonGen + '.' + this.pokemonRef);
 				this.$refs.pokedex.show(
 					{
 						view: "pokemon",
@@ -102,9 +121,16 @@
 			// função para abrir modal de diálogo
 			openDialogueModal()
 			{
+				if(this.blockPokemon && this.hasPokemon)
+				{
+					this.blockPokemon = false;
+				}
+
 				this.$refs.dialogue.show(
 					{
-						trainerImage: this.trainerImage
+						name: this.trainerName,
+						trainerImage: this.trainerImage,
+						dialogue: this.dialogue
 					}
 				).then(async (close) => 
 				{
@@ -141,12 +167,13 @@
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
 		border-radius: 50%;
 	}
+
+	/******************* opções **********************/
 	.icon-trainer .options
 	{
 		display: inline-flex;
 		margin-left: 0.2vw;
 		margin-top: -1vw;
-		cursor: pointer;
 		visibility: hidden;
 	}
 	.icon-trainer .options img
@@ -156,9 +183,16 @@
 		margin: 0 1vw 0 -1vw;
 		background-color: rgb(255, 255, 255);
 		border-radius: 50%;
+		cursor: pointer;
 	}
 	.icon-trainer:hover .options
 	{
 		visibility: visible;
+	}
+	.icon-trainer .options .disabled
+	{
+		opacity: 0.6;
+		pointer-events: none;
+		cursor: none;
 	}
 </style>

@@ -142,7 +142,6 @@
 	.icon-tree .options
 	{
 		display: inline-flex;
-		cursor: pointer;
 		visibility: hidden;
 		margin-left: 0.6vw;
 		margin-top:-2vw
@@ -154,12 +153,13 @@
 		margin: 0 1vw 0 -1vw;
 		background-color: rgb(255, 255, 255);
 		border-radius: 50%;
+		cursor: pointer;
 	}
 	.icon-tree:hover .options
 	{
 		visibility: visible;
 	}
-	.disabled
+	.icon-tree .options .disabled
 	{
 		opacity: 0.6;
 		pointer-events: none;
