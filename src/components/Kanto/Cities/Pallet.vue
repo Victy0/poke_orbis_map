@@ -79,6 +79,8 @@
 					trainerName: "Aldebaran",
 					trainerImage: "bug_catcher",
 					dialogue: "Em busca de insetos para fortalecer meu time",
+					hasPokemon: true,
+					blockPokemon: false,
 					pokemonGen: "1",
 					pokemonRef: "1",
 					top: 10,
@@ -89,8 +91,10 @@
 
 			this.$refs.iconLocation1.show(
 				{
-					name: '',
-					description: '',
+					//locationRef: "1.1",
+					dialogue: "teste",
+					personName: "Aldebaran",
+					personImage: "bug_catcher",
 					top: 50,
 					left: 30,
 					size: 6

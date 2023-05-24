@@ -9,6 +9,7 @@
 			<img
 				draggable="false"
 				:src="getPokemonImage()"
+				:class="blockPokemon ? 'disabled' : ''"
 				@click="openPokedex()"
 				title="Pokédex"
 			>
@@ -51,6 +52,8 @@
 				trainerName: "",
 				trainerImage: "none",
 				dialogue: "",
+				hasPokemon: true,
+				blockPokemon: false,
 				pokemonGen: "",
 				pokemonRef: "none",
 				showPokedex: false,
@@ -64,8 +67,18 @@
 				this.trainerName = opts.trainerName;
 				this.trainerImage = opts.trainerImage;
 				this.dialogue = opts.dialogue;
-				this.pokemonGen = opts.pokemonGen;
-				this.pokemonRef = opts.pokemonRef;
+				this.hasPokemon = opts.hasPokemon;
+				if(this.hasPokemon)
+				{
+					this.blockPokemon = opts.blockPokemon;
+					this.pokemonGen = opts.pokemonGen;
+					this.pokemonRef = opts.pokemonRef;
+				}
+				else
+				{
+					this.blockPokemon = true;
+					this.pokemonRef = "none";
+				}
 				this.$refs["icon"].style.marginLeft = opts.top + "vw";
 				this.$refs["icon"].style.marginTop = opts.left + "vw";
 			},
@@ -108,6 +121,11 @@
 			// função para abrir modal de diálogo
 			openDialogueModal()
 			{
+				if(this.blockPokemon && this.hasPokemon)
+				{
+					this.blockPokemon = false;
+				}
+
 				this.$refs.dialogue.show(
 					{
 						name: this.trainerName,
@@ -149,12 +167,13 @@
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
 		border-radius: 50%;
 	}
+
+	/******************* opções **********************/
 	.icon-trainer .options
 	{
 		display: inline-flex;
 		margin-left: 0.2vw;
 		margin-top: -1vw;
-		cursor: pointer;
 		visibility: hidden;
 	}
 	.icon-trainer .options img
@@ -164,9 +183,16 @@
 		margin: 0 1vw 0 -1vw;
 		background-color: rgb(255, 255, 255);
 		border-radius: 50%;
+		cursor: pointer;
 	}
 	.icon-trainer:hover .options
 	{
 		visibility: visible;
+	}
+	.icon-trainer .options .disabled
+	{
+		opacity: 0.6;
+		pointer-events: none;
+		cursor: none;
 	}
 </style>
