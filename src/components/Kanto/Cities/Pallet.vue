@@ -91,8 +91,10 @@
 
 			this.$refs.iconLocation1.show(
 				{
-					name: '',
-					description: '',
+					//locationRef: "1.1",
+					dialogue: "teste",
+					personName: "Aldebaran",
+					personImage: "bug_catcher",
 					top: 50,
 					left: 30,
 					size: 6
