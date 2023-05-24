@@ -79,6 +79,8 @@
 					trainerName: "Aldebaran",
 					trainerImage: "bug_catcher",
 					dialogue: "Em busca de insetos para fortalecer meu time",
+					hasPokemon: true,
+					blockPokemon: false,
 					pokemonGen: "1",
 					pokemonRef: "1",
 					top: 10,

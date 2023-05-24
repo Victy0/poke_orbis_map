@@ -208,7 +208,6 @@
 		display: inline-flex;
 		margin-left: 0.2vw;
 		margin-top: -1vw;
-		
 		visibility: hidden;
 	}
 	.icon-pokemon .options img
@@ -224,7 +223,7 @@
 	{
 		visibility: visible;
 	}
-	.disabled
+	.icon-pokemon .options .disabled
 	{
 		opacity: 0.6;
 		pointer-events: none;
