@@ -89,20 +89,24 @@
 			}
 		},
 		methods:{
+			// função para alterar valor de indicação se é uma perspectiva diferente da intro
 			setIsPerspective(newValue)
 			{
 				this.isPerspective = newValue;
 			},
+			// função para atualizar informação da quantidade de berries
 			updateBerry()
 			{
 				this.berries = Number(localStorage.getItem('berries'));
 			},
+			// função para atualizar a listagem de pokémons vistos na pokédex
 			updatePokedex()
 			{
 				this.entryPokedex = this.entryPokedex + 1;
 				let pokedexListStoraged = localStorage.getItem('pokedexList');
 				this.pokedexList = JSON.parse(pokedexListStoraged);
 			},
+			// função para importar o save
 			async importSave()
 			{
 				let perspective = await localStorage.getItem('perspective');
@@ -127,6 +131,7 @@
 </script>
 
 <style>
+	/******************* principal **********************/
 	.header
 	{ 
 		text-align: center;

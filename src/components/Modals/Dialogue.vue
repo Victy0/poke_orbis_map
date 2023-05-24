@@ -35,7 +35,7 @@
 <script>
 	export default {
 		name: 'modalDialogue',
-		data () {
+		data() {
 			return {
 				name: "",
 				trainerImage: "none",

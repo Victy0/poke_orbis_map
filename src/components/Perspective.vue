@@ -42,15 +42,19 @@
 			}
 		},
 		methods:{
-			updatePerspective(newPerspective){
+			// função para atualizar perspectiva
+			updatePerspective(newPerspective)
+			{
 				localStorage.setItem('perspective', newPerspective);
 				this.$refs.header.setIsPerspective(true);
 				this.perspective = newPerspective;
 			},
+			// função para atualizar no componente Header a quantidade de berries
 			updateBerryValueHeader()
 			{
 				this.$refs.header.updateBerry();
 			},
+			// função para atualizar no componente header a listagem de pokémons vistos na pokédex
 			increaseByOnePokedexEntry()
 			{
 				this.$refs.header.updatePokedex();

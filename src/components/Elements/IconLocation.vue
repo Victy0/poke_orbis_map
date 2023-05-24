@@ -1,6 +1,6 @@
 <template>
 	<div ref="icon" class="icon-location" title="local">
-        <div ref="principal"
+		<div ref="principal"
 			class="principal"
 		/>
 		<div class="options">
@@ -49,7 +49,7 @@
 			ModalPokedex,
 			ModalDialogue
 		},
-		data () {
+		data() {
 			return{
 				locationObject: {},
 				hasInfo: false,
@@ -88,7 +88,7 @@
 				this.$refs["principal"].style.width = opts.size + "vw";
 				this.$refs["principal"].style.height = opts.size + "vw";
 			},
-			//
+			// função para recuperar o caminho da imagem da opção 11 considerando se é para pokédex ou diálogo
 			getImageOption1()
 			{
 				if(this.hasDialogue)
@@ -106,7 +106,8 @@
 						object: this.locationObject
 					}
 				).then(async (close) => {
-					if(close){
+					if(close)
+					{
 						this.showPokedex = false;
 					}
 				});
@@ -123,7 +124,8 @@
 					}
 				).then(async (close) => 
 				{
-					if(close){
+					if(close)
+					{
 						this.showDialogue = false;
 					}
 				});
@@ -134,6 +136,7 @@
 </script>
 
 <style>
+	/******************* principal **********************/
 	.icon-location
 	{
 		text-align: center;
@@ -145,8 +148,8 @@
 	{
 		display: inline-flex;
 		visibility: hidden;
-        margin-left: 0.6vw;
-        margin-top: -2vw
+		margin-left: 0.6vw;
+		margin-top: -2vw
 	}
 	.icon-location .options img
 	{
