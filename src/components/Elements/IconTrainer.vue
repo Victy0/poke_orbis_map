@@ -47,7 +47,7 @@
 		emits: [
 			"pokedexEntryTrainer"
 		],
-		data () {
+		data() {
 			return {
 				trainerName: "",
 				trainerImage: "none",
@@ -112,7 +112,8 @@
 					}
 				).then(async (close) => 
 				{
-					if(close){
+					if(close)
+					{
 						this.showPokedex = false;
 					}
 				});
@@ -134,7 +135,8 @@
 					}
 				).then(async (close) => 
 				{
-					if(close){
+					if(close)
+					{
 						this.showDialogue = false;
 					}
 				});

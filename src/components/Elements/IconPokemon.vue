@@ -45,7 +45,7 @@
 			"changeBerriesValuePokemon",
 			"pokedexEntryWild"
 		],
-		data () {
+		data() {
 			return{
 				pokemon: {},
 				rateCatch: 100,
@@ -122,7 +122,8 @@
 						object: this.pokemon
 					}
 				).then(async (close) => {
-					if(close){
+					if(close)
+					{
 						this.showPokedex = false;
 					}
 				});

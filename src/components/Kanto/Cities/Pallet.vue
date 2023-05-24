@@ -53,7 +53,7 @@
 			"changeBerriesValue",
 			"pokedexEntryPokemon"
 		],
-		data () {
+		data() {
 			return{
 				showPokemon: false,
 				showLocation: false,

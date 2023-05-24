@@ -94,7 +94,7 @@
 <script>
 	export default {
 		name: 'modalPokedex',
-		data () {
+		data() {
 			return {
 				view: "",
 				image: "",

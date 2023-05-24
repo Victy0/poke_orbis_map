@@ -2,6 +2,7 @@ import {pokemonKantoList} from './assets/data/pokemon/kantoList';
 import {placeKantoList} from './assets/data/place/kantoList';
 import {saveEstructure} from './assets/data/save';
 
+// função para recuperar um Pokémon
 export function getPokemon(number)
 {
     let numberArray = number.split('.');
@@ -12,6 +13,7 @@ export function getPokemon(number)
     }
 }
 
+// função para recuperar um Local
 export function getLocation(number)
 {
     let numberArray = number.split('.');
@@ -22,11 +24,13 @@ export function getLocation(number)
     }
 }
 
+// função para recuperar o save padrão sem nenhum dado
 export function getSaveDefault()
 {
     return saveEstructure;
 }
 
+// função para comprimir o save para importação
 export function compressSave(perspective, berries, pokedexList)
 {
     let saveJson = saveEstructure;
@@ -36,11 +40,13 @@ export function compressSave(perspective, berries, pokedexList)
     return compress(JSON.stringify(saveJson));
 }
 
+// função para descomprimir o save advindo da exportação
 export function decompressSave(saveString)
 {
     return decompress(JSON.parse(saveString));
 }
 
+// função interna para comprimir string
 function compress(s)
 {
     if (!s)
@@ -80,6 +86,7 @@ function compress(s)
     return out.join("");
 }
 
+// função interna para descomprimir string
 function decompress(s)
 {
     let dict = new Map();
