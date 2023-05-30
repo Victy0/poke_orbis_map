@@ -22,10 +22,15 @@
 			/>
 		</div>
 	</div>
+	<ModalGoHome 
+		ref="goHome"
+		v-show="showGoHome"
+	/>
 </template>
 
 <script>
 	import Header from './Elements/Header';
+	import ModalGoHome from './Modals/GoHome.vue';
 
 	import Intro from './Intro/Intro';
 	import Pallet from './Kanto/Cities/Pallet';
@@ -35,19 +40,32 @@
 		components:{
 			Header,
 			Intro,
-			Pallet
+			Pallet,
+			ModalGoHome
 		},
 		data() {
 			return{
-				perspective: 'intro'
+				perspective: 'intro',
+				showGoHome: false
 			}
 		},
 		methods:{
 			// função para atualizar perspectiva
-			updatePerspective(newPerspective)
+			async updatePerspective(newPerspective)
 			{
-				localStorage.setItem('perspective', newPerspective);
 				let isPerspective = newPerspective != 'intro';
+
+				if(!isPerspective)
+				{
+					this.$refs.goHome.show()
+					.then(async () => {
+						this.showGoHome = false;
+					});
+					this.showGoHome = true;
+				}
+
+				localStorage.setItem('perspective', newPerspective);
+				
 				this.$refs.header.setIsPerspective(isPerspective);
 				this.perspective = newPerspective;
 			},

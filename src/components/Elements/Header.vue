@@ -81,7 +81,6 @@
 	export default {
 		name:"Header",
 		emits: ["goHome"],
-		components:{},
 		data() {
 			return{
 				berries: 0,
@@ -135,6 +134,7 @@
 				{
 					return;
 				}
+
 				this.$emit('goHome', 'intro');
 			}
 		}
