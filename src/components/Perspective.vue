@@ -18,6 +18,7 @@
 			<Header
 				ref="header"
 				class="observation"
+				@goHome = "updatePerspective"
 			/>
 		</div>
 	</div>
@@ -46,7 +47,8 @@
 			updatePerspective(newPerspective)
 			{
 				localStorage.setItem('perspective', newPerspective);
-				this.$refs.header.setIsPerspective(true);
+				let isPerspective = newPerspective != 'intro';
+				this.$refs.header.setIsPerspective(isPerspective);
 				this.perspective = newPerspective;
 			},
 			// função para atualizar no componente Header a quantidade de berries
