@@ -54,14 +54,23 @@
 			async updatePerspective(newPerspective)
 			{
 				let isPerspective = newPerspective != 'intro';
+				let breakProcess = false;
 
 				if(!isPerspective)
 				{
-					this.$refs.goHome.show()
-					.then(async () => {
-						this.showGoHome = false;
-					});
 					this.showGoHome = true;
+
+					await this.$refs.goHome.show()
+					.then(async (result) => 
+					{
+						this.showGoHome = false;
+						breakProcess = !result;
+					});
+				}
+
+				if(breakProcess)
+				{
+					return;
 				}
 
 				localStorage.setItem('perspective', newPerspective);

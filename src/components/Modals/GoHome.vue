@@ -4,11 +4,19 @@
 			<div class="modal-container-goHome" role="dialog">
 				<div class="body-goHome">
 					<div class="message">
-						<label>ESSA AÇÃO IRÁ RETORNAR PARA A INTRO E VOCÊ PERDERÁ O PROGRESSO DA SUA JORNADA. DESEJA REALMENTE ISSO?</label>
+						<span>
+							ESSA AÇÃO IRÁ RETORNAR PARA A INTRO E VOCÊ PERDERÁ O PROGRESSO DA SUA JORNADA. DESEJA REALMENTE ISSO?
+						</span>
 						<div>
-							<button class="confirm" @click="confirmar">SALVAR E IR PARA INTRO</button> 
-							<button class="confirm" @click="cancelar">IR PARA A INTRO</button>
-							<button class="confirm" @click="cancelar">CANCELAR</button>
+							<button @click="saveAndGo">
+								SALVAR E IR PARA INTRO
+							</button> 
+							<button @click="onlyGo">
+								IR PARA A INTRO
+							</button>
+							<button @click="cancel">
+								CANCELAR
+							</button>
 						</div>
 					</div>
 				</div>
@@ -18,6 +26,8 @@
 </template>
 
 <script>
+	import {compressSave} from '../../dataRecovery';
+
 	export default {
 		name: 'modalGoHome',
 		data() {
@@ -34,6 +44,42 @@
 					this.resolvePromise = resolve;
 					this.rejectPromise = reject;
 				});
+			},
+			//
+			async saveAndGo()
+			{
+				let perspective = await localStorage.getItem('perspective');
+				let berries = await localStorage.getItem('berries');
+				let pokedexList = await localStorage.getItem('pokedexList');
+				let compressText = compressSave(perspective, berries, pokedexList);
+
+				var filename = "PokeOrbisMap_save";
+				var blob = new Blob([JSON.stringify(compressText)], {type: 'text/plain'});
+				if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+					window.navigator.msSaveOrOpenBlob(blob, filename);
+				} else{
+					var e = document.createEvent('MouseEvents'),
+					a = document.createElement('a');
+					a.download = filename;
+					a.href = window.URL.createObjectURL(blob);
+					a.dataset.downloadurl = ['text/plain', a.download, a.href].join(':');
+					e.initEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+					a.dispatchEvent(e);
+				}
+
+				this.onlyGo();
+			},
+			//
+			onlyGo()
+			{
+				localStorage.clear();
+
+				this.resolvePromise(true);
+			},
+			//
+			cancel()
+			{
+				this.resolvePromise(false);
 			}
 		}
 	};
@@ -48,7 +94,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background-color: rgba(0,0,0, .4);
+		background-color: rgba(0, 0, 0, 0.705);
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -62,13 +108,18 @@
 		background-repeat: no-repeat;
 		padding: 1em;
 		position: relative;
-		background-image: linear-gradient(rgb(146, 227, 252), rgb(223, 238, 245));
+		background-image: linear-gradient(to bottom right, rgb(242, 245, 247), rgb(66, 213, 224));
+		border-radius: 2vw;
 	}
 
 	/******************* corpo do modal **********************/
-	.modal-goHome .body-goHome
+	.body-goHome
 	{
 		display: inline-flex;
+		position: absolute;
+		top: 50%;
+		-ms-transform: translateY(-50%);
+		transform: translateY(-50%);
 	}
 
 	/******************** área de escolha **********************/
@@ -78,27 +129,29 @@
 		text-align: center;
 		width: 100%;
 		padding: 0.3em;
-		font-size: 1.2em;
+		font-size: 1em;
 	}
 	.message button
 	{
-		font-size: 1.2rem;
+		font-family: Pixel;
+		box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 		font-weight: 800;
 		width: 30vw;
-		height: 4vw;
+		height: 3.5vw;
 		padding: 0.3em 1em;
 		margin: 0.8em;
 		cursor: pointer;
+		background-color: #dadbdb;
+		border: 1px solid #333333;
+		color: #000000;
+	}
+	.message button:first-child
+	{
+		margin-top: 3vw;
 	}
 	.message button:hover
 	{
 		color: rgb(0, 38, 255);
 		box-shadow: 0 1vw 4vw rgb(0, 38, 255);
-	}
-	.confirm
-	{
-		background-color: #dadbdb;
-		border: 1px solid #333333;
-		color: #000000;
 	}
 </style>

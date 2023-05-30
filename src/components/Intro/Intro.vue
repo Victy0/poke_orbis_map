@@ -60,5 +60,10 @@
 		background-color: #f8f8f8;
 		text-align: center;
 		cursor: pointer;
-	} 
+	}
+	.button:hover
+	{
+		color: rgb(0, 38, 255);
+		box-shadow: 0 1vw 4vw rgb(0, 38, 255);
+	}
 </style>
