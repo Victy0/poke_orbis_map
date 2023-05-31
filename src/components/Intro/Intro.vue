@@ -9,8 +9,17 @@
 			src="@/assets/img/common/logo.png"
 			draggable="false"
 		>
-		<button class="button" @click="createJorney()">INICIAR</button>
-		<button class="button">CONTINUAR</button>
+		<button
+			class="button hover-blue"
+			@click="createJorney()"
+		>
+			INICIAR
+		</button>
+		<button
+			class="button hover-green"
+		>
+			CONTINUAR
+		</button>
 	</div>
 </template>
 
@@ -61,8 +70,15 @@
 		text-align: center;
 		cursor: pointer;
 	}
-	.button:hover
+	.hover-green:hover
 	{
+		border: solid rgb(26, 156, 0);
+		color: rgb(26, 156, 0);
+		box-shadow: 0 1vw 4vw rgb(26, 156, 0);
+	}
+	.hover-blue:hover
+	{
+		border: solid rgb(0, 38, 255);
 		color: rgb(0, 38, 255);
 		box-shadow: 0 1vw 4vw rgb(0, 38, 255);
 	}

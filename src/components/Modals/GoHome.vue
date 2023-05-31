@@ -8,13 +8,15 @@
 							ESSA AÇÃO IRÁ RETORNAR PARA A INTRO E VOCÊ PERDERÁ O PROGRESSO DA SUA JORNADA. DESEJA REALMENTE ISSO?
 						</span>
 						<div>
-							<button @click="saveAndGo">
+							<button class="hover-green" @click="saveAndGo">
 								SALVAR E IR PARA INTRO
-							</button> 
-							<button @click="onlyGo">
+							</button>
+
+							<button class="hover-blue" @click="onlyGo">
 								IR PARA A INTRO
 							</button>
-							<button @click="cancel">
+							
+							<button class="hover-red" @click="cancel">
 								CANCELAR
 							</button>
 						</div>
@@ -45,7 +47,7 @@
 					this.rejectPromise = reject;
 				});
 			},
-			//
+			// função para importar o save e retonar para Intro
 			async saveAndGo()
 			{
 				let perspective = await localStorage.getItem('perspective');
@@ -69,14 +71,14 @@
 
 				this.onlyGo();
 			},
-			//
+			// função para retornar para Intro
 			onlyGo()
 			{
 				localStorage.clear();
 
 				this.resolvePromise(true);
 			},
-			//
+			// função para fechar o modal
 			cancel()
 			{
 				this.resolvePromise(false);
@@ -110,6 +112,8 @@
 		position: relative;
 		background-image: linear-gradient(to bottom right, rgb(242, 245, 247), rgb(66, 213, 224));
 		border-radius: 2vw;
+		border-style: groove;
+		border-color: rgb(255, 0, 0); 
 	}
 
 	/******************* corpo do modal **********************/
@@ -141,17 +145,30 @@
 		padding: 0.3em 1em;
 		margin: 0.8em;
 		cursor: pointer;
-		background-color: #dadbdb;
-		border: 1px solid #333333;
+		background-color: #f8f8f8;
+		
 		color: #000000;
 	}
 	.message button:first-child
 	{
 		margin-top: 3vw;
 	}
-	.message button:hover
+	.message .hover-green:hover
 	{
+		border: solid rgb(26, 156, 0);
+		color: rgb(26, 156, 0);
+		box-shadow: 0 1vw 4vw rgb(26, 156, 0);
+	}
+	.message .hover-blue:hover
+	{
+		border: solid rgb(0, 38, 255);
 		color: rgb(0, 38, 255);
 		box-shadow: 0 1vw 4vw rgb(0, 38, 255);
+	}
+	.message .hover-red:hover
+	{
+		border: solid rgb(233, 3, 3);
+		color: rgb(233, 3, 3);
+		box-shadow: 0 1vw 4vw rgb(233, 3, 3);
 	}
 </style>
