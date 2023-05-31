@@ -3,9 +3,10 @@
 		<div
 			:class="isPerspective ? 'header-image' : 'header-image center-line'"
 		>
-			<img 
-				src="@/assets/img/common/logo.png"
+			<img
 				draggable="false"
+				src="@/assets/img/common/logo.png"
+				@click="goHome"
 			>
 		</div>
 		<div 
@@ -79,7 +80,7 @@
 	
 	export default {
 		name:"Header",
-		components:{},
+		emits: ["goHome"],
 		data() {
 			return{
 				berries: 0,
@@ -125,6 +126,16 @@
 					e.initEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
 					a.dispatchEvent(e);
 				}
+			},
+			// função de clique da imagem principal que retorna para a Intro
+			goHome()
+			{
+				if(!this.isPerspective)
+				{
+					return;
+				}
+
+				this.$emit('goHome', 'intro');
 			}
 		}
 	}
@@ -156,6 +167,11 @@
 		margin: 1vw;
 		width: 15vw;
 		filter: drop-shadow(5px 5px 5px rgb(126, 126, 126));
+		cursor: pointer;
+	}
+	.center-line img
+	{
+		cursor: auto;
 	}
 
 	/*********************** corpo  ************************/

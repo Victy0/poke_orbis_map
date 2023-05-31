@@ -18,13 +18,19 @@
 			<Header
 				ref="header"
 				class="observation"
+				@goHome = "updatePerspective"
 			/>
 		</div>
 	</div>
+	<ModalGoHome 
+		ref="goHome"
+		v-show="showGoHome"
+	/>
 </template>
 
 <script>
 	import Header from './Elements/Header';
+	import ModalGoHome from './Modals/GoHome.vue';
 
 	import Intro from './Intro/Intro';
 	import Pallet from './Kanto/Cities/Pallet';
@@ -34,19 +40,42 @@
 		components:{
 			Header,
 			Intro,
-			Pallet
+			Pallet,
+			ModalGoHome
 		},
 		data() {
 			return{
-				perspective: 'intro'
+				perspective: 'intro',
+				showGoHome: false
 			}
 		},
 		methods:{
 			// função para atualizar perspectiva
-			updatePerspective(newPerspective)
+			async updatePerspective(newPerspective)
 			{
+				let isPerspective = newPerspective != 'intro';
+				let breakProcess = false;
+
+				if(!isPerspective)
+				{
+					this.showGoHome = true;
+
+					await this.$refs.goHome.show()
+					.then(async (result) => 
+					{
+						this.showGoHome = false;
+						breakProcess = !result;
+					});
+				}
+
+				if(breakProcess)
+				{
+					return;
+				}
+
 				localStorage.setItem('perspective', newPerspective);
-				this.$refs.header.setIsPerspective(true);
+				
+				this.$refs.header.setIsPerspective(isPerspective);
 				this.perspective = newPerspective;
 			},
 			// função para atualizar no componente Header a quantidade de berries
