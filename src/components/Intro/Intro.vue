@@ -17,16 +17,31 @@
 		</button>
 		<button
 			class="button hover-green"
+			@click="continueJorney()"
 		>
 			CONTINUAR
 		</button>
 	</div>
+	<ModalImportSave 
+		ref="importSave"
+		v-show="showImportSave"
+	/>
 </template>
 
 <script>
+	import ModalImportSave from '../Modals/ImportSave.vue';
+
 	export default {
 		name:"Intro",
 		emits: ["changePerspective"],
+		components:{
+			ModalImportSave
+		},
+		data() {
+			return {
+				showImportSave: false
+			}
+		},
 		methods: {
 			// função para iniciar jornada criando o objeto de 'save' e direcionando para a primeira perspectiva
 			createJorney()
@@ -35,6 +50,17 @@
 				localStorage.setItem('berries', 0);
 				localStorage.setItem('pokedexList', '[]');
 				this.$emit('changePerspective', 'pallet');
+			},
+			// função para iniciar modal de importação
+			async continueJorney()
+			{
+				this.showImportSave = true;
+
+				await this.$refs.importSave.show()
+				.then(async () => 
+				{
+					this.showImportSave = false;
+				});
 			}
 		}
 	}
@@ -70,13 +96,13 @@
 		text-align: center;
 		cursor: pointer;
 	}
-	.hover-green:hover
+	.button .hover-green:hover
 	{
 		border: solid rgb(26, 156, 0);
 		color: rgb(26, 156, 0);
 		box-shadow: 0 1vw 4vw rgb(26, 156, 0);
 	}
-	.hover-blue:hover
+	.button .hover-blue:hover
 	{
 		border: solid rgb(0, 38, 255);
 		color: rgb(0, 38, 255);
