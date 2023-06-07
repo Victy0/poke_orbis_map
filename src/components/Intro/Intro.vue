@@ -57,8 +57,12 @@
 				this.showImportSave = true;
 
 				await this.$refs.importSave.show()
-				.then(async () => 
+				.then(async (result) => 
 				{
+					if(result)
+					{
+						this.$emit('changePerspective', result);
+					}
 					this.showImportSave = false;
 				});
 			}

@@ -76,11 +76,20 @@
 							return;
 						}
 
+						if(fileContent["pokedexList"].length == 0)
+						{
+							fileContent["pokedexList"] = '[]';
+						}
+						else
+						{
+							fileContent["pokedexList"] = '[' + fileContent["pokedexList"] + ']';
+						}
+
 						localStorage.setItem("perspective", fileContent["perspective"]);
 						localStorage.setItem("berries", fileContent["berries"]);
 						localStorage.setItem("pokedexList", fileContent["pokedexList"]);
 
-						this.resolvePromise(true);
+						this.resolvePromise(fileContent["perspective"]);
 					};
 					reader.readAsText(event.target.files[0]);
 				}
