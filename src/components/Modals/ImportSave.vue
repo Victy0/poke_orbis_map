@@ -98,7 +98,7 @@
 					this.showError = true;
 				}				
 			},
-			// função para fechar o modal
+			// função para fechar o modal sem fazer nada
 			cancel()
 			{
 				this.resolvePromise(false);

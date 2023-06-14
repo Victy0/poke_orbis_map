@@ -26,30 +26,47 @@
 		ref="importSave"
 		v-show="showImportSave"
 	/>
+	<ModalInitJorney 
+		ref="initJorney"
+		v-show="showInitJorney"
+	/>
 </template>
 
 <script>
 	import ModalImportSave from '../Modals/ImportSave.vue';
+	import ModalInitJorney from '../Modals/InitJorney.vue';
 
 	export default {
 		name:"Intro",
 		emits: ["changePerspective"],
 		components:{
-			ModalImportSave
+			ModalImportSave,
+			ModalInitJorney
 		},
 		data() {
 			return {
-				showImportSave: false
+				showImportSave: false,
+				showInitJorney: false
 			}
 		},
 		methods: {
 			// função para iniciar jornada criando o objeto de 'save' e direcionando para a primeira perspectiva
-			createJorney()
+			async createJorney()
 			{
-				localStorage.setItem('perspective', 'pallet');
-				localStorage.setItem('berries', 0);
-				localStorage.setItem('pokedexList', '[]');
-				this.$emit('changePerspective', 'pallet');
+				this.showInitJorney = true;
+
+				await this.$refs.initJorney.show()
+				.then(async (result) => 
+				{
+					if(result)
+					{
+						localStorage.setItem('perspective', result);
+						localStorage.setItem('berries', 0);
+						localStorage.setItem('pokedexList', '[]');
+						this.$emit('changePerspective', 'pallet');
+					}
+					this.showInitJorney = false;
+				});
 			},
 			// função para iniciar modal de importação
 			async continueJorney()
