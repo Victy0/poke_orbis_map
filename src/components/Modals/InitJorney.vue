@@ -28,7 +28,7 @@
 							</button>
 
 							<button v-if="step < 3" class="hover-blue" @click="nextPass">
-								Próximo
+								PRÓXIMO
 							</button>
 							<button v-else class="hover-blue" @click="jorney">
 								INICIAR
@@ -106,7 +106,7 @@
 		background-image: linear-gradient(to bottom right, rgb(242, 245, 247), rgb(66, 213, 224));
 		border-radius: 2vw;
 		border-style: groove;
-		border-color: rgb(255, 0, 0); 
+		border-color: rgb(255, 0, 0);
 	}
 
 	/******************* corpo do modal **********************/
