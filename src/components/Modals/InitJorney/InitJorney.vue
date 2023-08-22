@@ -4,29 +4,38 @@
 			<div class="modal-container-init" role="dialog">
 				<div class="body-init">
 					<div class="message-init">
-
+						<!-- step 1 -->
 						<div v-if="step == 1" class="text-area-init">
 							<span>
 								EXPLICAÇÃO DO PROJETO
 							</span>
 						</div>
+						<!-- step 2 -->
 						<div v-else-if="step == 2" class="text-area-init">
-							<span>
-								ESCOLHA DE PERSONAGEM
-							</span>
+							<div class="title">
+								<span>
+									ESCOLHA DE PERSONAGEM
+								</span>
+							</div>
+							<div class="container-step">
+								<Step2
+									ref="step2"
+									class="step-allign"
+								/>
+							</div>
 						</div>
+						<!-- step 3 -->
 						<div v-else class="text-area-init">
 							<span>
 								ESCOLHA DE POKÉMON
 							</span>
 						</div>
-
-
+						<!-- botões -->
 						<div class="button-area-init">
 							<button class="hover-red" @click="cancel">
 								CANCELAR
 							</button>
-
+							<!-- botões de seguimento -->
 							<button v-if="step < 3" class="hover-blue" @click="nextPass">
 								PRÓXIMO
 							</button>
@@ -42,8 +51,13 @@
 </template>
 
 <script>
+	import Step2 from './Step2.vue';
+
 	export default {
 		name: 'modalInitJorney',
+		components:{
+			Step2
+		},
 		data() {
 			return {
 				step: 0,
@@ -125,9 +139,13 @@
 		font-size: 1em;
 		width: 45vw;
 	}
+	.title
+	{
+		font-size: 1.2em;
+		margin-bottom: 0.5em;
+	}
 
 		/******************** área de texto **********************/
-
 	.text-area-init
 	{
 		text-align: center;
@@ -172,5 +190,18 @@
 		border: solid rgb(233, 3, 3);
 		color: rgb(233, 3, 3);
 		box-shadow: 0 1vw 4vw rgb(233, 3, 3);
+	}
+
+	.container-step
+	{
+		max-height: 20vw;
+		position: relative;
+	}
+	.step-allign
+	{
+		margin: 0;
+		position: relative;
+		top: 10vw;
+		transform: translateY(-50%);
 	}
 </style>

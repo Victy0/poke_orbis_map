@@ -34,7 +34,7 @@
 
 <script>
 	import ModalImportSave from '../Modals/ImportSave.vue';
-	import ModalInitJorney from '../Modals/InitJorney.vue';
+	import ModalInitJorney from '../Modals/InitJorney/InitJorney.vue';
 
 	export default {
 		name:"Intro",
