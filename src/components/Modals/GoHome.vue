@@ -154,20 +154,23 @@
 	}
 	.message-goHome .hover-green:hover
 	{
-		border: solid rgb(26, 156, 0);
-		color: rgb(26, 156, 0);
+		border: solid rgb(255, 255, 255);
+		background-color: rgb(30, 168, 3);
+		color: rgb(255, 255, 255);
 		box-shadow: 0 1vw 4vw rgb(26, 156, 0);
 	}
 	.message-goHome .hover-blue:hover
 	{
-		border: solid rgb(0, 38, 255);
-		color: rgb(0, 38, 255);
-		box-shadow: 0 1vw 4vw rgb(0, 38, 255);
+		border: solid rgb(255, 255, 255);
+		background-color: rgb(42, 67, 212);
+		color: rgb(255, 255, 255);
+		box-shadow: 0 1vw 4vw rgb(42, 67, 212);
 	}
 	.message-goHome .hover-red:hover
 	{
-		border: solid rgb(233, 3, 3);
-		color: rgb(233, 3, 3);
+		border: solid rgb(255, 255, 255);
+		background-color: rgb(233, 3, 3);
+		color: rgb(255, 255, 255);
 		box-shadow: 0 1vw 4vw rgb(233, 3, 3);
 	}
 </style>

@@ -117,16 +117,18 @@
 		text-align: center;
 		cursor: pointer;
 	}
-	.button .hover-green:hover
+	.hover-green:hover
 	{
-		border: solid rgb(26, 156, 0);
-		color: rgb(26, 156, 0);
+		border: solid rgb(255, 255, 255);
+		background-color: rgb(30, 168, 3);
+		color: rgb(255, 255, 255);
 		box-shadow: 0 1vw 4vw rgb(26, 156, 0);
 	}
-	.button .hover-blue:hover
+	.hover-blue:hover
 	{
-		border: solid rgb(0, 38, 255);
-		color: rgb(0, 38, 255);
-		box-shadow: 0 1vw 4vw rgb(0, 38, 255);
+		border: solid rgb(255, 255, 255);
+		background-color: rgb(42, 67, 212);
+		color: rgb(255, 255, 255);
+		box-shadow: 0 1vw 4vw rgb(42, 67, 212);
 	}
 </style>
