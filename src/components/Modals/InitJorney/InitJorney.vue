@@ -19,8 +19,9 @@
 							</div>
 							<div class="container-step">
 								<Step2
-									ref="step2"
+									ref="characterStep"
 									class="step-allign"
+									@selectCharacter = "setSelectedCharacter"
 								/>
 							</div>
 						</div>
@@ -29,6 +30,13 @@
 							<span>
 								ESCOLHA DE POKÉMON
 							</span>
+							<div class="container-step">
+								<Step3
+									ref="abibolado"
+									class="step-allign"
+									@selectPartner = "setSelectedPartner"
+								/>
+							</div>
 						</div>
 						<!-- botões -->
 						<div class="button-area-init">
@@ -52,15 +60,18 @@
 
 <script>
 	import Step2 from './Step2.vue';
+	import Step3 from './Step3.vue';
 
 	export default {
 		name: 'modalInitJorney',
 		components:{
-			Step2
+			Step2,
+			Step3
 		},
 		data() {
 			return {
 				step: 0,
+				characterName: "arnold",
 				resolvePromise: undefined,
 				rejectPromise: undefined
 			}
@@ -84,6 +95,17 @@
 			nextPass()
 			{
 				this.step++;
+			},
+			// função para salvar o personagem escolhido
+			setSelectedCharacter(characterName)
+			{
+				localStorage.setItem('character', characterName);
+				this.characterName = characterName;
+			},
+			// função para salvar o pokémon parceiro escolhido
+			setSelectedPartner(partner)
+			{
+				localStorage.setItem('partner', partner);
 			},
 			// função para criar fechar o modal e iniciar a jornada
 			jorney()
