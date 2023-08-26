@@ -9,23 +9,79 @@
 			src="@/assets/img/common/logo.png"
 			draggable="false"
 		>
-		<button class="button" @click="createJorney()">INICIAR</button>
-		<button class="button">CONTINUAR</button>
+		<button
+			class="button hover-blue"
+			@click="createJorney()"
+		>
+			INICIAR
+		</button>
+		<button
+			class="button hover-green"
+			@click="continueJorney()"
+		>
+			CONTINUAR
+		</button>
 	</div>
+	<ModalImportSave 
+		ref="importSave"
+		v-show="showImportSave"
+	/>
+	<ModalInitJorney 
+		ref="initJorney"
+		v-show="showInitJorney"
+	/>
 </template>
 
 <script>
+	import ModalImportSave from '../Modals/ImportSave.vue';
+	import ModalInitJorney from '../Modals/InitJorney/InitJorney.vue';
+
 	export default {
 		name:"Intro",
 		emits: ["changePerspective"],
+		components:{
+			ModalImportSave,
+			ModalInitJorney
+		},
+		data() {
+			return {
+				showImportSave: false,
+				showInitJorney: false
+			}
+		},
 		methods: {
 			// função para iniciar jornada criando o objeto de 'save' e direcionando para a primeira perspectiva
-			createJorney()
+			async createJorney()
 			{
-				localStorage.setItem('perspective', 'pallet');
-				localStorage.setItem('berries', 0);
-				localStorage.setItem('pokedexList', '[]');
-				this.$emit('changePerspective', 'pallet');
+				this.showInitJorney = true;
+
+				await this.$refs.initJorney.show()
+				.then(async (result) => 
+				{
+					if(result)
+					{
+						localStorage.setItem('perspective', result);
+						localStorage.setItem('berries', 0);
+						localStorage.setItem('pokedexList', '[]');
+						this.$emit('changePerspective', 'pallet');
+					}
+					this.showInitJorney = false;
+				});
+			},
+			// função para iniciar modal de importação
+			async continueJorney()
+			{
+				this.showImportSave = true;
+
+				await this.$refs.importSave.show()
+				.then(async (result) => 
+				{
+					if(result)
+					{
+						this.$emit('changePerspective', result);
+					}
+					this.showImportSave = false;
+				});
 			}
 		}
 	}
@@ -60,5 +116,19 @@
 		background-color: #f8f8f8;
 		text-align: center;
 		cursor: pointer;
-	} 
+	}
+	.hover-green:hover
+	{
+		border: solid rgb(255, 255, 255);
+		background-color: rgb(30, 168, 3);
+		color: rgb(255, 255, 255);
+		box-shadow: 0 1vw 4vw rgb(26, 156, 0);
+	}
+	.hover-blue:hover
+	{
+		border: solid rgb(255, 255, 255);
+		background-color: rgb(42, 67, 212);
+		color: rgb(255, 255, 255);
+		box-shadow: 0 1vw 4vw rgb(42, 67, 212);
+	}
 </style>

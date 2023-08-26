@@ -3,9 +3,10 @@
 		<div
 			:class="isPerspective ? 'header-image' : 'header-image center-line'"
 		>
-			<img 
-				src="@/assets/img/common/logo.png"
+			<img
 				draggable="false"
+				src="@/assets/img/common/logo.png"
+				@click="goHome"
 			>
 		</div>
 		<div 
@@ -42,15 +43,15 @@
 				<div>
 					<img
 						draggable="false"
-						src="@/assets/img/icon/dex-icon.png"
-						title="no title"
+						:src="require('@/assets/img/character/' + character + '_icon.png')"
+						:title="character != '' ? character.replace(/^./, character[0].toUpperCase()) : character"
 					>
 				</div>
 				<div >
 					<img
 						draggable="false"
-						src="@/assets/img/icon/dex-icon.png"
-						title="no title"
+						:src="require('@/assets/img/partner/' + partner + '.png')"
+						:title="partner != '' ? partner.replace(/^./, partner[0].toUpperCase()) : partner"
 					>
 				</div>
 				<div>
@@ -79,9 +80,11 @@
 	
 	export default {
 		name:"Header",
-		components:{},
+		emits: ["goHome"],
 		data() {
 			return{
+				character: "",
+				partner: "_",
 				berries: 0,
 				isPerspective: false,
 				entryPokedex: 0,
@@ -92,6 +95,10 @@
 			// função para alterar valor de indicação se é uma perspectiva diferente da intro
 			setIsPerspective(newValue)
 			{
+				let localCharacter = localStorage.getItem('character');
+				this.character = localCharacter == null ? this.character : localCharacter;
+				let localPartner = localStorage.getItem('partner');
+				this.partner = localPartner == null ? this.partner : localPartner;
 				this.isPerspective = newValue;
 			},
 			// função para atualizar informação da quantidade de berries
@@ -109,8 +116,8 @@
 			// função para importar o save
 			async importSave()
 			{
-				let perspective = await localStorage.getItem('perspective');
-				let compressText = compressSave(perspective, this.berries, this.pokedexList);
+				let perspective = localStorage.getItem('perspective');
+				let compressText = compressSave(this.character, this.partner, perspective, this.berries, this.pokedexList);
 
 				var filename = "PokeOrbisMap_save";
 				var blob = new Blob([JSON.stringify(compressText)], {type: 'text/plain'});
@@ -125,6 +132,16 @@
 					e.initEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
 					a.dispatchEvent(e);
 				}
+			},
+			// função de clique da imagem principal que retorna para a Intro
+			goHome()
+			{
+				if(!this.isPerspective)
+				{
+					return;
+				}
+
+				this.$emit('goHome', 'intro');
 			}
 		}
 	}
@@ -156,6 +173,11 @@
 		margin: 1vw;
 		width: 15vw;
 		filter: drop-shadow(5px 5px 5px rgb(126, 126, 126));
+		cursor: pointer;
+	}
+	.center-line img
+	{
+		cursor: auto;
 	}
 
 	/*********************** corpo  ************************/
