@@ -100,11 +100,12 @@
 			// função para abrir pokédex (ao fechar não permite olhar novamente pokémon)
 			async openPokedex()
 			{
+				let pokemonRef = this.pokedexEntry.split('.')[1];
 				let pokedexList = localStorage.getItem('pokedexList');
 				pokedexList = JSON.parse(pokedexList);
-				if(!pokedexList.includes(Number(this.pokemonRef)))
+				if(!pokedexList.includes(Number(pokemonRef)))
 				{
-					pokedexList.push(this.pokemonRef);
+					pokedexList.push(pokemonRef);
 					localStorage.setItem('pokedexList', "[" + pokedexList.toString() + "]");
 					this.$emit('pokedexEntryTree');
 				}

@@ -61,11 +61,11 @@
 					this.showGoHome = true;
 
 					await this.$refs.goHome.show()
-					.then(async (result) => 
-					{
-						this.showGoHome = false;
-						breakProcess = !result;
-					});
+						.then(async (result) => 
+						{
+							this.showGoHome = false;
+							breakProcess = !result;
+						});
 				}
 
 				if(breakProcess)

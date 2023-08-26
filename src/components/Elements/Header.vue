@@ -43,15 +43,15 @@
 				<div>
 					<img
 						draggable="false"
-						src="@/assets/img/icon/dex-icon.png"
-						title="no title"
+						:src="require('@/assets/img/character/' + character + '_icon.png')"
+						:title="character != '' ? character.replace(/^./, character[0].toUpperCase()) : character"
 					>
 				</div>
 				<div >
 					<img
 						draggable="false"
-						src="@/assets/img/icon/dex-icon.png"
-						title="no title"
+						:src="require('@/assets/img/partner/' + partner + '.png')"
+						:title="partner != '' ? partner.replace(/^./, partner[0].toUpperCase()) : partner"
 					>
 				</div>
 				<div>
@@ -83,6 +83,8 @@
 		emits: ["goHome"],
 		data() {
 			return{
+				character: "",
+				partner: "_",
 				berries: 0,
 				isPerspective: false,
 				entryPokedex: 0,
@@ -93,6 +95,10 @@
 			// função para alterar valor de indicação se é uma perspectiva diferente da intro
 			setIsPerspective(newValue)
 			{
+				let localCharacter = localStorage.getItem('character');
+				this.character = localCharacter == null ? this.character : localCharacter;
+				let localPartner = localStorage.getItem('partner');
+				this.partner = localPartner == null ? this.partner : localPartner;
 				this.isPerspective = newValue;
 			},
 			// função para atualizar informação da quantidade de berries
@@ -110,8 +116,8 @@
 			// função para importar o save
 			async importSave()
 			{
-				let perspective = await localStorage.getItem('perspective');
-				let compressText = compressSave(perspective, this.berries, this.pokedexList);
+				let perspective = localStorage.getItem('perspective');
+				let compressText = compressSave(this.character, this.partner, perspective, this.berries, this.pokedexList);
 
 				var filename = "PokeOrbisMap_save";
 				var blob = new Blob([JSON.stringify(compressText)], {type: 'text/plain'});

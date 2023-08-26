@@ -3,7 +3,7 @@
 		<div class="modal-goHome">
 			<div class="modal-container-goHome" role="dialog">
 				<div class="body-goHome">
-					<div class="message">
+					<div class="message-goHome">
 						<span>
 							ESSA AÇÃO IRÁ RETORNAR PARA A INTRO E VOCÊ PERDERÁ O PROGRESSO DA SUA JORNADA. DESEJA REALMENTE ISSO?
 						</span>
@@ -50,10 +50,12 @@
 			// função para importar o save e retonar para Intro
 			async saveAndGo()
 			{
-				let perspective = await localStorage.getItem('perspective');
-				let berries = await localStorage.getItem('berries');
-				let pokedexList = await localStorage.getItem('pokedexList');
-				let compressText = compressSave(perspective, berries, pokedexList);
+				let character = localStorage.getItem('character');
+				let partner = localStorage.getItem('partner');
+				let perspective = localStorage.getItem('perspective');
+				let berries = localStorage.getItem('berries');
+				let pokedexList = localStorage.getItem('pokedexList');
+				let compressText = compressSave(character, partner, perspective, berries, pokedexList);
 
 				var filename = "PokeOrbisMap_save";
 				var blob = new Blob([JSON.stringify(compressText)], {type: 'text/plain'});
@@ -127,7 +129,7 @@
 	}
 
 	/******************** área de escolha **********************/
-	.message
+	.message-goHome
 	{
 		display: block;
 		text-align: center;
@@ -135,7 +137,7 @@
 		padding: 0.3em;
 		font-size: 1em;
 	}
-	.message button
+	.message-goHome button
 	{
 		font-family: Pixel;
 		box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
@@ -146,29 +148,31 @@
 		margin: 0.8em;
 		cursor: pointer;
 		background-color: #f8f8f8;
-		
 		color: #000000;
 	}
-	.message button:first-child
+	.message-goHome button:first-child
 	{
 		margin-top: 3vw;
 	}
-	.message .hover-green:hover
+	.message-goHome .hover-green:hover
 	{
-		border: solid rgb(26, 156, 0);
-		color: rgb(26, 156, 0);
+		border: solid rgb(255, 255, 255);
+		background-color: rgb(30, 168, 3);
+		color: rgb(255, 255, 255);
 		box-shadow: 0 1vw 4vw rgb(26, 156, 0);
 	}
-	.message .hover-blue:hover
+	.message-goHome .hover-blue:hover
 	{
-		border: solid rgb(0, 38, 255);
-		color: rgb(0, 38, 255);
-		box-shadow: 0 1vw 4vw rgb(0, 38, 255);
+		border: solid rgb(255, 255, 255);
+		background-color: rgb(42, 67, 212);
+		color: rgb(255, 255, 255);
+		box-shadow: 0 1vw 4vw rgb(42, 67, 212);
 	}
-	.message .hover-red:hover
+	.message-goHome .hover-red:hover
 	{
-		border: solid rgb(233, 3, 3);
-		color: rgb(233, 3, 3);
+		border: solid rgb(255, 255, 255);
+		background-color: rgb(233, 3, 3);
+		color: rgb(255, 255, 255);
 		box-shadow: 0 1vw 4vw rgb(233, 3, 3);
 	}
 </style>
