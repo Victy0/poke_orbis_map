@@ -5,19 +5,19 @@
 				<div class="select-element-step3">
 					<input type="radio" id="1" name="optPartner" value="1" checked @change="changeValue()"> 
 						<label for="1">
-						<img src="@/assets/img/character/arnold.png">
+						<img :src="require('@/assets/img/pokemon/' + partnerList[0].number)">
 						</label>
 				</div>
 				<div class="select-element-step3">
 					<input type="radio" id="2" name="optPartner" value="2" @change="changeValue()">
 						<label for="2">
-						<img src="@/assets/img/character/cassidy.png">
+						<img :src="require('@/assets/img/pokemon/' + partnerList[1].number)">
 						</label>
 				</div>
 				<div class="select-element-step3">
 					<input type="radio" id="3" name="optPartner" value="3" @change="changeValue()">
 						<label for="3">
-						<img src="@/assets/img/character/erik.png">
+						<img :src="require('@/assets/img/pokemon/' + partnerList[2].number)">
 						</label>
 				</div>
 			</div>
@@ -45,9 +45,9 @@
 				showOptions: false,
 				partnerDatabase: [
 					{character: "arnold", partners:[
-						{number:"001", name:"BULBA", desc: ""},
-						{number:"004", name:"CHAR", desc: ""},
-						{number:"007", name:"SQUI", desc: ""}
+						{number:"1.gif", name:"BULBA", desc: ""},
+						{number:"4.gif", name:"CHAR", desc: ""},
+						{number:"7.gif", name:"SQUI", desc: ""}
 					]},
 					{character: "cassidy", partners:[
 						{number:"", name:"", desc: ""},
@@ -55,9 +55,9 @@
 						{number:"", name:"", desc: ""}
 					]},
 					{character: "erik", partners:[
-						{number:"082", name:"MAGNETON", desc: ""},
-						{number:"299", name:"NOSEPASS", desc: ""},
-						{number:"133", name:"EEVEE", desc: ""}
+						{number:"82.gif", name:"MAGNETON", desc: ""},
+						{number:"299.gif", name:"NOSEPASS", desc: ""},
+						{number:"133.gif", name:"EEVEE", desc: ""}
 					]},
 					{character: "joe", partners:[
 						{number:"", name:"", desc: ""},
@@ -65,9 +65,9 @@
 						{number:"", name:"", desc: ""}
 					]},
 					{character: "luna", partners:[
-						{number:"030", name:"RINA", desc: ""},
-						{number:"0035", name:"FARY", desc: ""},
-						{number:"300", name:"KITTY", desc: ""}
+						{number:"30.gif", name:"RINA", desc: ""},
+						{number:"35.gif", name:"FARY", desc: ""},
+						{number:"300.gif", name:"KITTY", desc: ""}
 					]},
 					{character: "nikki", partners:[
 						{number:"", name:"", desc: ""},
@@ -75,9 +75,9 @@
 						{number:"", name:"", desc: ""}
 					]},
 					{character: "pete", partners:[
-						{number:"048", name:"VENO", desc: ""},
-						{number:"046", name:"COGU", desc: ""},
-						{number:"123", name:"SLASH", desc: ""}
+						{number:"48.gif", name:"VENOM", desc: ""},
+						{number:"46.gif", name:"COGUL", desc: ""},
+						{number:"123.gif", name:"SLASH", desc: ""}
 					]},
 					{character: "seymour", partners:[
 						{number:"", name:"", desc: ""},
@@ -85,9 +85,9 @@
 						{number:"", name:"", desc: ""}
 					]},
 					{character: "tyra", partners:[
-						{number:"298", name:"ZURI", desc: ""},
-						{number:"175", name:"LUCK", desc: ""},
-						{number:"113", name:"CARY", desc: ""}
+						{number:"298.gif", name:"ZURI", desc: ""},
+						{number:"175.gif", name:"LUCK", desc: ""},
+						{number:"113.gif", name:"CARY", desc: ""}
 					]}
 				],
 				partnerList: [],

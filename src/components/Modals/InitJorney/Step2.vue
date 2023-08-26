@@ -8,7 +8,7 @@
 						<img src="@/assets/img/character/arnold.png">
 						</label>
 					<input type="radio" id="2" name="optCharacter" value="cassidy" @change="changeValue()" disabled>
-						<label for="2" title="Cassidy">
+						<label for="2" title="Cassidy" class="img-disabled">
 						<img src="@/assets/img/character/cassidy.png">
 						</label> 
 					<input type="radio" id="3" name="optCharacter" value="erik" @change="changeValue()">
@@ -18,7 +18,7 @@
 				</div>
 				<div class="select-element-step2">
 					<input type="radio" id="4" name="optCharacter" value="joe" @change="changeValue()" disabled> 
-						<label for="4" title="Joe">
+						<label for="4" title="Joe" class="img-disabled">
 						<img src="@/assets/img/character/joe.png" >
 						</label>
 					<input type="radio" id="5" name="optCharacter" value="luna" @change="changeValue()">
@@ -26,7 +26,7 @@
 						<img src="@/assets/img/character/luna.png">
 						</label>
 					<input type="radio" id="6" name="optCharacter" value="nikki" @change="changeValue()" disabled>
-						<label for="6" title="Nikki">
+						<label for="6" title="Nikki" class="img-disabled">
 						<img src="@/assets/img/character/nikki.png">
 						</label>
 				</div>
@@ -36,7 +36,7 @@
 						<img src="@/assets/img/character/pete.png">
 						</label>
 					<input type="radio" id="8" name="optCharacter" value="seymour" @change="changeValue()" disabled>
-						<label for="8" title="Seymour">
+						<label for="8" title="Seymour" class="img-disabled">
 						<img src="@/assets/img/character/seymour.png">
 						</label>
 					<input type="radio" id="9" name="optCharacter" value="tyra" @change="changeValue()">
@@ -180,5 +180,15 @@
 	{
 		background-color: #bfb;
 		border-color: #4c4;
+	}
+
+	.img-disabled
+	{
+		opacity: 0.2;
+		cursor: not-allowed;
+	}
+	.img-disabled:hover 
+	{
+		background-color: #ddd;
 	}
 </style>
