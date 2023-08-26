@@ -70,7 +70,7 @@
 
 						fileContent = JSON.parse(decompressSave(fileContent));
 
-						if(!fileContent["perspective"] || !fileContent["berries"].toString() || !fileContent["pokedexList"])
+						if(!fileContent["character"] || !fileContent["partner"] ||!fileContent["perspective"] || !fileContent["berries"].toString() || !fileContent["pokedexList"])
 						{
 							this.showError = true;
 							return;
@@ -85,6 +85,8 @@
 							fileContent["pokedexList"] = '[' + fileContent["pokedexList"] + ']';
 						}
 
+						localStorage.setItem("character", fileContent["character"]);
+						localStorage.setItem("partner", fileContent["partner"]);
 						localStorage.setItem("perspective", fileContent["perspective"]);
 						localStorage.setItem("berries", fileContent["berries"]);
 						localStorage.setItem("pokedexList", fileContent["pokedexList"]);

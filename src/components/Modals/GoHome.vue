@@ -50,10 +50,12 @@
 			// função para importar o save e retonar para Intro
 			async saveAndGo()
 			{
-				let perspective = await localStorage.getItem('perspective');
-				let berries = await localStorage.getItem('berries');
-				let pokedexList = await localStorage.getItem('pokedexList');
-				let compressText = compressSave(perspective, berries, pokedexList);
+				let character = localStorage.getItem('chatacter');
+				let partner = localStorage.getItem('partner');
+				let perspective = localStorage.getItem('perspective');
+				let berries = localStorage.getItem('berries');
+				let pokedexList = localStorage.getItem('pokedexList');
+				let compressText = compressSave(character, partner, perspective, berries, pokedexList);
 
 				var filename = "PokeOrbisMap_save";
 				var blob = new Blob([JSON.stringify(compressText)], {type: 'text/plain'});

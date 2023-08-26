@@ -31,9 +31,11 @@ export function getSaveDefault()
 }
 
 // função para comprimir o save para importação
-export function compressSave(perspective, berries, pokedexList)
+export function compressSave(character, partner, perspective, berries, pokedexList)
 {
     let saveJson = saveEstructure;
+    saveJson.character = character;
+    saveJson.partner = partner;
     saveJson.perspective = perspective;
     saveJson.berries = berries;
     saveJson.pokedexList = pokedexList;

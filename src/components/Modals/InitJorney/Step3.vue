@@ -47,7 +47,7 @@
 					{character: "arnold", partners:[
 						{number:"1.gif", name:"BULBA", desc: ""},
 						{number:"4.gif", name:"CHAR", desc: ""},
-						{number:"7.gif", name:"SQUI", desc: ""}
+						{number:"7.gif", name:"SQUIRT", desc: ""}
 					]},
 					{character: "cassidy", partners:[
 						{number:"", name:"", desc: ""},
@@ -85,7 +85,7 @@
 						{number:"", name:"", desc: ""}
 					]},
 					{character: "tyra", partners:[
-						{number:"298.gif", name:"ZURI", desc: ""},
+						{number:"298.gif", name:"ZURIL", desc: ""},
 						{number:"175.gif", name:"LUCK", desc: ""},
 						{number:"113.gif", name:"CARY", desc: ""}
 					]}
@@ -107,6 +107,7 @@
 			this.info = this.partnerList[0].info;
 
 			this.showOptions = true;
+			localStorage.setItem('partner', this.name.toLowerCase());
 		},
 		methods: {
 			// função para alterar o parceiro selecionado
