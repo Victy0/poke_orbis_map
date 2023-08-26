@@ -50,7 +50,7 @@
 			// função para importar o save e retonar para Intro
 			async saveAndGo()
 			{
-				let character = localStorage.getItem('chatacter');
+				let character = localStorage.getItem('character');
 				let partner = localStorage.getItem('partner');
 				let perspective = localStorage.getItem('perspective');
 				let berries = localStorage.getItem('berries');

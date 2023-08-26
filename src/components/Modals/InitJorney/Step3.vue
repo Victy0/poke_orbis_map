@@ -98,16 +98,19 @@
 		// função para setar valores iniciais dependendo do personagem selecionado
 		mounted() {
 			let characterName = localStorage.getItem('character');
-			let index = this.partnerDatabase.findIndex(obj => {
-				return obj.character === characterName;
-			});
+			if(characterName) 
+			{
+				let index = this.partnerDatabase.findIndex(obj => {
+					return obj.character === characterName;
+				});
 
-			this.partnerList = this.partnerDatabase[index].partners;
-			this.name = this.partnerList[0].name;
-			this.info = this.partnerList[0].info;
+				this.partnerList = this.partnerDatabase[index].partners;
+				this.name = this.partnerList[0].name;
+				this.info = this.partnerList[0].info;
 
-			this.showOptions = true;
-			localStorage.setItem('partner', this.name.toLowerCase());
+				this.showOptions = true;
+				localStorage.setItem('partner', this.name.toLowerCase());
+			}
 		},
 		methods: {
 			// função para alterar o parceiro selecionado

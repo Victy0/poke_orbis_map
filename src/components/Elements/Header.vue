@@ -95,8 +95,10 @@
 			// função para alterar valor de indicação se é uma perspectiva diferente da intro
 			setIsPerspective(newValue)
 			{
-				this.character = localStorage.getItem('character');
-				this.partner = localStorage.getItem('partner');
+				let localCharacter = localStorage.getItem('character');
+				this.character = localCharacter == null ? this.character : localCharacter;
+				let localPartner = localStorage.getItem('partner');
+				this.partner = localPartner == null ? this.partner : localPartner;
 				this.isPerspective = newValue;
 			},
 			// função para atualizar informação da quantidade de berries
