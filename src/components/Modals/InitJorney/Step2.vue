@@ -171,6 +171,7 @@
 	.select-element-step2 label:hover 
 	{
 		background-color: #dfd;
+		cursor: pointer;
 	}
 	.select-element-step2 label img
 	{
@@ -180,11 +181,15 @@
 	{
 		background-color: #bfb;
 		border-color: #4c4;
+		cursor: default;
 	}
 
 	.img-disabled
 	{
 		opacity: 0.2;
+	}
+	.select-element-step2 input[type="radio"]:disabled + label
+	{
 		cursor: not-allowed;
 	}
 	.img-disabled:hover 

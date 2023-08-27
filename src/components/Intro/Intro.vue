@@ -116,6 +116,7 @@
 		background-color: #f8f8f8;
 		text-align: center;
 		cursor: pointer;
+		border-radius: 1em;
 	}
 	.hover-green:hover
 	{

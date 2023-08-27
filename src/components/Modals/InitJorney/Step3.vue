@@ -185,6 +185,7 @@
 	.select-element-step3 label:hover 
 	{
 		background-color: #dfd;
+		cursor: pointer;
 	}
 	.select-element-step3 label img
 	{
@@ -194,5 +195,6 @@
 	{
 		background-color: #bfb;
 		border-color: #4c4;
+		cursor: default;
 	}
 </style>

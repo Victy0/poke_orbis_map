@@ -123,8 +123,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 101%;
-		height: 101%;
+		width: 100.4%;
+		height: 100.4%;
 		background-color: rgba(0, 0, 0, 0.705);
 		display: flex;
 		justify-content: center;
@@ -192,6 +192,7 @@
 		cursor: pointer;
 		background-color: #f8f8f8;
 		margin-bottom: 2vw;
+		border-radius: 1em;
 	}
 	.button-area-init button:first-child
 	{
