@@ -116,8 +116,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 101%;
-		height: 101%;
+		width: 100.4%;
+		height: 100.4%;
 		background-color: rgba(0, 0, 0, 0.705);
 		display: flex;
 		justify-content: center;
@@ -168,6 +168,7 @@
 		margin: 0.8em;
 		cursor: pointer;
 		background-color: #f8f8f8;
+		border-radius: 1em;
 	}
 	.message-import button:first-child
 	{
