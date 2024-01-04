@@ -48,11 +48,11 @@
 		</div>
 		<div class="left-position-step2">
 			<div class="name-bar-step2"></div>
-			<div> 
+			<div class="name-bar-step2-options"> 
 				<span>{{name}}</span>
 			</div>
-			<div>
-				<span class="info-step2">{{info}}</span>
+			<div class="info-step2">
+				<span class="info-step2-options">{{info}}</span>
 			</div>
 		</div>
 	</div>
@@ -80,15 +80,15 @@
 					],
 				characterInfo:
 					[
-						"ARNOLD",
+						"SENDO UMA PESSOA ATRAPALHADA E INTROVERTIDA, CONSEGUE FAZER AMIZADES COM POKÉMONS COM MAIS FACILIDADES QUE HUMANOS. COSTUMA ENTRAR ESCONDIDO NO LABORATÓRIO DE PESQUISA DO PROFESSOR CARVALHO E BRINCAR COM OS POKÉMONS, QUE SE ENCONTRAM NO LOCAL, DE OUTROS TREINADORES. POR ESSE MOTIVO, NÃO CHEGOU A TER UM POKÉMON PRÓPRIO PARA SUA JORNADA DE DESCOBRIMENTO.",
 						"CASSIDY",
-						"ERIK",
+						"UMA PESSOA COM A MENTALIDADE A FRENTE DO SEU TEMPO, ATÉ POR ISSO SEMPRE FICOU MEIO ISOLADO E PENSATIVO PELOS SEGREDOS E MISTÉRIOS DO MUNDO. POR NÃO CONSEGUIR SE CONECTAR COM POKÉMONS, DECIDIU NÃO SEGUIR COM A JORNADA DE DESCOBRIMENTO E SIM FOCAR TODA SUA ATENÇÃO AS INFLUÊNCIA QUE ALTERAÇÃO DE AMBIENTE POSSUI NA EVOLUÇÃO DE POKÉMONS.",
 						"JOE",
-						"LUNA",
+						"SUA FAMÍLIA SE MUDOU RECENTEMENTE PARA KANTO E SE SENTE MEIO DESLOCADA NA REGIÃO. PORÉM, TEM UMA GRANDE ESPÍRITO EXPLORADOR E ESTÁ ANSIOSA PARA SUA JORNADA DE DESCOBRIMENTO PARA VER OS LOCAIS MAIS BONITOS DE KANTO. É UMA PESSOA PROTETORA E CUIDADOSA, O QUE REFLETE NA BOA SAÚDE DOS POKÉMONS DA SUA FAMÍLIA, A QUAL ELA CUIDA.",
 						"NIKKI",
-						"PETE",
+						"É FANÁTICO PELO ESPORTE DE BATALHAS DE POKÉMON E DIZ POSSUIR O SONHO DE VIRAR O CAMPEÃO DO TORNEIO DA LIGA POKÉMON. TEM UMA PAIXÃO POR POKÉMONS DO TIPO INSETO, DEVIDO A SUA MÃE TER SIDO UMA GRANDE TREINADORA ESPECIALIZADA NESSE TIPO. PERCEBE UMA CERTA DISCRIMINAÇÃO COM OS POKÉMONS TIPO INSETO E, POR ISSO, SEU VERDADEIRO SONHO É MOSTRAR O QUÃO PODEROSOS ELES SÃO.",
 						"SEYMOUR",
-						"TYRA"
+						"APÓS O FALECIMENTO DE SEU PAI, SE FECHOU PARA O MUNDO E FOCOU TODO O SEU TEMPO PARA A PESQUISA QUE SEU PAI ESTAVA REALIZANDO A MAIS DE 3 ANOS ANTES DA SUA MORTE. PELO OCORRIDO NÃO SEGUIU COM SUA JORNADA DE DESCOBRIMENTO E FOCOU NO ESTUDO DA PESQUISA QUE LEVOU A DESCOBRIU UM ANTIGO COLAR O QUAL SEU PAI USAVA COM OS DIZERES 'LOCUS OBLIVIONIS', JUNTAMENTE COM ALGUMAS NOTAS QUE NÃO COMPREENDEU DE LUGARES DE KANTO."
 					],
 				info: "",
 				name: "",
@@ -100,7 +100,7 @@
 			this.$emit('selectCharacter', "arnold");
 		},
 		methods: {
-			// função para alterar o personagem selecionado
+		// função para alterar o personagem selecionado
 		changeValue()
 			{
 				let idSelected = (document.querySelectorAll("input[name=optCharacter]:checked")[0].id) - 1;
@@ -124,11 +124,8 @@
 	}
 	.left-position-step2
 	{
-		display: column;
-		overflow-y: auto;
-		text-align: left;
 		width: 57%;
-		max-height: 50vw;
+		max-height: 18vw;
 	}
 	.name-bar-step2
 	{
@@ -140,9 +137,18 @@
 		z-index: -9999;
 		border-radius: 1em;
 	}
+	.name-bar-step2-options
+	{
+		text-align: left;
+	}
 	.info-step2
 	{
-		font-size: 0.9em;
+		max-height: 15vw;
+		overflow-y: auto;
+	}
+	.info-step2-options
+	{
+		font-size: 0.8em;
 	}
 	/******************** opções **********************/
 	.select-element-container-step2
