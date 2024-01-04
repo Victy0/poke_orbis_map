@@ -116,8 +116,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 101%;
-		height: 101%;
+		width: 100.4%;
+		height: 100.4%;
 		background-color: rgba(0, 0, 0, 0.705);
 		display: flex;
 		justify-content: center;
@@ -168,6 +168,7 @@
 		margin: 0.8em;
 		cursor: pointer;
 		background-color: #f8f8f8;
+		border-radius: 1em;
 	}
 	.message-import button:first-child
 	{
@@ -179,14 +180,16 @@
 	}
 	.message-import .hover-blue:hover
 	{
-		border: solid rgb(0, 38, 255);
-		color: rgb(0, 38, 255);
-		box-shadow: 0 1vw 4vw rgb(0, 38, 255);
+		border: solid rgb(255, 255, 255);
+		background-color: rgb(42, 67, 212);
+		color: rgb(255, 255, 255);
+		box-shadow: 0 1vw 4vw rgb(42, 67, 212);
 	}
 	.message-import .hover-red:hover
 	{
-		border: solid rgb(233, 3, 3);
-		color: rgb(233, 3, 3);
+		border: solid rgb(255, 255, 255);
+		background-color: rgb(233, 3, 3);
+		color: rgb(255, 255, 255);
 		box-shadow: 0 1vw 4vw rgb(233, 3, 3);
 	}
 	.error-span

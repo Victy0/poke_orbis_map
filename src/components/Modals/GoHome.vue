@@ -149,6 +149,7 @@
 		cursor: pointer;
 		background-color: #f8f8f8;
 		color: #000000;
+		border-radius: 1em;
 	}
 	.message-goHome button:first-child
 	{
