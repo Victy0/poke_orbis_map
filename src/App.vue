@@ -22,5 +22,6 @@
 		font-family: Pixel;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
+		font-weight: 599;
 	}
 </style>
