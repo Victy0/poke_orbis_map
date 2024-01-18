@@ -1,6 +1,6 @@
 <template>
 	<transition name="modal-fade">
-		<div class="modal-pokedex">
+		<div class="modal-pokedex" v-show="loadedData">
 			<div class="modal-container-pokedex" role="dialog">
 				<div>
 					<div class="option-header-pokedex">
@@ -93,9 +93,10 @@
 
 <script>
 	export default {
-		name: 'modalPokedex',
+		name: 'Modal-pokedex',
 		data() {
 			return {
+				loadedData: false,
 				view: "",
 				image: "",
 				name: "",
@@ -116,6 +117,8 @@
 				this.description = opts.object.description;
 				this.type = opts.object.type ? opts.object.type : [];
 				this.number = opts.object.number ? opts.object.number : "";
+
+				this.loadedData = true;
 
 				return new Promise((resolve, reject) => {
 					this.resolvePromise = resolve;

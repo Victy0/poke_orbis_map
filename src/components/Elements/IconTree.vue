@@ -40,7 +40,7 @@
 	import {getPokemon} from '../../dataRecovery';
 
 	export default {
-		name:"IconTree",
+		name: "Icon-tree",
 		components:{
 			ModalPokedex
 		},

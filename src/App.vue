@@ -1,14 +1,14 @@
 <template>
-	<Perspective/>
+	<PerspectiveApplication/>
 </template>
 
 <script>
-	import Perspective from './components/Perspective'
+	import PerspectiveApplication from './components/Perspective'
 
 	export default {
 		name: 'App',
 		components: {
-			Perspective
+			PerspectiveApplication
 		}
 	}
 </script>

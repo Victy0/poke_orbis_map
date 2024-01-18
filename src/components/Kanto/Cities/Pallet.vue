@@ -42,7 +42,7 @@
 	import IconTree from '../../Elements/IconTree.vue';
 
 	export default {
-		name:"Pallet",
+		name: "Pallet-town",
 		components:{
 			IconPokemon,
 			IconTrainer,

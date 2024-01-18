@@ -36,7 +36,7 @@
 
 <script>
 	export default {
-		name: 'step3',
+		name: 'Modal-initJorney-step3',
 		emits: [
 			"selectPartner",
 		],

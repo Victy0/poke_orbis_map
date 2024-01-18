@@ -37,7 +37,7 @@
 	import ModalInitJorney from '../Modals/InitJorney/InitJorney.vue';
 
 	export default {
-		name:"Intro",
+		name: "Intro-application",
 		emits: ["changePerspective"],
 		components:{
 			ModalImportSave,
