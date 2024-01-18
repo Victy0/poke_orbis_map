@@ -117,7 +117,7 @@
 		top: 0;
 		left: 0;
 		width: 100.4%;
-		height: 100.4%;
+		height: 101%;
 		background-color: rgba(0, 0, 0, 0.705);
 		display: flex;
 		justify-content: center;

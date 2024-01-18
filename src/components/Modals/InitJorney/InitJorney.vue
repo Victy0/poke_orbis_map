@@ -4,12 +4,41 @@
 			<div class="modal-container-init" role="dialog">
 				<div class="body-init">
 					<div class="message-init">
+
 						<!-- step 1 -->
 						<div v-if="step == 1" class="text-area-init">
-							<span>
-								EXPLICAÇÃO DO PROJETO
-							</span>
+							<img 
+								class="image-show"
+								src="@/assets/img/common/initial_step1.gif"
+								draggable="false"
+							>
+							<div class="title">
+								<span>
+									EXPLICAÇÃO DO PROJETO
+								</span>
+							</div>
+							<div class="container-step">
+								<div class="info-explanation">
+									<div class="info-explanation-options">
+										<p>
+											NESSE MUNDO POKÉMON, AS CRIANÇAS COM 10 A 13 ANOS PODEM REALIZAR A INICIATIVA CRIADA POR PESQUISADORES POKÉMON NOMEADA COMO JORNADA DE DESCOBRIMENTO.
+										</p>
+										<p>
+											NESSA JORNADA, AS CRIANÇAS PODEM EXPLORAR O MUNDO, JUNTAMENTE COM UM POKÉMON, NO INTUITO DE REGISTRAR A MAIORIA DE POKÉMONS DIFERENTES QUE ENCONTRA NOS LOCAIS QUE VISITAR.
+											O VERDADEIRO INTUITO É POSSIBILITAR MAIOR CONHECIMENTO SOBRE A REGIÃO QUE SE ENCONTRAM, O DIRECIONAMENTO PARA VIDA FUTURA, INFORMAÇÃO DE POKÉMONS E MISTÉRIOS DO MUNDO.
+										</p>
+										<p>
+											SÃO PROTEGIDAS POR UM ROTOM TREINADO A SE FIXAR A CELULARES, UTILIZADOS PELAS CRIANÇAS, E QUE ESTÃO PREPARADOS PARA CRIAR BARREIRAS DE ENERGIA ALTAMENTE RESISTENTES.
+											O ROTOM TAMBÉM É RESPONSÁVEL POR REGISTRAR OS POKÉMONS VISTOS E AUXILIAR EM INFORMAÇÃO SOBRE LOCAIS E PESSOAS.
+										</p>
+										<p>
+											SENDO QUE CADA CRIANÇA PODE TER UMA EXPERIÊNCIA DIFERENTE, DEPENDENDO DO CAMINHO, POKÉMON COMPANHEIRO E INTERAÇÃO QUE ESCOLHE DURANTE SUA EXPERIÊNCIA NO MUNDO DE POKÉMON ORBIS MAP.
+										</p>
+									</div>
+								</div>
+							</div>
 						</div>
+						
 						<!-- step 2 -->
 						<div v-else-if="step == 2" class="text-area-init">
 							<div class="title">
@@ -25,6 +54,7 @@
 								/>
 							</div>
 						</div>
+
 						<!-- step 3 -->
 						<div v-else class="text-area-init">
 							<span>
@@ -38,6 +68,7 @@
 								/>
 							</div>
 						</div>
+
 						<!-- botões -->
 						<div class="button-area-init">
 							<button class="hover-red" @click="cancel">
@@ -51,6 +82,7 @@
 								INICIAR
 							</button>
 						</div>
+
 					</div>
 				</div>
 			</div>
@@ -124,7 +156,7 @@
 		top: 0;
 		left: 0;
 		width: 100.4%;
-		height: 100.4%;
+		height: 101%;
 		background-color: rgba(0, 0, 0, 0.705);
 		display: flex;
 		justify-content: center;
@@ -172,6 +204,22 @@
 	{
 		text-align: center;
 		height: 22vw;
+	}
+	.info-explanation
+	{
+		max-height: 19vw;
+		overflow-y: auto;
+	}
+	.info-explanation-options
+	{
+		font-size: 0.9em;
+	}
+		/******************** imagem passo 1 **********************/
+	.image-show
+	{
+		position: absolute;
+		width: 18vw;
+		margin-left: 23vw;
 	}
 
 		/******************** área de botões **********************/
