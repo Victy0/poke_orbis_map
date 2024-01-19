@@ -37,7 +37,7 @@
 	import {getPokemon} from '../../dataRecovery';
 
 	export default {
-		name:"IconPokemon",
+		name: "Icon-pokemon",
 		components:{
 			ModalPokedex
 		},

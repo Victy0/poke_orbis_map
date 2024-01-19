@@ -3,7 +3,7 @@
 
 		<div class="vision">
 			<div class="interface">
-				<Intro
+				<IntroApplication
 					v-if="perspective == 'intro'"
 					@changePerspective = "updatePerspective"
 				/>
@@ -15,7 +15,7 @@
 				/>
 			</div>
 					
-			<Header
+			<HeaderApplication
 				ref="header"
 				class="observation"
 				@goHome = "updatePerspective"
@@ -29,17 +29,17 @@
 </template>
 
 <script>
-	import Header from './Elements/Header';
+	import HeaderApplication from './Elements/Header';
 	import ModalGoHome from './Modals/GoHome.vue';
 
-	import Intro from './Intro/Intro';
+	import IntroApplication from './Intro/Intro';
 	import Pallet from './Kanto/Cities/Pallet';
 
 	export default {
-		name:"Perspective",
+		name: "Perspective-application",
 		components:{
-			Header,
-			Intro,
+			HeaderApplication,
+			IntroApplication,
 			Pallet,
 			ModalGoHome
 		},

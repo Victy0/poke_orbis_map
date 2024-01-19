@@ -1,6 +1,6 @@
 <template>
 	<transition name="modal-fade">
-		<div class="modal-goHome">
+		<div class="modal-goHome" v-show="loadedData">
 			<div class="modal-container-goHome" role="dialog">
 				<div class="body-goHome">
 					<div class="message-goHome">
@@ -31,9 +31,10 @@
 	import {compressSave} from '../../dataRecovery';
 
 	export default {
-		name: 'modalGoHome',
+		name: 'Modal-goHome',
 		data() {
 			return {
+				loadedData: false,
 				resolvePromise: undefined,
 				rejectPromise: undefined
 			}
@@ -42,6 +43,8 @@
 			// função de criação do modal
 			show()
 			{
+				this.loadedData = true;
+				
 				return new Promise((resolve, reject) => {
 					this.resolvePromise = resolve;
 					this.rejectPromise = reject;
