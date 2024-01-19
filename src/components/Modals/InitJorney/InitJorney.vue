@@ -1,6 +1,6 @@
 <template>
 	<transition name="modal-fade">
-		<div class="modal-init">
+		<div class="modal-init" v-show="loadedData">
 			<div class="modal-container-init" role="dialog">
 				<div class="body-init">
 					<div class="message-init">
@@ -95,13 +95,14 @@
 	import Step3 from './Step3.vue';
 
 	export default {
-		name: 'modalInitJorney',
+		name: 'Modal-initJorney-step1',
 		components:{
 			Step2,
 			Step3
 		},
 		data() {
 			return {
+				loadedData: false,
 				step: 0,
 				characterName: "arnold",
 				resolvePromise: undefined,
@@ -113,6 +114,9 @@
 			show()
 			{
 				this.step = 1;
+
+				this.loadedData = true;
+
 				return new Promise((resolve, reject) => {
 					this.resolvePromise = resolve;
 					this.rejectPromise = reject;

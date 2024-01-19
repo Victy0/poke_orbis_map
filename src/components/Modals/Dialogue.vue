@@ -1,6 +1,6 @@
 <template>
 	<transition name="modal-fade">
-		<div class="modal-dialogue">
+		<div class="modal-dialogue" v-show="loadedData">
 			<div class="modal-container-dialogue" role="dialog">
 				<div>
 					<div class="close-header-dialogue">
@@ -34,9 +34,10 @@
 
 <script>
 	export default {
-		name: 'modalDialogue',
+		name: 'Modal-dialogue',
 		data() {
 			return {
+				loadedData: false,
 				name: "",
 				trainerImage: "none",
 				dialogue: "",
@@ -55,6 +56,9 @@
 				this.dialogue = opts.dialogue;
 				this.special = opts.special;
 				this.description = opts.description;
+
+				this.loadedData = true;
+
 				return new Promise((resolve, reject) => {
 					this.resolvePromise = resolve;
 					this.rejectPromise = reject;

@@ -1,6 +1,6 @@
 <template>
 	<transition name="modal-fade">
-		<div class="modal-import">
+		<div class="modal-import" v-show="loadedData">
 			<div class="modal-container-import" role="dialog">
 				<div class="body-import">
 					<div class="message-import">
@@ -31,9 +31,10 @@
 	import {decompressSave} from '../../dataRecovery';
 
 	export default {
-		name: 'modalImportSave',
+		name: 'Modal-importSave',
 		data() {
 			return {
+				loadedData: false,
 				showError: false,
 				resolvePromise: undefined,
 				rejectPromise: undefined
@@ -44,6 +45,9 @@
 			show()
 			{
 				this.showError = false;
+
+				this.loadedData = true;
+
 				return new Promise((resolve, reject) => {
 					this.resolvePromise = resolve;
 					this.rejectPromise = reject;

@@ -39,7 +39,7 @@
 	import {getPokemon} from '../../dataRecovery';
 
 	export default {
-		name:"IconTrainer",
+		name: "Icon-trainer",
 		components:{
 			ModalPokedex,
 			ModalDialogue

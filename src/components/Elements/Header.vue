@@ -79,7 +79,7 @@
 	import {compressSave} from '../../dataRecovery';
 	
 	export default {
-		name:"Header",
+		name: "Header-application",
 		emits: ["goHome"],
 		data() {
 			return{

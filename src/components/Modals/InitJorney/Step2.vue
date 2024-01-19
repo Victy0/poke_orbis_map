@@ -60,7 +60,7 @@
 
 <script>
 	export default {
-		name: 'modalInitJorney_step2',
+		name: 'Modal-initJorney-step2',
 		emits: [
 			"selectCharacter",
 		],

@@ -44,7 +44,7 @@
 	import {getLocation} from '../../dataRecovery';
 
 	export default {
-		name:"IconLocation",
+		name: "Icon-location",
 		components:{
 			ModalPokedex,
 			ModalDialogue
