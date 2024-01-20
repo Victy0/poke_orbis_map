@@ -1,38 +1,50 @@
 <template>
-	<img 
-		class="img-principal"
-		src="@/assets/img/place_kanto/pallet.png"
-		draggable="false"
-	>
-	<a class="arrow-left"/>
-	<a class="arrow-right"/>
-	<a class="arrow-top"/>
-	<a class="arrow-bottom"/>
+	<div class="apresentation-view">
+		<img 
+			class="img-principal"
+			src="@/assets/img/place_kanto/pallet.png"
+			draggable="false"
+			alt="Pallet Town"
+		/>
 
-	<IconPokemon 
-		ref="iconPokemon1"
-		v-show="showPokemon"
-		@changeBerriesValuePokemon = "decreaseBerryValue"
-		@pokedexEntryWild = "emitPokedexEntry"
-	/>
+		<a
+			class="arrow-top"
+			title="Rota 1"
+		/>
+		<a
+			class="arrow-bottom position-arrow-bottom no-display"
+			title="Rota 21"
+		/>
 
-	<IconTrainer 
-		ref="iconTrainer1"
-		v-show="showTrainer"
-		@pokedexEntryTrainer = "emitPokedexEntry"
-	/>
+		<!-- listagem pokémons -->
+		<IconPokemon 
+			ref="iconPokemon1"
+			v-show="showPokemon"
+			@changeBerriesValuePokemon = "decreaseBerryValue"
+			@pokedexEntryWild = "emitPokedexEntry"
+		/>
 
-	<IconLocation 
-		ref="iconLocation1"
-		v-show="showLocation"
-	/>
+		<!-- listagem locais -->
+		<IconLocation 
+			ref="iconLocation1"
+			v-show="showLocation"
+		/>
 
-	<IconTree
-		ref="iconTree"
-		v-show="showTree"
-		@changeBerriesValueTree = "addBerryValue"
-		@pokedexEntryTree = "emitPokedexEntry"
-	/>
+		<!-- listagem treinadores -->
+		<IconTrainer 
+			ref="iconTrainer1"
+			v-show="showTrainer"
+			@pokedexEntryTrainer = "emitPokedexEntry"
+		/>
+
+		<!-- listagem árvores -->
+		<IconTree
+			ref="iconTree"
+			v-show="showTree"
+			@changeBerriesValueTree = "addBerryValue"
+			@pokedexEntryTree = "emitPokedexEntry"
+		/>
+	</div>
 </template>
 
 <script>
@@ -131,4 +143,14 @@
 </script>
 
 <style>
+		/*************** SETAS TRANSIÇÃO *****************/
+	.position-arrow-bottom
+	{
+		margin-left: 23vw;
+		
+	}
+	.no-display
+	{
+		display: none;
+	}
 </style>

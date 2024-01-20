@@ -129,7 +129,11 @@
 		text-align: center;
 		z-index: 9;
 	}
-	.vision .interface .img-principal
+	.vision .interface .apresentation-view
+	{
+		display: flex;
+	}
+	.vision .interface .apresentation-view .img-principal
 	{
 		max-width: 100%;
 		border-radius: 20px;
