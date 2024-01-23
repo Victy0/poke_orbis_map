@@ -12,6 +12,7 @@
 					v-else-if="perspective == 'pallet'"
 					@changeBerriesValue = "updateBerryValueHeader"
 					@pokedexEntryPokemon = "increaseByOnePokedexEntry"
+					@openDialogue = "openModalDialogue"
 				/>
 			</div>
 					
@@ -22,15 +23,28 @@
 			/>
 		</div>
 	</div>
+
 	<ModalGoHome 
 		ref="goHome"
 		v-show="showGoHome"
+	/>
+
+	<ModalPokedex 
+		ref="pokedex"
+		v-show="showPokedex"
+	/>
+
+	<ModalDialogue 
+		ref="dialogue"
+		v-show="showDialogue"
 	/>
 </template>
 
 <script>
 	import HeaderApplication from './Elements/Header';
 	import ModalGoHome from './Modals/GoHome.vue';
+	import ModalPokedex from './Modals/Pokedex.vue';
+	import ModalDialogue from './Modals/Dialogue.vue';
 
 	import IntroApplication from './Intro/Intro';
 	import Pallet from './Kanto/Cities/Pallet';
@@ -40,13 +54,17 @@
 		components:{
 			HeaderApplication,
 			IntroApplication,
-			Pallet,
-			ModalGoHome
+			ModalGoHome,
+			ModalPokedex,
+			ModalDialogue,
+			Pallet
 		},
 		data() {
 			return{
 				perspective: 'intro',
-				showGoHome: false
+				showGoHome: false,
+				showPokedex: false,
+				showDialogue: false
 			}
 		},
 		methods:{
@@ -87,6 +105,20 @@
 			increaseByOnePokedexEntry()
 			{
 				this.$refs.header.updatePokedex();
+			},
+			// função para abrir modal de diálogo
+			openModalDialogue(dialogueInfo)
+			{
+				this.$refs.dialogue.show(
+					dialogueInfo
+				).then(async (close) => 
+				{
+					if(close)
+					{
+						this.showDialogue = false;
+					}
+				});
+				this.showDialogue = true;
 			}
 		}
 	}

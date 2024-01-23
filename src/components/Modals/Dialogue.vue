@@ -85,8 +85,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100.4%;
-		height: 101%;
+		width: 82.1vw;
+		height: 100%;
 		background-color: rgba(0,0,0, .4);
 		display: flex;
 		justify-content: center;
@@ -96,13 +96,13 @@
 	.modal-container-dialogue
 	{
 		display: flex;
-		width: 55vw;
-		height: 41vw;
+		height: 40vw;
 		background-repeat: no-repeat;
 		background-size: 55vw;
 		padding: 1em;
 		position: relative;
 	}
+	
 
 	/******************* opções do modal **********************/
 	div.close-header-dialogue
@@ -139,7 +139,7 @@
 	}
 	.body-dialogue .character img
 	{	
-		width: 7.5vw;
+		width: 7vw;
 		background-color: rgb(245, 245, 245);
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
 		border-radius: 15px;
@@ -156,6 +156,7 @@
 		filter: drop-shadow(0.2vw 0.2vw 0vw rgb(0, 0, 0));
 		border-radius: 15px;
 		position: relative;
+		text-align: center;
 	}
 	.texts .name
 	{
