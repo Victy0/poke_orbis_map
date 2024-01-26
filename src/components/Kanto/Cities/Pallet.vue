@@ -14,6 +14,7 @@
 		v-show="showPokemon"
 		@changeBerriesValuePokemon = "decreaseBerryValue"
 		@pokedexEntryWild = "emitPokedexEntry"
+		@pokedexPokemonClick = "openPokedex"
 	/>
 
 	<IconTrainer 

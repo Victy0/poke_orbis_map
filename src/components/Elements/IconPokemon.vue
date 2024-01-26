@@ -26,24 +26,17 @@
 			>
 		</div>
 	</div>
-	<ModalPokedex 
-		ref="pokedex"
-		v-show="showPokedex"
-	/>
 </template>
 
 <script>
-	import ModalPokedex from '../Modals/Pokedex.vue';
 	import {getPokemon} from '../../dataRecovery';
 
 	export default {
 		name: "Icon-pokemon",
-		components:{
-			ModalPokedex
-		},
 		emits: [
 			"changeBerriesValuePokemon",
-			"pokedexEntryWild"
+			"pokedexEntryWild",
+			"pokedexPokemonClick"
 		],
 		data() {
 			return{
@@ -51,7 +44,6 @@
 				rateCatch: 100,
 				pokemonRef: "none",
 				berriesPlayer: 0,
-				showPokedex: false,
 				refPerspective: ""
 			}
 		},
@@ -59,7 +51,7 @@
 			// função de iniciação do ícone
 			async show(opts = {})
 			{
-				this.pokemon = await getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
+				this.pokemon = getPokemon(opts.pokemonGen + "." + opts.pokemonRef);
 				if(opts.isWild){
 					this.rateCatch = this.pokemon.rateCatch;
 				}
@@ -116,18 +108,13 @@
 					this.$emit('pokedexEntryWild');
 				}
 
-				this.$refs.pokedex.show(
+				this.$emit(
+					'pokedexPokemonClick', 
 					{
 						view: "pokemon",
 						object: this.pokemon
 					}
-				).then(async (close) => {
-					if(close)
-					{
-						this.showPokedex = false;
-					}
-				});
-				this.showPokedex = true;
+				);
 
 				this.rateCatch = 0;
 			},
