@@ -21,6 +21,7 @@
 		v-show="showTrainer"
 		@pokedexEntryTrainer = "emitPokedexEntry"
 		@dialogueTrainerClick = "openDialogue"
+		@pokedexTrainerClick = "openPokedex"
 	/>
 
 	<IconLocation 
@@ -53,7 +54,9 @@
 		},
 		emits: [
 			"changeBerriesValue",
-			"pokedexEntryPokemon"
+			"pokedexEntryPokemon",
+			"openDialogue",
+			"openPokedex"
 		],
 		data() {
 			return{
@@ -136,6 +139,11 @@
 			openDialogue(dialogueInfo)
 			{
 				this.$emit('openDialogue', dialogueInfo);
+			},
+			// função para emitir a abertura do modal de pokedex
+			openPokedex(pokedexInfo)
+			{
+				this.$emit('openPokedex', pokedexInfo);
 			}
 		}
 	}

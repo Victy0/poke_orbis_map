@@ -21,24 +21,15 @@
 			>
 		</div>
 	</div>
-
-	<ModalPokedex 
-		ref="pokedex"
-		v-show="showPokedex"
-	/>
 </template>
 
 <script>
-	import ModalPokedex from '../Modals/Pokedex.vue';
-	import {getPokemon} from '../../dataRecovery';
-
 	export default {
 		name: "Icon-trainer",
-		components:{
-			ModalPokedex
-		},
 		emits: [
-			"pokedexEntryTrainer"
+			"pokedexEntryTrainer",
+			"dialogueTrainerClick",
+			"pokedexTrainerClick"
 		],
 		data() {
 			return {
@@ -48,8 +39,7 @@
 				hasPokemon: true,
 				blockPokemon: false,
 				pokemonGen: "",
-				pokemonRef: "none",
-				showPokedex: false
+				pokemonRef: "none"
 			}
 		},
 		methods:{
@@ -96,20 +86,14 @@
 					this.$emit('pokedexEntryTrainer');
 				}
 
-				let pokemon = await getPokemon(this.pokemonGen + '.' + this.pokemonRef);
-				this.$refs.pokedex.show(
+				this.$emit(
+					'pokedexTrainerClick', 
 					{
 						view: "pokemon",
-						object: pokemon
+						pokemonGen: this.pokemonGen,
+						pokemonRef: this.pokemonRef
 					}
-				).then(async (close) => 
-				{
-					if(close)
-					{
-						this.showPokedex = false;
-					}
-				});
-				this.showPokedex = true;
+				);
 			},
 			// função para abrir modal de diálogo
 			openDialogueModal()

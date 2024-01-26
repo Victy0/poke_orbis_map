@@ -155,8 +155,8 @@
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 100.4%;
-		height: 101%;
+		width: 82.1vw;
+		height: 100%;
 		background-color: rgba(0,0,0, .4);
 		display: flex;
 		justify-content: center;
@@ -167,7 +167,7 @@
 	{
 		display: flex;
 		width: 55vw;
-		height: 41vw;
+		height: 40vw;
 		background-image: url('../../assets/img/common/dex.png');
 		background-repeat: no-repeat;
 		background-size: 55vw;
@@ -214,8 +214,8 @@
 	{
 		margin: auto;
 		display: block;
-		width: 20vw;
-		margin-top: -2vw;
+		width: 18vw;
+		margin-top: -1.5vw;
 	}
 	.body-location .intro img
 	{
@@ -229,6 +229,7 @@
 	.modal-pokedex .body-location
 	{
 		height: 30vw;
+		text-align: center;
 	}
 	.body-pokemon .intro,
 	.body-location .intro

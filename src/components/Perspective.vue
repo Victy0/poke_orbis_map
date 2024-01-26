@@ -13,6 +13,7 @@
 					@changeBerriesValue = "updateBerryValueHeader"
 					@pokedexEntryPokemon = "increaseByOnePokedexEntry"
 					@openDialogue = "openModalDialogue"
+					@openPokedex = "openModalPokedex"
 				/>
 			</div>
 					
@@ -45,6 +46,8 @@
 	import ModalGoHome from './Modals/GoHome.vue';
 	import ModalPokedex from './Modals/Pokedex.vue';
 	import ModalDialogue from './Modals/Dialogue.vue';
+
+	import {getPokemon} from '../dataRecovery';
 
 	import IntroApplication from './Intro/Intro';
 	import Pallet from './Kanto/Cities/Pallet';
@@ -119,6 +122,29 @@
 					}
 				});
 				this.showDialogue = true;
+			},
+			// função para abrir modal de pokedex
+			async openModalPokedex(pokedexInfo)
+			{
+				let object;
+				if(pokedexInfo.view == "pokemon")
+				{
+					object = getPokemon(pokedexInfo.pokemonGen + '.' + pokedexInfo.pokemonRef);
+				}
+
+				this.$refs.pokedex.show(
+					{
+						view: pokedexInfo.view,
+						object: object
+					}
+				).then(async (close) => 
+				{
+					if(close)
+					{
+						this.showPokedex = false;
+					}
+				});
+				this.showPokedex = true;
 			}
 		}
 	}
