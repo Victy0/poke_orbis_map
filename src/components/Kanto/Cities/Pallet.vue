@@ -26,6 +26,7 @@
 	<IconLocation 
 		ref="iconLocation1"
 		v-show="showLocation"
+		@dialogueLocationClick = "openDialogue"
 	/>
 
 	<IconTree

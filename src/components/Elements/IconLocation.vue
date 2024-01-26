@@ -31,23 +31,16 @@
 		ref="pokedex"
 		v-show="showPokedex"
 	/>
-
-	<ModalDialogue
-		ref="dialogue"
-		v-show="showDialogue"
-	/>
 </template>
 
 <script>
 	import ModalPokedex from '../Modals/Pokedex.vue';
-	import ModalDialogue from '../Modals/Dialogue.vue';
 	import {getLocation} from '../../dataRecovery';
 
 	export default {
 		name: "Icon-location",
 		components:{
-			ModalPokedex,
-			ModalDialogue
+			ModalPokedex
 		},
 		data() {
 			return{
@@ -58,8 +51,7 @@
 				hasDialogue: false,
 				dialogue: "",
 				personName: "",
-				personImage: "none",
-				showDialogue: false
+				personImage: "none"
 			}
 		},
 		methods:{
@@ -116,20 +108,14 @@
 			// função para abrir modal de diálogo
 			openDialogueModal()
 			{
-				this.$refs.dialogue.show(
+				this.$emit(
+					'dialogueLocationClick', 
 					{
 						name: this.personName,
 						trainerImage: this.personImage,
 						dialogue: this.dialogue
 					}
-				).then(async (close) => 
-				{
-					if(close)
-					{
-						this.showDialogue = false;
-					}
-				});
-				this.showDialogue = true;
+				);
 			}
 		}
 	}
