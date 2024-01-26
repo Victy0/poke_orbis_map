@@ -209,12 +209,13 @@
 	.img-container
 	{
 		height: 60%;
+		margin-top: 1.5vw;
 	}
 	.body-pokemon .intro img
 	{
 		margin: auto;
 		display: block;
-		width: 18vw;
+		width: 14vw;
 		margin-top: -1.5vw;
 	}
 	.body-location .intro img
@@ -245,7 +246,7 @@
 	}
 	.body-pokemon .intro .name
 	{
-		margin-top: 3vw;
+		margin-top: 1vw;
 	}
 	.body-location .intro .name
 	{
