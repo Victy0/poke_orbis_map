@@ -29,6 +29,7 @@
 		ref="iconLocation1"
 		v-show="showLocation"
 		@dialogueLocationClick = "openDialogue"
+		@pokedexLocationClick = "openPokedex"
 	/>
 
 	<IconTree
@@ -36,6 +37,7 @@
 		v-show="showTree"
 		@changeBerriesValueTree = "addBerryValue"
 		@pokedexEntryTree = "emitPokedexEntry"
+		@pokedexTreeClick = "openPokedex"
 	/>
 </template>
 

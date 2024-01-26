@@ -90,8 +90,7 @@
 					'pokedexTrainerClick', 
 					{
 						view: "pokemon",
-						pokemonGen: this.pokemonGen,
-						pokemonRef: this.pokemonRef
+						pokedexEntry: this.pokemonGen + '.' + this.pokemonRef
 					}
 				);
 			},

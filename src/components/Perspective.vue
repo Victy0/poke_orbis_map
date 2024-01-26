@@ -129,7 +129,11 @@
 				let object;
 				if(pokedexInfo.view == "pokemon")
 				{
-					object = pokedexInfo.object ? pokedexInfo.object : getPokemon(pokedexInfo.pokemonGen + '.' + pokedexInfo.pokemonRef);
+					object = pokedexInfo.object ? pokedexInfo.object : getPokemon(pokedexInfo.pokedexEntry);
+				}
+				else
+				{
+					object = pokedexInfo.object;
 				}
 
 				this.$refs.pokedex.show(
