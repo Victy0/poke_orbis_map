@@ -26,40 +26,25 @@
 			>
 		</div>
 	</div>
-	
-	<ModalPokedex 
-		ref="pokedex"
-		v-show="showPokedex"
-	/>
-
-	<ModalDialogue
-		ref="dialogue"
-		v-show="showDialogue"
-	/>
 </template>
 
 <script>
-	import ModalPokedex from '../Modals/Pokedex.vue';
-	import ModalDialogue from '../Modals/Dialogue.vue';
 	import {getLocation} from '../../dataRecovery';
 
 	export default {
 		name: "Icon-location",
-		components:{
-			ModalPokedex,
-			ModalDialogue
-		},
+		emits: [
+			"pokedexLocationClick"
+		],
 		data() {
 			return{
 				locationObject: {},
 				hasInfo: false,
 				hasDoor: false,
-				showPokedex: false,
 				hasDialogue: false,
 				dialogue: "",
 				personName: "",
-				personImage: "none",
-				showDialogue: false
+				personImage: "none"
 			}
 		},
 		methods:{
@@ -71,7 +56,7 @@
 					this.locationRef = opts.locationRef;
 					this.hasInfo = true;
 					this.hasDoor = true;
-					this.locationObject = await getLocation(this.locationRef);
+					this.locationObject = getLocation(this.locationRef);
 				}
 				else
 				{
@@ -100,36 +85,25 @@
 			// função para abrir pokédex
 			openInformation()
 			{
-				this.$refs.pokedex.show(
+				this.$emit(
+					'pokedexLocationClick', 
 					{
 						view: "location",
 						object: this.locationObject
 					}
-				).then(async (close) => {
-					if(close)
-					{
-						this.showPokedex = false;
-					}
-				});
-				this.showPokedex = true;
+				);
 			},
 			// função para abrir modal de diálogo
 			openDialogueModal()
 			{
-				this.$refs.dialogue.show(
+				this.$emit(
+					'dialogueLocationClick', 
 					{
 						name: this.personName,
 						trainerImage: this.personImage,
 						dialogue: this.dialogue
 					}
-				).then(async (close) => 
-				{
-					if(close)
-					{
-						this.showDialogue = false;
-					}
-				});
-				this.showDialogue = true;
+				);
 			}
 		}
 	}

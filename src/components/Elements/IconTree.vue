@@ -29,24 +29,15 @@
 			>
 		</div>
 	</div>
-	<ModalPokedex 
-		ref="pokedex"
-		v-show="showPokedex"
-	/>
 </template>
 
 <script>
-	import ModalPokedex from '../Modals/Pokedex.vue';
-	import {getPokemon} from '../../dataRecovery';
-
 	export default {
 		name: "Icon-tree",
-		components:{
-			ModalPokedex
-		},
 		emits: [
 			"changeBerriesValueTree",
-			"pokedexEntryTree"
+			"pokedexEntryTree",
+			"pokedexTreeClick"
 		],
 		data() {
 			return{
@@ -55,7 +46,6 @@
 				pokedexEntryIndex: 0,
 				pokedexEntry: '',
 				image: "none.gif",
-				showPokedex: false,
 				shakeHappened: false
 			}
 		},
@@ -110,20 +100,13 @@
 					this.$emit('pokedexEntryTree');
 				}
 
-				let pokemon = await getPokemon(this.pokedexEntry);
-				this.$refs.pokedex.show(
+				this.$emit(
+					'pokedexTreeClick', 
 					{
 						view: "pokemon",
-						object: pokemon
+						pokedexEntry: this.pokedexEntry
 					}
-				).then(async (close) => {
-					if(close)
-					{
-						this.pokedexEntryIndex = -1;
-						this.showPokedex = false;
-					}
-				});
-				this.showPokedex = true;
+				);
 			}
 		}
 	}
