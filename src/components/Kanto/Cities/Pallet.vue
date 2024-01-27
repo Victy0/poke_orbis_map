@@ -14,17 +14,22 @@
 		v-show="showPokemon"
 		@changeBerriesValuePokemon = "decreaseBerryValue"
 		@pokedexEntryWild = "emitPokedexEntry"
+		@pokedexPokemonClick = "openPokedex"
 	/>
 
 	<IconTrainer 
 		ref="iconTrainer1"
 		v-show="showTrainer"
 		@pokedexEntryTrainer = "emitPokedexEntry"
+		@dialogueTrainerClick = "openDialogue"
+		@pokedexTrainerClick = "openPokedex"
 	/>
 
 	<IconLocation 
 		ref="iconLocation1"
 		v-show="showLocation"
+		@dialogueLocationClick = "openDialogue"
+		@pokedexLocationClick = "openPokedex"
 	/>
 
 	<IconTree
@@ -32,6 +37,7 @@
 		v-show="showTree"
 		@changeBerriesValueTree = "addBerryValue"
 		@pokedexEntryTree = "emitPokedexEntry"
+		@pokedexTreeClick = "openPokedex"
 	/>
 </template>
 
@@ -51,7 +57,9 @@
 		},
 		emits: [
 			"changeBerriesValue",
-			"pokedexEntryPokemon"
+			"pokedexEntryPokemon",
+			"openDialogue",
+			"openPokedex"
 		],
 		data() {
 			return{
@@ -112,19 +120,33 @@
 			this.showTree = true;
 		},
 		methods:{
+						/******************* FUNÇÕES PADRÕES **********************/
+			// função para atualizar e emitir o ganho de 1 berry
 			addBerryValue()
 			{
 				this.$refs.iconPokemon1.updateBerryValue(true);
 				this.$emit('changeBerriesValue');
 			},
+			// função para atualizar e emitir o gasto de 1 berry
 			decreaseBerryValue(refPerspective)
 			{
 				this.$refs.iconPokemon1.updateBerryValue(false, refPerspective);
 				this.$emit('changeBerriesValue');
 			},
+			//  função para emitir nova entrada de pokémon
 			emitPokedexEntry()
 			{
 				this.$emit('pokedexEntryPokemon');
+			},
+			// função para emitir a abertura do modal de diálogo
+			openDialogue(dialogueInfo)
+			{
+				this.$emit('openDialogue', dialogueInfo);
+			},
+			// função para emitir a abertura do modal de pokedex
+			openPokedex(pokedexInfo)
+			{
+				this.$emit('openPokedex', pokedexInfo);
 			}
 		}
 	}
