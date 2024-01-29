@@ -21,31 +21,15 @@
 			>
 		</div>
 	</div>
-
-	<ModalPokedex 
-		ref="pokedex"
-		v-show="showPokedex"
-	/>
-
-	<ModalDialogue
-		ref="dialogue"
-		v-show="showDialogue"
-	/>
 </template>
 
 <script>
-	import ModalPokedex from '../Modals/Pokedex.vue';
-	import ModalDialogue from '../Modals/Dialogue.vue';
-	import {getPokemon} from '../../dataRecovery';
-
 	export default {
 		name: "Icon-trainer",
-		components:{
-			ModalPokedex,
-			ModalDialogue
-		},
 		emits: [
-			"pokedexEntryTrainer"
+			"pokedexEntryTrainer",
+			"dialogueTrainerClick",
+			"pokedexTrainerClick"
 		],
 		data() {
 			return {
@@ -55,9 +39,7 @@
 				hasPokemon: true,
 				blockPokemon: false,
 				pokemonGen: "",
-				pokemonRef: "none",
-				showPokedex: false,
-				showDialogue: false
+				pokemonRef: "none"
 			}
 		},
 		methods:{
@@ -104,20 +86,13 @@
 					this.$emit('pokedexEntryTrainer');
 				}
 
-				let pokemon = await getPokemon(this.pokemonGen + '.' + this.pokemonRef);
-				this.$refs.pokedex.show(
+				this.$emit(
+					'pokedexTrainerClick', 
 					{
 						view: "pokemon",
-						object: pokemon
+						pokedexEntry: this.pokemonGen + '.' + this.pokemonRef
 					}
-				).then(async (close) => 
-				{
-					if(close)
-					{
-						this.showPokedex = false;
-					}
-				});
-				this.showPokedex = true;
+				);
 			},
 			// função para abrir modal de diálogo
 			openDialogueModal()
@@ -127,20 +102,14 @@
 					this.blockPokemon = false;
 				}
 
-				this.$refs.dialogue.show(
+				this.$emit(
+					'dialogueTrainerClick', 
 					{
 						name: this.trainerName,
 						trainerImage: this.trainerImage,
 						dialogue: this.dialogue
 					}
-				).then(async (close) => 
-				{
-					if(close)
-					{
-						this.showDialogue = false;
-					}
-				});
-				this.showDialogue = true;
+				);
 			}
 		}
 	}
