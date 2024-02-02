@@ -171,7 +171,7 @@
 					//dialogue: "teste",
 					//personName: "Aldebaran",
 					//personImage: "bug_catcher",
-					top: 9,
+					top: 9.5,
 					left: 3,
 					size: 5
 				}
@@ -195,7 +195,7 @@
 					dialogue: "teste",
 					//personName: "Aldebaran",
 					//personImage: "bug_catcher",
-					top: 23,
+					top: 24,
 					left: 8.5,
 					size: 5
 				}

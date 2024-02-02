@@ -5,43 +5,43 @@
 				<div class="select-element-step2">
 					<input type="radio" id="1" name="optCharacter" value="arnold" checked @change="changeValue()"> 
 						<label for="1" title="Arnold">
-						<img src="@/assets/img/character/arnold.png">
+						<img src="@/assets/img/trainer/arnold.png">
 						</label>
 					<input type="radio" id="2" name="optCharacter" value="cassidy" @change="changeValue()" disabled>
 						<label for="2" title="Cassidy" class="img-disabled">
-						<img src="@/assets/img/character/cassidy.png">
+						<img src="@/assets/img/trainer/cassidy.png">
 						</label> 
 					<input type="radio" id="3" name="optCharacter" value="erik" @change="changeValue()">
 						<label for="3" title="Erik">
-						<img src="@/assets/img/character/erik.png">
+						<img src="@/assets/img/trainer/erik.png">
 						</label>
 				</div>
 				<div class="select-element-step2">
 					<input type="radio" id="4" name="optCharacter" value="joe" @change="changeValue()" disabled> 
 						<label for="4" title="Joe" class="img-disabled">
-						<img src="@/assets/img/character/joe.png" >
+						<img src="@/assets/img/trainer/joe.png" >
 						</label>
 					<input type="radio" id="5" name="optCharacter" value="luna" @change="changeValue()">
 						<label for="5" title="Luna">
-						<img src="@/assets/img/character/luna.png">
+						<img src="@/assets/img/trainer/luna.png">
 						</label>
 					<input type="radio" id="6" name="optCharacter" value="nikki" @change="changeValue()" disabled>
 						<label for="6" title="Nikki" class="img-disabled">
-						<img src="@/assets/img/character/nikki.png">
+						<img src="@/assets/img/trainer/nikki.png">
 						</label>
 				</div>
 				<div class="select-element-step2">
 					<input type="radio" id="7" name="optCharacter" value="pete" @change="changeValue()">
 						<label for="7" title="Pete">
-						<img src="@/assets/img/character/pete.png">
+						<img src="@/assets/img/trainer/pete.png">
 						</label>
 					<input type="radio" id="8" name="optCharacter" value="seymour" @change="changeValue()" disabled>
 						<label for="8" title="Seymour" class="img-disabled">
-						<img src="@/assets/img/character/seymour.png">
+						<img src="@/assets/img/trainer/seymour.png">
 						</label>
 					<input type="radio" id="9" name="optCharacter" value="tyra" @change="changeValue()">
 						<label for="9" title="Tyra">
-						<img src="@/assets/img/character/tyra.png">
+						<img src="@/assets/img/trainer/tyra.png">
 						</label>
 				</div>
 			</div>
