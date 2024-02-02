@@ -34,13 +34,43 @@
 			@pokedexTrainerClick = "openPokedex"
 		/>
 
+		<!-- listagem locais -->
 		<IconLocation 
-			ref="iconLocation1"
+			ref="iconLocationLab"
 			v-show="showLocation"
 			@dialogueLocationClick = "openDialogue"
 			@pokedexLocationClick = "openPokedex"
 		/>
 
+		<IconLocation 
+			ref="iconLocationCenter"
+			v-show="showLocation"
+			@dialogueLocationClick = "openDialogue"
+			@pokedexLocationClick = "openPokedex"
+		/>
+
+		<IconLocation 
+			ref="iconLocationPostOffice"
+			v-show="showLocation"
+			@dialogueLocationClick = "openDialogue"
+			@pokedexLocationClick = "openPokedex"
+		/>
+
+		<IconLocation 
+			ref="iconLocationHome"
+			v-show="showLocation"
+			@dialogueLocationClick = "openDialogue"
+			@pokedexLocationClick = "openPokedex"
+		/>
+
+		<IconLocation 
+			ref="iconLocationBarn"
+			v-show="showLocation"
+			@dialogueLocationClick = "openDialogue"
+			@pokedexLocationClick = "openPokedex"
+		/>
+
+		<!-- listagem arvores -->
 		<IconTree
 			ref="iconTree"
 			v-show="showTree"
@@ -80,6 +110,7 @@
 			}
 		},
 		mounted(){
+			// iniciação pokemons
 			this.$refs.iconPokemon1.show(
 				{
 					isWild: false,
@@ -92,6 +123,7 @@
 			);
 			this.showPokemon = true;
 
+			// iniciação treinadores
 			this.$refs.iconTrainer1.show(
 				{
 					trainerName: "Aldebaran",
@@ -107,19 +139,70 @@
 			);
 			this.showTrainer = true;
 
-			this.$refs.iconLocation1.show(
+			// iniciação locais
+			this.$refs.iconLocationLab.show(
 				{
-					//locationRef: "1.1",
+					locationRef: "1.1",
+					hasDoor: true,
+					//dialogue: "teste",
+					//personName: "Aldebaran",
+					//personImage: "bug_catcher",
+					top: 30,
+					left: 48,
+					size: 7
+				}
+			);
+			this.$refs.iconLocationCenter.show(
+				{
+					locationRef: "1.2",
+					hasDoor: true,
+					//dialogue: "teste",
+					//personName: "Aldebaran",
+					//personImage: "bug_catcher",
+					top: 27.5,
+					left: 40.5,
+					size: 5
+				}
+			);
+			this.$refs.iconLocationPostOffice.show(
+				{
+					locationRef: "1.3",
+					hasDoor: true,
+					//dialogue: "teste",
+					//personName: "Aldebaran",
+					//personImage: "bug_catcher",
+					top: 9,
+					left: 3,
+					size: 5
+				}
+			);
+			this.$refs.iconLocationHome.show(
+				{
+					locationRef: "1.4",
+					hasDoor: false,
 					dialogue: "teste",
-					personName: "Aldebaran",
-					personImage: "bug_catcher",
-					top: 50,
-					left: 30,
-					size: 6
+					//personName: "Aldebaran",
+					//personImage: "bug_catcher",
+					top: 9,
+					left: 28,
+					size: 5
+				}
+			);
+			this.$refs.iconLocationBarn.show(
+				{
+					locationRef: "1.5",
+					hasDoor: false,
+					dialogue: "teste",
+					//personName: "Aldebaran",
+					//personImage: "bug_catcher",
+					top: 23,
+					left: 8.5,
+					size: 5
 				}
 			);
 			this.showLocation = true;
 
+			// iniciação arvores
 			this.$refs.iconTree.show(
 				{
 					possiblePokedex: ["1.1","1.4","1.7"],

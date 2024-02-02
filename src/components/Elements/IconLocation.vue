@@ -5,6 +5,7 @@
 		/>
 		<div class="options">
 			<img
+				v-show="locationRef"
 				draggable="false"
 				:src="getImageOption1()"
 				@click="openInformation()"
@@ -39,6 +40,7 @@
 		data() {
 			return{
 				locationObject: {},
+				locationRef: null,
 				hasInfo: false,
 				hasDoor: false,
 				hasDialogue: false,
@@ -55,8 +57,21 @@
 				{
 					this.locationRef = opts.locationRef;
 					this.hasInfo = true;
-					this.hasDoor = true;
 					this.locationObject = getLocation(this.locationRef);
+
+					if(opts.hasDoor)
+					{
+						this.hasDoor = true;
+					}
+					else
+					{
+						this.hasDialogue = true;
+						this.dialogue = opts.dialogue;
+
+						let character = localStorage.getItem('character');
+						this.personName = character.replace(/^./, character[0].toUpperCase());
+						this.personImage = character;
+					}
 				}
 				else
 				{
@@ -64,19 +79,19 @@
 					this.dialogue = opts.dialogue;
 					this.personName = opts.personName;
 					this.personImage = opts.personImage;
+					this.hasDoor = false;
 				}
-				
-				this.locationRef = opts.locationRef;
-				this.$refs["icon"].style.marginLeft = opts.top + "vw";
-				this.$refs["icon"].style.marginTop = opts.left + "vw";
 
-				this.$refs["principal"].style.width = opts.size + "vw";
+				this.$refs["icon"].style.marginTop = opts.top + "vw";
+				this.$refs["icon"].style.marginLeft = opts.left + "vw";
+
+				this.$refs["principal"].style.width = (opts.size + 2) + "vw";
 				this.$refs["principal"].style.height = opts.size + "vw";
 			},
 			// função para recuperar o caminho da imagem da opção 11 considerando se é para pokédex ou diálogo
 			getImageOption1()
 			{
-				if(this.hasDialogue)
+				if(!this.locationRef)
 				{
 					return require('@/assets/img/trainer/' + this.personImage + '.png');
 				}
