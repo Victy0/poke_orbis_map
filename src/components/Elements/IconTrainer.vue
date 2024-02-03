@@ -72,7 +72,7 @@
 			// função para recuperar o caminho da imagem do Pokémon
 			getPokemonImage()
 			{
-				return require('@/assets/img/pokemon/' + this.pokemonRef + '.gif');
+				return require('@/assets/img/pokemon/' + this.pokemonRef + '.png');
 			},
 			// função para abrir pokédex
 			async openPokedex()

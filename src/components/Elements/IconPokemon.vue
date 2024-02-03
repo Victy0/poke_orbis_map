@@ -63,13 +63,13 @@
 				this.pokemonRef = opts.pokemonRef;
 				this.refPerspective = opts.refPerspective;
 				this.berriesPlayer = Number(localStorage.getItem('berries'));
-				this.$refs["icon"].style.marginLeft = opts.top + "vw";
-				this.$refs["icon"].style.marginTop = opts.left + "vw";
+				this.$refs["icon"].style.marginTop = opts.top + "vw";
+				this.$refs["icon"].style.marginLeft = opts.left + "vw";
 			},
 			// função para recuperar o caminho da imagem do Pokémon
 			getImage()
 			{
-				return require('@/assets/img/pokemon/' + this.pokemonRef + '.gif')
+				return require('@/assets/img/pokemon/' + this.pokemonRef + '.png')
 			},
 			// função para recuperar a classe consideradno a dificuldade de captura
 			getClass()

@@ -18,7 +18,15 @@
 
 		<!-- listagem pokémons -->
 		<IconPokemon 
-			ref="iconPokemon1"
+			ref="iconTauros"
+			v-show="showPokemon"
+			@changeBerriesValuePokemon = "decreaseBerryValue"
+			@pokedexEntryWild = "emitPokedexEntry"
+			@pokedexPokemonClick = "openPokedex"
+		/>
+
+		<IconPokemon 
+			ref="iconShellder"
 			v-show="showPokemon"
 			@changeBerriesValuePokemon = "decreaseBerryValue"
 			@pokedexEntryWild = "emitPokedexEntry"
@@ -111,14 +119,24 @@
 		},
 		mounted(){
 			// iniciação pokemons
-			this.$refs.iconPokemon1.show(
+			this.$refs.iconTauros.show(
 				{
 					isWild: false,
 					pokemonGen: "1",
 					pokemonRef: "128",
-					refPerspective: "pok1",
-					top: 30,
-					left: 5
+					refPerspective: "palletPok1",
+					top: 2.5,
+					left: 60
+				}
+			);
+			this.$refs.iconShellder.show(
+				{
+					isWild: false,
+					pokemonGen: "1",
+					pokemonRef: "90",
+					refPerspective: "palletPok2",
+					top: 37,
+					left: 17
 				}
 			);
 			this.showPokemon = true;

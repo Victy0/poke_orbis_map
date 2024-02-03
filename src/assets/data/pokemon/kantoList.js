@@ -2,7 +2,7 @@ export const pokemonKantoList = [
     { //001
         name: "BULBASAUR",
         number: 1,
-        image: "1.gif",
+        image: "1.png",
         description: "Bulbasaur pode ser visto cochilando sob a luz do sol. Ao absorver os raios do sol, a semente, presente em suas costas desde o nascimento, cresce progressivamente.",
         type: ["Grama", "Venenoso"],
         rateCatch: 8
@@ -14,7 +14,7 @@ export const pokemonKantoList = [
     { //004
         name: "CHARMANDER",
         number: 4,
-        image: "4.gif",
+        image: "4.png",
         description: "A chama que queima na ponta de sua cauda é uma indicação de suas emoções. A chama oscila quando Charmander está se divertindo. Se o Pokémon ficar enfurecido, a chama queima ferozmente.",
         type: ["Fogo"],
         rateCatch: 8
@@ -26,7 +26,7 @@ export const pokemonKantoList = [
     { //007
         name: "SQUIRTLE",
         number: 7,
-        image: "7.gif",
+        image: "7.png",
         description: "A concha de Squirtle não é usada apenas para proteção. A forma arredondada da concha e os sulcos em sua superfície ajudam a minimizar a resistência na água, permitindo que este Pokémon nade em alta velocidade.",
         type: ["Água"],
         rateCatch: 8
@@ -50,7 +50,7 @@ export const pokemonKantoList = [
     { //016
         name: "PIDGEY",
         number: 16,
-        image: "16.gif",
+        image: "16.png",
         description: "Pidgey tem um senso de direção extremamente aguçado. Ele é capaz de retornar infalivelmente para casa, para seu ninho, por mais longe que esteja de seu ambiente familiar.",
         type: ["Normal", "Voador"],
         rateCatch: 1
@@ -62,7 +62,7 @@ export const pokemonKantoList = [
     { //019
         name: "RATTATA",
         number: 19,
-        image: "19.gif",
+        image: "19.png",
         description: "Rattata é cauteloso ao extremo. Mesmo enquanto está dormindo, ele escuta constantemente movendo suas orelhas. Não é exigente quanto ao local onde vive, já que faz seu ninho em qualquer lugar.",
         type: ["Normal"],
         rateCatch: 1
@@ -70,7 +70,7 @@ export const pokemonKantoList = [
     { //020
         name: "RATICATE",
         number: 20,
-        image: "20.gif",
+        image: "20.png",
         description: "As presas robustas de Raticate crescem constantemente. Para mantê-las no tamanho ideal, ele rói pedras e troncos. Pode até mastigar as paredes das casas.",
         type: ["Normal"],
         rateCatch: 4
@@ -214,6 +214,12 @@ export const pokemonKantoList = [
     { //089
     },
     { //090
+        name: "SHELLDER",
+        number: 90,
+        image: "90.png",
+        description: "Sua concha dura repele qualquer tipo de ataque, sendo vulnerável apenas quando ela está aberta. Sua língua grande fica sempre para fora da concha.",
+        type: ["Água"],
+        rateCatch: 5
     },
     { //091
     },
@@ -292,7 +298,7 @@ export const pokemonKantoList = [
     { //128
         name: "TAUROS",
         number: 128,
-        image: "128.gif",
+        image: "128.png",
         description: "Depois de aumentar sua vontade de lutar chicoteando-se com suas três caudas, esse Pokémon avança a toda velocidade.",
         type: ["Normal"],
         rateCatch: 5

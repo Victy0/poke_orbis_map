@@ -45,7 +45,7 @@
 				possiblePokedex: [],
 				pokedexEntryIndex: 0,
 				pokedexEntry: '',
-				image: "none.gif",
+				image: "none.png",
 				shakeHappened: false
 			}
 		},
@@ -78,7 +78,7 @@
 
 				this.pokedexEntry = this.possiblePokedex[this.pokedexEntryIndex];
 				var numberArray = this.pokedexEntry.split('.');
-				this.image = numberArray[1] + '.gif';
+				this.image = numberArray[1] + '.png';
 				
 				this.shakeHappened = true;
 			},
