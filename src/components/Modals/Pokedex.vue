@@ -67,7 +67,7 @@
 							</div>
 						</div>
 						<div class="information">
-							<div>
+							<div class="location-data">
 								<span>LOCAL</span>
 							</div>
 							<div class="text-info-location">
@@ -285,6 +285,12 @@
 	.body-location .intro span
 	{
 		font-size: 1.1em;
+	}
+	.location-data,
+	.body-pokemon .intro .name
+	{
+		background: linear-gradient(0.25turn, #ffffff00, #7dd1f5, #65cbf7);
+		border-radius: 1em;
 	}
 
 	/******************* scrool **********************/

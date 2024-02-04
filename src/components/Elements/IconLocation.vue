@@ -9,7 +9,6 @@
 				draggable="false"
 				:src="getImageOption1()"
 				@click="openInformation()"
-				:class="this.hasDialogue ? 'disabled' : ''"
 				title="Informação"
 			>
 			<img
