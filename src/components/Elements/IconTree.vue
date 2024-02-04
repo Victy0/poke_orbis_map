@@ -55,8 +55,8 @@
 			{
 				this.quantityBerries = Math.floor(Math.random() * 5);
 				this.possiblePokedex = opts.possiblePokedex;
-				this.$refs["icon"].style.marginLeft = opts.top + "vw";
-				this.$refs["icon"].style.marginTop = opts.left + "vw";
+				this.$refs["icon"].style.marginTop = opts.top + "vw";
+				this.$refs["icon"].style.marginLeft = opts.left + "vw";
 			},
 			// função para colher fruta da árvore
 			harvestBerry()

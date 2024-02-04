@@ -223,9 +223,9 @@
 			// iniciação arvores
 			this.$refs.iconTree.show(
 				{
-					possiblePokedex: ["1.1","1.4","1.7"],
-					top: 50,
-					left: 20
+					possiblePokedex: ["1.16","2.163"],
+					top: 30,
+					left: 25
 				}
 			);
 			this.showTree = true;

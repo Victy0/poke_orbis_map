@@ -1,4 +1,5 @@
 import {pokemonKantoList} from './assets/data/pokemon/kantoList';
+import {pokemonJohtoList} from './assets/data/pokemon/johtoList';
 import {placeKantoList} from './assets/data/place/kantoList';
 import {saveEstructure} from './assets/data/save';
 
@@ -10,7 +11,10 @@ export function getPokemon(number)
     {
         case '1':
             return pokemonKantoList[(numberArray[1] - 1)];
-    }
+        case '2':
+            console.log((numberArray[1] - 151) - 1);
+            return pokemonJohtoList[(numberArray[1] - 151) - 1];
+}
 }
 
 // função para recuperar um Local
