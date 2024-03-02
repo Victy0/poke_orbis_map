@@ -61,8 +61,8 @@
 					this.blockPokemon = true;
 					this.pokemonRef = "none";
 				}
-				this.$refs["icon"].style.marginLeft = opts.top + "vw";
-				this.$refs["icon"].style.marginTop = opts.left + "vw";
+				this.$refs["icon"].style.marginTop = opts.top + "vw";
+				this.$refs["icon"].style.marginLeft = opts.left + "vw";
 			},
 			// função para recuperar o caminho da imagem do Treinador
 			getTrainerImage()

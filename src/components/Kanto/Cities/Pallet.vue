@@ -35,7 +35,23 @@
 
 		<!-- listagem treinadores -->
 		<IconTrainer 
-			ref="iconTrainer1"
+			ref="trainer1"
+			v-show="showTrainer"
+			@pokedexEntryTrainer = "emitPokedexEntry"
+			@dialogueTrainerClick = "openDialogue"
+			@pokedexTrainerClick = "openPokedex"
+		/>
+
+		<IconTrainer 
+			ref="arnold"
+			v-show="showTrainer"
+			@pokedexEntryTrainer = "emitPokedexEntry"
+			@dialogueTrainerClick = "openDialogue"
+			@pokedexTrainerClick = "openPokedex"
+		/>
+
+		<IconTrainer 
+			ref="scientist1"
 			v-show="showTrainer"
 			@pokedexEntryTrainer = "emitPokedexEntry"
 			@dialogueTrainerClick = "openDialogue"
@@ -142,7 +158,7 @@
 			this.showPokemon = true;
 
 			// iniciação treinadores
-			this.$refs.iconTrainer1.show(
+			this.$refs.trainer1.show(
 				{
 					trainerName: "Aldebaran",
 					trainerImage: "bug_catcher",
@@ -150,9 +166,29 @@
 					hasPokemon: true,
 					blockPokemon: false,
 					pokemonGen: "1",
-					pokemonRef: "1",
-					top: 10,
-					left: 10
+					pokemonRef: "16",
+					top: 12,
+					left: 19
+				}
+			);
+			this.$refs.arnold.show(
+				{
+					trainerName: "Arnold",
+					trainerImage: "arnold",
+					dialogue: "Eu vivo aqui!",
+					hasPokemon: false,
+					top: 19,
+					left: 50
+				}
+			);
+			this.$refs.scientist1.show(
+				{
+					trainerName: "Helena",
+					trainerImage: "scientist_f",
+					dialogue: "Ao caminho do trabalho posso descobrir muitas coisas novas...por exemplo, tem os pokémons pássaros que rodam as árvores próximas. Já encontrei alguns vistos comumente na região de Johto que Kanto!",
+					hasPokemon: false,
+					top: 24,
+					left: 25
 				}
 			);
 			this.showTrainer = true;
@@ -177,7 +213,7 @@
 					//dialogue: "teste",
 					//personName: "Aldebaran",
 					//personImage: "bug_catcher",
-					top: 27.5,
+					top: 28.5,
 					left: 40.5,
 					size: 5
 				}
@@ -224,7 +260,7 @@
 			this.$refs.iconTree.show(
 				{
 					possiblePokedex: ["1.16","2.163"],
-					top: 30,
+					top: 32,
 					left: 25
 				}
 			);
