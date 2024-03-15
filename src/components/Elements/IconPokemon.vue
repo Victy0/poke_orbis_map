@@ -20,7 +20,7 @@
 			<img
 				draggable="false"
 				src="@/assets/img/icon/berry-icon.png"
-				:class="this.pokemon ? ((this.rateCatch <= 0 || this.rateCatch == 0) ? 'disabled' : '' ) : ''"
+				:class="this.pokemon ? ((this.rateCatch <= 0 || this.berriesPlayer == 0) ? 'disabled' : '' ) : ''"
 				@click="giveBerry()"
 				title="Dar berry"
 			>
@@ -74,7 +74,7 @@
 			// função para recuperar a classe consideradno a dificuldade de captura
 			getClass()
 			{
-				if(this.rateCatch > 5)
+				if(this.rateCatch > 4)
 				{
 					return 'hard-entry';
 				}

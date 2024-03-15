@@ -44,7 +44,7 @@
 
 		<IconTrainer 
 			ref="arnold"
-			v-show="showTrainer"
+			v-show="showTrainer && showArnold"
 			@pokedexEntryTrainer = "emitPokedexEntry"
 			@dialogueTrainerClick = "openDialogue"
 			@pokedexTrainerClick = "openPokedex"
@@ -130,6 +130,7 @@
 				showPokemon: false,
 				showLocation: false,
 				showTrainer: false,
+				showArnold: true,
 				showTree: true
 			}
 		},
@@ -145,9 +146,10 @@
 					left: 60
 				}
 			);
+
 			this.$refs.iconShellder.show(
 				{
-					isWild: false,
+					isWild: true,
 					pokemonGen: "1",
 					pokemonRef: "90",
 					refPerspective: "palletPok2",
@@ -155,6 +157,7 @@
 					left: 17
 				}
 			);
+
 			this.showPokemon = true;
 
 			// iniciação treinadores
@@ -171,6 +174,7 @@
 					left: 19
 				}
 			);
+
 			this.$refs.arnold.show(
 				{
 					trainerName: "Arnold",
@@ -181,6 +185,8 @@
 					left: 50
 				}
 			);
+			this.showArnold = localStorage.getItem('character') != "arnold";
+
 			this.$refs.scientist1.show(
 				{
 					trainerName: "Helena",
@@ -191,6 +197,7 @@
 					left: 25
 				}
 			);
+
 			this.showTrainer = true;
 
 			// iniciação locais
@@ -206,6 +213,7 @@
 					size: 7
 				}
 			);
+
 			this.$refs.iconLocationCenter.show(
 				{
 					locationRef: "1.2",
@@ -218,6 +226,7 @@
 					size: 5
 				}
 			);
+
 			this.$refs.iconLocationPostOffice.show(
 				{
 					locationRef: "1.3",
@@ -230,6 +239,7 @@
 					size: 5
 				}
 			);
+
 			this.$refs.iconLocationHome.show(
 				{
 					locationRef: "1.4",
@@ -242,6 +252,7 @@
 					size: 5
 				}
 			);
+
 			this.$refs.iconLocationBarn.show(
 				{
 					locationRef: "1.5",
@@ -254,6 +265,7 @@
 					size: 5
 				}
 			);
+
 			this.showLocation = true;
 
 			// iniciação arvores
@@ -264,6 +276,7 @@
 					left: 25
 				}
 			);
+
 			this.showTree = true;
 		},
 		methods:{
@@ -271,13 +284,15 @@
 			// função para atualizar e emitir o ganho de 1 berry
 			addBerryValue()
 			{
-				this.$refs.iconPokemon1.updateBerryValue(true);
+				this.$refs.iconTauros.updateBerryValue(true);
+				this.$refs.iconShellder.updateBerryValue(true);
 				this.$emit('changeBerriesValue');
 			},
 			// função para atualizar e emitir o gasto de 1 berry
 			decreaseBerryValue(refPerspective)
 			{
-				this.$refs.iconPokemon1.updateBerryValue(false, refPerspective);
+				this.$refs.iconTauros.updateBerryValue(false, refPerspective);
+				this.$refs.iconShellder.updateBerryValue(false, refPerspective);
 				this.$emit('changeBerriesValue');
 			},
 			//  função para emitir nova entrada de pokémon
